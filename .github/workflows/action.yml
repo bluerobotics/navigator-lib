@@ -1,0 +1,34 @@
+name: Test all targets
+
+on: [push, pull_request]
+
+jobs:
+  quick-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions-rs/toolchain@v1.0.6
+      with:
+        toolchain: nightly
+        override: true
+        components: rustfmt, clippy
+    - name: Check Type
+      run: cargo fmt -- --check
+    - name: Check Clippy
+      run: cargo clippy -- -Dwarnings
+    - name: Run internal tests
+      run: cargo test --verbose -- --nocapture
+    - name: Build
+      run: cargo build
+    - name: Install pip
+      run: |
+        pip install --user maturin
+        pip install . --user
+    - name: Check Python
+      run: |
+        python examples/python/main.py
+    - name: Check Cpp
+      run: |
+        cd examples/cpp
+        cmake -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build --config Debug --parallel
+        ./build/example
