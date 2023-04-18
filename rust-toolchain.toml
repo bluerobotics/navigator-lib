@@ -1,0 +1,3 @@
+[toolchain]
+# Necessary for cbindgen work with macro expansion
+channel = "nightly"

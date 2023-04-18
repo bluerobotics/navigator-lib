@@ -1,0 +1,20 @@
+[package]
+name = "navigator"
+version = "0.1.0"
+edition = "2021"
+build = "src/build.rs"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+libc = "0.2"
+pyo3 = { version = "0.18", features = ["extension-module"], optional = true }
+rand = "0.8"
+macros = { path = "macros" }
+
+[build-dependencies]
+cbindgen = "0.21"
+
+[features]
+python = ["pyo3"]
