@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Material"],"fn":["create_random_tire"],"struct":["Size2D","Tire"]};
