@@ -2,6 +2,9 @@ name: Test all targets
 
 on: [push, pull_request]
 
+permissions:
+  contents: write
+
 jobs:
   quick-tests:
     runs-on: ubuntu-latest
@@ -32,3 +35,22 @@ jobs:
         cd examples/cpp
         cmake -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build --config Debug --parallel
         ./build/example
+
+  deploy-doc:
+    needs: quick-tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions-rs/toolchain@v1.0.6
+      with:
+        toolchain: nightly
+        override: true
+        components: rust-docs
+    - name: Build docs
+      run: cargo doc
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      if: ${{ github.ref == 'refs/heads/master' }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./target/doc
