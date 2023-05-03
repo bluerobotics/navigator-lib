@@ -11,7 +11,7 @@ crate-type = ["cdylib", "rlib"]
 libc = "0.2"
 pyo3 = { version = "0.18", features = ["extension-module"], optional = true }
 rand = "0.8"
-macros = { path = "macros" }
+cpy-binder = { version = "0.1.0" }
 
 [build-dependencies]
 cbindgen = "0.21"
