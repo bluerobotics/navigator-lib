@@ -8,10 +8,10 @@ build = "src/build.rs"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
+cpy-binder = { version = "0.1.0" }
 libc = "0.2"
 pyo3 = { version = "0.18", features = ["extension-module"], optional = true }
 rand = "0.8"
-cpy-binder = { version = "0.1.0" }
 
 [build-dependencies]
 cbindgen = "0.21"
