@@ -22,8 +22,8 @@ impl NavigationManager {
     }
 }
 
-impl From<navigator_rs::ReadAxis> for AxisData {
-    fn from(read_axis: navigator_rs::ReadAxis) -> Self {
+impl From<navigator_rs::AxisData> for AxisData {
+    fn from(read_axis: navigator_rs::AxisData) -> Self {
         Self {
             x: read_axis.x,
             y: read_axis.y,
@@ -32,14 +32,14 @@ impl From<navigator_rs::ReadAxis> for AxisData {
     }
 }
 
-impl From<navigator_rs::ReadADC> for ADCData {
-    fn from(read_adc: navigator_rs::ReadADC) -> Self {
+impl From<navigator_rs::ADCData> for ADCData {
+    fn from(read_adc: navigator_rs::ADCData) -> Self {
         Self {
             channel: [
-                read_adc.first,
-                read_adc.second,
-                read_adc.third,
-                read_adc.fourth,
+                read_adc.channel[0],
+                read_adc.channel[1],
+                read_adc.channel[2],
+                read_adc.channel[3],
             ],
         }
     }
