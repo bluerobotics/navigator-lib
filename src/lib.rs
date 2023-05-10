@@ -1,39 +1,110 @@
-use rand::Rng;
-
 #[cfg(feature = "python")]
 use pyo3::{prelude::*, wrap_pyfunction};
 
 use cpy_binder::export_cpy;
 
-#[rustfmt::skip]
+struct NavigationManager {
+    navigator: navigator_rs::Navigator,
+}
+impl NavigationManager {
+    // private constructor to prevent direct instantiation
+    fn new() -> NavigationManager {
+        NavigationManager {
+            navigator: navigator_rs::Navigator::new(),
+        }
+    }
+
+    fn get_instance() -> &'static mut NavigationManager {
+        static mut SINGLETON_INSTANCE: Option<NavigationManager> = None;
+
+        // use unsafe block to ensure thread safety
+        unsafe { SINGLETON_INSTANCE.get_or_insert_with(NavigationManager::new) }
+    }
+}
+
+impl From<navigator_rs::ReadAxis> for AxisData {
+    fn from(read_axis: navigator_rs::ReadAxis) -> Self {
+        Self {
+            x: read_axis.x,
+            y: read_axis.y,
+            z: read_axis.z,
+        }
+    }
+}
+
+impl From<navigator_rs::ReadADC> for ADCData {
+    fn from(read_adc: navigator_rs::ReadADC) -> Self {
+        Self {
+            channel: [
+                read_adc.first,
+                read_adc.second,
+                read_adc.third,
+                read_adc.fourth,
+            ],
+        }
+    }
+}
+
 export_cpy!(
     navigator {
-        enum Material {
-            Plastic,
-            Rubber,
+        struct AxisData {
+            x: f32,
+            y: f32,
+            z: f32,
         }
 
-        struct Size2D {
-            width: f64,
-            height: f64,
+        struct ADCData {
+            channel: [i16;4],
         }
 
-        struct Tire {
-            material: Material,
-            pressure: f64,
-            size: Size2D,
+        fn init() -> () {
+            NavigationManager::get_instance().navigator.init()
         }
 
-        fn create_random_tire() -> Tire {
-            let mut rng = rand::thread_rng();
-            Tire {
-                material: Material::Plastic,
-                pressure: rng.gen_range(30.0..60.0),
-                size: Size2D {
-                    width: rng.gen_range(5.0..10.0),
-                    height: rng.gen_range(10.0..20.0),
-                },
-            }
+        fn set_led_on() -> () {
+            NavigationManager::get_instance().navigator.set_led_on()
+        }
+
+        fn set_led_off() -> () {
+            NavigationManager::get_instance().navigator.set_led_off()
+        }
+
+        fn read_adc() -> ADCData {
+            NavigationManager::get_instance()
+                .navigator
+                .read_adc()
+                .into()
+        }
+
+        fn read_pressure() -> f32 {
+            NavigationManager::get_instance().navigator.read_pressure()
+        }
+
+        fn read_temp() -> f32 {
+            NavigationManager::get_instance()
+                .navigator
+                .read_temperature()
+        }
+
+        fn read_mag() -> AxisData {
+            NavigationManager::get_instance()
+                .navigator
+                .read_mag()
+                .into()
+        }
+
+        fn read_accel() -> AxisData {
+            NavigationManager::get_instance()
+                .navigator
+                .read_accel()
+                .into()
+        }
+
+        fn read_gyro() -> AxisData {
+            NavigationManager::get_instance()
+                .navigator
+                .read_gyro()
+                .into()
         }
     }
 );
