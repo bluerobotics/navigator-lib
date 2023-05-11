@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["Led","Navigator","ReadADC","ReadAxis","SensorData"]};
+window.SIDEBAR_ITEMS = {"struct":["ADCData","AxisData","Led","Navigator","SensorData"]};

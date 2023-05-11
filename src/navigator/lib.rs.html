@@ -132,8 +132,8 @@
     }
 }
 
-<span class="kw">impl </span>From&lt;navigator_rs::ReadAxis&gt; <span class="kw">for </span>AxisData {
-    <span class="kw">fn </span>from(read_axis: navigator_rs::ReadAxis) -&gt; <span class="self">Self </span>{
+<span class="kw">impl </span>From&lt;navigator_rs::AxisData&gt; <span class="kw">for </span>AxisData {
+    <span class="kw">fn </span>from(read_axis: navigator_rs::AxisData) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             x: read_axis.x,
             y: read_axis.y,
@@ -142,14 +142,14 @@
     }
 }
 
-<span class="kw">impl </span>From&lt;navigator_rs::ReadADC&gt; <span class="kw">for </span>ADCData {
-    <span class="kw">fn </span>from(read_adc: navigator_rs::ReadADC) -&gt; <span class="self">Self </span>{
+<span class="kw">impl </span>From&lt;navigator_rs::ADCData&gt; <span class="kw">for </span>ADCData {
+    <span class="kw">fn </span>from(read_adc: navigator_rs::ADCData) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
             channel: [
-                read_adc.first,
-                read_adc.second,
-                read_adc.third,
-                read_adc.fourth,
+                read_adc.channel[<span class="number">0</span>],
+                read_adc.channel[<span class="number">1</span>],
+                read_adc.channel[<span class="number">2</span>],
+                read_adc.channel[<span class="number">3</span>],
             ],
         }
     }
