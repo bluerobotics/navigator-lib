@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["Operation"],"mod":["transfer","write","write_iter"],"trait":["Transactional","Transfer","Write","WriteIter"]};

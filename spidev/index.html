@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Spidev"><title>spidev - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="spidev" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (cba14074b 2023-05-10)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../spidev/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../spidev/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Crate spidev</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 0.5.1</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#reexports">Re-exports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Crate <a class="mod" href="#">spidev</a><button id="copy-path" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/spidev/lib.rs.html#9-312">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="spidev"><a href="#spidev">Spidev</a></h2>
+<p>The <code>spidev</code> crate provides access to Linux spidev devices
+from rust.  The wrapping of the interface is pretty direct
+and shouldn’t cause any surprises.</p>
+<p>Additional information on the interface may be found in
+<a href="https://www.kernel.org/doc/Documentation/spi/spidev">the kernel documentation
+for spidev</a>.</p>
+<h2 id="examples"><a href="#examples">Examples</a></h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">extern crate </span>spidev;
+<span class="kw">use </span>std::io;
+<span class="kw">use </span>std::io::prelude::<span class="kw-2">*</span>;
+<span class="kw">use </span>spidev::{Spidev, SpidevOptions, SpidevTransfer, SpiModeFlags};
+
+<span class="kw">fn </span>create_spi() -&gt; io::Result&lt;Spidev&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>spi = Spidev::open(<span class="string">&quot;/dev/spidev0.0&quot;</span>)<span class="question-mark">?</span>;
+    <span class="kw">let </span>options = SpidevOptions::new()
+         .bits_per_word(<span class="number">8</span>)
+         .max_speed_hz(<span class="number">20_000</span>)
+         .mode(SpiModeFlags::SPI_MODE_0)
+         .build();
+    spi.configure(<span class="kw-2">&amp;</span>options)<span class="question-mark">?</span>;
+    <span class="prelude-val">Ok</span>(spi)
+}
+
+<span class="doccomment">/// perform half duplex operations using Read and Write traits
+</span><span class="kw">fn </span>half_duplex(spi: <span class="kw-2">&amp;mut </span>Spidev) -&gt; io::Result&lt;()&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>rx_buf = [<span class="number">0_u8</span>; <span class="number">10</span>];
+    spi.write(<span class="kw-2">&amp;</span>[<span class="number">0x01</span>, <span class="number">0x02</span>, <span class="number">0x03</span>])<span class="question-mark">?</span>;
+    spi.read(<span class="kw-2">&amp;mut </span>rx_buf)<span class="question-mark">?</span>;
+    <span class="macro">println!</span>(<span class="string">&quot;{:?}&quot;</span>, rx_buf);
+    <span class="prelude-val">Ok</span>(())
+}
+
+<span class="doccomment">/// Perform full duplex operations using Ioctl
+</span><span class="kw">fn </span>full_duplex(spi: <span class="kw-2">&amp;mut </span>Spidev) -&gt; io::Result&lt;()&gt; {
+    <span class="comment">// &quot;write&quot; transfers are also reads at the same time with
+    // the read having the same length as the write
+    </span><span class="kw">let </span>tx_buf = [<span class="number">0x01</span>, <span class="number">0x02</span>, <span class="number">0x03</span>];
+    <span class="kw">let </span><span class="kw-2">mut </span>rx_buf = [<span class="number">0</span>; <span class="number">3</span>];
+    {
+        <span class="kw">let </span><span class="kw-2">mut </span>transfer = SpidevTransfer::read_write(<span class="kw-2">&amp;</span>tx_buf, <span class="kw-2">&amp;mut </span>rx_buf);
+        spi.transfer(<span class="kw-2">&amp;mut </span>transfer)<span class="question-mark">?</span>;
+    }
+    <span class="macro">println!</span>(<span class="string">&quot;{:?}&quot;</span>, rx_buf);
+    <span class="prelude-val">Ok</span>(())
+}
+
+<span class="kw">fn </span>main() {
+    <span class="kw">let </span><span class="kw-2">mut </span>spi = create_spi().unwrap();
+    <span class="macro">println!</span>(<span class="string">&quot;{:?}&quot;</span>, half_duplex(<span class="kw-2">&amp;mut </span>spi).unwrap());
+    <span class="macro">println!</span>(<span class="string">&quot;{:?}&quot;</span>, full_duplex(<span class="kw-2">&amp;mut </span>spi).unwrap());
+}</code></pre></div>
+</div></details><h2 id="reexports" class="small-section-header"><a href="#reexports">Re-exports</a></h2><ul class="item-table"><li><div class="item-name" id="reexport.SpidevTransfer"><code>pub use crate::spidevioctl::<a class="type" href="spidevioctl/type.SpidevTransfer.html" title="type spidev::spidevioctl::SpidevTransfer">SpidevTransfer</a>;</code></div></li></ul><h2 id="modules" class="small-section-header"><a href="#modules">Modules</a></h2><ul class="item-table"><li><div class="item-name"><a class="mod" href="spidevioctl/index.html" title="mod spidev::spidevioctl">spidevioctl</a></div></li></ul><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2><ul class="item-table"><li><div class="item-name"><a class="struct" href="struct.SpiModeFlags.html" title="struct spidev::SpiModeFlags">SpiModeFlags</a></div></li><li><div class="item-name"><a class="struct" href="struct.Spidev.html" title="struct spidev::Spidev">Spidev</a></div><div class="desc docblock-short">Provide high-level access to Linux Spidev Driver</div></li><li><div class="item-name"><a class="struct" href="struct.SpidevOptions.html" title="struct spidev::SpidevOptions">SpidevOptions</a></div><div class="desc docblock-short">Options that control defaults for communication on a device</div></li></ul></section></div></main></body></html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This is a platform agnostic Rust driver for the PCA9685 PWM/Servo/LED controller, based on the `embedded-hal` traits."><title>pwm_pca9685 - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="pwm_pca9685" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (cba14074b 2023-05-10)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../pwm_pca9685/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../pwm_pca9685/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Crate pwm_pca9685</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 0.3.1</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#reexports">Re-exports</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Crate <a class="mod" href="#">pwm_pca9685</a><button id="copy-path" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/pwm_pca9685/lib.rs.html#1-257">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This is a platform agnostic Rust driver for the PCA9685 PWM/Servo/LED
+controller, based on the <a href="https://github.com/rust-embedded/embedded-hal"><code>embedded-hal</code></a> traits.</p>
+<p>This driver allows you to:</p>
+<ul>
+<li>Enable/disable the device. See: <a href="struct.Pca9685.html#method.enable" title="method pwm_pca9685::Pca9685::enable"><code>enable()</code></a>.</li>
+<li>Set the <em>on</em> and <em>off</em> counter for a channel or all of them. See: <a href="struct.Pca9685.html#method.set_channel_on" title="method pwm_pca9685::Pca9685::set_channel_on"><code>set_channel_on()</code></a>.</li>
+<li>Set the <em>on</em> and <em>off</em> counters for a channel or all of them at once. See: <a href="struct.Pca9685.html#method.set_channel_on_off" title="method pwm_pca9685::Pca9685::set_channel_on_off"><code>set_channel_on_off()</code></a>.</li>
+<li>Set a channel to be always on or off. See: <a href="struct.Pca9685.html#method.set_channel_full_on" title="method pwm_pca9685::Pca9685::set_channel_full_on"><code>set_channel_full_on()</code></a>.</li>
+<li>Set the <em>on</em> and <em>off</em> counters for each channel at once. See: <a href="struct.Pca9685.html#method.set_all_on_off" title="method pwm_pca9685::Pca9685::set_all_on_off"><code>set_all_on_off()</code></a>.</li>
+<li>Set the prescale value. See: <a href="struct.Pca9685.html#method.set_prescale" title="method pwm_pca9685::Pca9685::set_prescale"><code>set_prescale()</code></a>.</li>
+<li>Select the output logic state direct or inverted. See: <a href="struct.Pca9685.html#method.set_output_logic_state" title="method pwm_pca9685::Pca9685::set_output_logic_state"><code>set_output_logic_state()</code></a>.</li>
+<li>Set when the outputs change. See: <a href="struct.Pca9685.html#method.set_output_change_behavior" title="method pwm_pca9685::Pca9685::set_output_change_behavior"><code>set_output_change_behavior()</code></a>.</li>
+<li>Set the output driver configuration. See: <a href="struct.Pca9685.html#method.set_output_driver" title="method pwm_pca9685::Pca9685::set_output_driver"><code>set_output_driver()</code></a>.</li>
+<li>Set the output value when outputs are disabled. See: <a href="struct.Pca9685.html#method.set_disabled_output_value" title="method pwm_pca9685::Pca9685::set_disabled_output_value"><code>set_disabled_output_value()</code></a></li>
+<li>Select the EXTCLK pin as clock source. See: <a href="struct.Pca9685.html#method.use_external_clock" title="method pwm_pca9685::Pca9685::use_external_clock"><code>use_external_clock()</code></a>.</li>
+<li>Enable/disable a programmable address. See: <a href="struct.Pca9685.html#method.enable_programmable_address" title="method pwm_pca9685::Pca9685::enable_programmable_address"><code>enable_programmable_address()</code></a>.</li>
+<li>Set a programmable address. See: <a href="struct.Pca9685.html#method.set_programmable_address" title="method pwm_pca9685::Pca9685::set_programmable_address"><code>set_programmable_address()</code></a>.</li>
+<li>Change the address used by the driver. See: <a href="struct.Pca9685.html#method.set_address" title="method pwm_pca9685::Pca9685::set_address"><code>set_address()</code></a>.</li>
+<li>Restart keeping the PWM register contents. See: <a href="struct.Pca9685.html#method.enable_restart_and_disable" title="method pwm_pca9685::Pca9685::enable_restart_and_disable"><code>enable_restart_and_disable()</code></a>.</li>
+</ul>
+<p><a href="https://blog.eldruin.com/pca9685-pwm-led-servo-controller-driver-in-rust/">Introductory blog post</a></p>
+<h3 id="the-device"><a href="#the-device">The device</a></h3>
+<p>This device is an I2C-bus controlled 16-channel, 12-bit PWM controller.
+Its outputs can be used to control servo motors or LEDs, for example.</p>
+<p>Each channel output has its own 12-bit resolution (4096 steps) fixed
+frequency individual PWM controller that operates at a programmable
+frequency from a typical of 24 Hz to 1526 Hz with a duty cycle that is
+adjustable from 0% to 100%.
+All outputs are set to the same PWM frequency.</p>
+<p>Each channel output can be off or on (no PWM control), or set at its
+individual PWM controller value. The output driver is programmed to be
+either open-drain with a 25 mA current sink capability at 5 V or totem pole
+with a 25 mA sink, 10 mA source capability at 5 V. The PCA9685 operates
+with a supply voltage range of 2.3 V to 5.5 V and the inputs and outputs
+are 5.5 V tolerant. LEDs can be directly connected to the outputs (up to
+25 mA, 5.5 V) or controlled with external drivers and a minimum amount of
+discrete components for larger current, higher voltage LEDs, etc.
+It is optimized to be used as an LED controller for Red/Green/Blue/Amber
+(RGBA) color backlighting applications.</p>
+<p>Datasheet: <a href="https://www.nxp.com/docs/en/data-sheet/PCA9685.pdf">PCA9685</a></p>
+<h3 id="usage-examples-see-also-examples-folder"><a href="#usage-examples-see-also-examples-folder">Usage examples (see also examples folder)</a></h3>
+<p>To use this driver, import this crate and an <code>embedded_hal</code> implementation,
+then instantiate the appropriate device.</p>
+<p>Please find additional examples in this repository: <a href="https://github.com/eldruin/driver-examples">driver-examples</a></p>
+<h4 id="create-a-driver-instance"><a href="#create-a-driver-instance">Create a driver instance</a></h4>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>pwm_pca9685::{Address, Pca9685};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>address = Address::default();
+<span class="kw">let </span>pwm = Pca9685::new(dev, address).unwrap();
+<span class="comment">// do something...
+
+// get the I2C device back
+</span><span class="kw">let </span>dev = pwm.destroy();</code></pre></div>
+<h4 id="create-a-driver-instance-for-the-pca9685-with-an-alternative-address"><a href="#create-a-driver-instance-for-the-pca9685-with-an-alternative-address">Create a driver instance for the PCA9685 with an alternative address</a></h4>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>pwm_pca9685::{Address, Pca9685};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>(a5, a4, a3, a2, a1, a0) = (<span class="bool-val">false</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>, <span class="bool-val">true</span>, <span class="bool-val">true</span>, <span class="bool-val">false</span>);
+<span class="kw">let </span>address = (a5, a4, a3, a2, a1, a0);
+<span class="kw">let </span>pwm = Pca9685::new(dev, address).unwrap();</code></pre></div>
+<h4 id="set-the-pwm-frequency-and-channel-duty-cycles"><a href="#set-the-pwm-frequency-and-channel-duty-cycles">Set the PWM frequency and channel duty cycles</a></h4>
+<ul>
+<li>Set a PWM frequency of 60 Hz (corresponds to a value of 100 for the
+prescale).</li>
+<li>Set a duty cycle of 50% for channel 0.</li>
+<li>Set a duty cycle of 75% for channel 1 delayed 814 µs with respect
+to channel 0.</li>
+</ul>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>pwm_pca9685::{Address, Channel, Pca9685};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>address = Address::default();
+<span class="kw">let </span><span class="kw-2">mut </span>pwm = Pca9685::new(dev, address).unwrap();
+pwm.set_prescale(<span class="number">100</span>).unwrap();
+pwm.enable().unwrap();
+
+<span class="comment">// Turn on channel 0 at 0 and off at 2047, which is 50% in the range `[0..4095]`.
+</span>pwm.set_channel_on_off(Channel::C0, <span class="number">0</span>, <span class="number">2047</span>).unwrap();
+
+<span class="comment">// Turn on channel 1 at 200, then off at 3271. These values comes from:
+// 0.000814 (seconds) * 60 (Hz) * 4096 (resolution) = 200
+// 4096 * 0.75 + 200 = 3272
+</span>pwm.set_channel_on_off(Channel::C1, <span class="number">200</span>, <span class="number">3272</span>).unwrap();</code></pre></div>
+<h4 id="set-the-pwm-frequency-and-channel-duty-cycles-separately"><a href="#set-the-pwm-frequency-and-channel-duty-cycles-separately">Set the PWM frequency and channel duty cycles separately</a></h4>
+<ul>
+<li>Set a PWM frequency of 60 Hz (corresponds to a value of 100 for the
+prescale).</li>
+<li>Set a duty cycle of 50% for channel 0.</li>
+<li>Set a duty cycle of 75% for channel 1 delayed 814 µs with respect
+to channel 0.</li>
+</ul>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>pwm_pca9685::{Address, Channel, Pca9685};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>address = Address::default();
+<span class="kw">let </span><span class="kw-2">mut </span>pwm = Pca9685::new(dev, address).unwrap();
+pwm.set_prescale(<span class="number">100</span>).unwrap();
+pwm.enable().unwrap();
+
+<span class="comment">// Turn on channel 0 at 0
+</span>pwm.set_channel_on(Channel::C0, <span class="number">0</span>).unwrap();
+
+<span class="comment">// Turn off channel 0 at 2047, which is 50% in the range `[0..4095]`.
+</span>pwm.set_channel_off(Channel::C0, <span class="number">2047</span>).unwrap();
+
+<span class="comment">// Turn on channel 1 at 200. This value comes from:
+// 0.000814 (seconds) * 60 (Hz) * 4096 (resolution) = 200
+</span>pwm.set_channel_on(Channel::C1, <span class="number">200</span>).unwrap();
+
+<span class="comment">// Turn off channel 1 at 3271, which is 75% in the range `[0..4095]`
+// plus 200 which is when the channel turns on.
+</span>pwm.set_channel_off(Channel::C1, <span class="number">3271</span>).unwrap();</code></pre></div>
+<h4 id="set-a-channel-completely-on-and-off-beware-of-precedences"><a href="#set-a-channel-completely-on-and-off-beware-of-precedences">Set a channel completely on and off (beware of precedences).</a></h4>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>pwm_pca9685::{Address, Channel, Pca9685};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>address = Address::default();
+<span class="kw">let </span><span class="kw-2">mut </span>pwm = Pca9685::new(dev, address).unwrap();
+pwm.enable().unwrap();
+
+<span class="comment">// Turn channel 0 full on at 1024
+</span>pwm.set_channel_full_on(Channel::C0, <span class="number">1024</span>).unwrap();
+
+<span class="comment">// Turn channel 0 full off (full off takes precedence over on settings)
+</span>pwm.set_channel_full_off(Channel::C0).unwrap();
+
+<span class="comment">// Return channel 0 to full on by deactivating full off.
+// The value is ignored because full on takes precedence
+// over off settings except full off.
+</span><span class="kw">let </span>value_ignored_for_now = <span class="number">2048</span>;
+pwm.set_channel_off(Channel::C0, value_ignored_for_now).unwrap();
+
+<span class="comment">// Deactivate full on and set a duty cycle of 50% for channel 0.
+// (on from 0 to 2047, then off)
+</span>pwm.set_channel_on(Channel::C0, <span class="number">0</span>).unwrap();</code></pre></div>
+<h4 id="set-a-50-duty-cycle-for-all-channels-at-once"><a href="#set-a-50-duty-cycle-for-all-channels-at-once">Set a 50% duty cycle for all channels at once</a></h4>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>pwm_pca9685::{ Channel, Pca9685, Address };
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>address = Address::default();
+<span class="kw">let </span><span class="kw-2">mut </span>pwm = Pca9685::new(dev, address).unwrap();
+pwm.enable().unwrap();
+
+<span class="kw">let </span><span class="kw-2">mut </span>on = [<span class="number">0</span>; <span class="number">16</span>];
+<span class="kw">let </span><span class="kw-2">mut </span>off = [<span class="number">2047</span>; <span class="number">16</span>];
+pwm.set_all_on_off(<span class="kw-2">&amp;</span>on, <span class="kw-2">&amp;</span>off);</code></pre></div>
+<h4 id="use-a-programmable-address"><a href="#use-a-programmable-address">Use a programmable address</a></h4>
+<p>Several additional addresses can be programmed for the device (they are
+volatile, though).
+Once set it is necessary to enable them so that the device responds to
+them. Then it is possible to change the address that the driver uses
+to communicate with the device.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>pwm_pca9685::{Channel, Pca9685, Address, ProgrammableAddress};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>hardware_address = Address::default();
+<span class="kw">let </span><span class="kw-2">mut </span>pwm = Pca9685::new(dev, hardware_address).unwrap();
+
+<span class="kw">let </span>subaddr1 = <span class="number">0x71</span>;
+pwm.set_programmable_address(ProgrammableAddress::Subaddress1, subaddr1).unwrap();
+pwm.enable_programmable_address(ProgrammableAddress::Subaddress1).unwrap();
+
+<span class="comment">// Now communicate using the new address:
+</span>pwm.set_address(subaddr1).unwrap();
+pwm.enable().unwrap();
+pwm.set_channel_on_off(Channel::C0, <span class="number">0</span>, <span class="number">2047</span>).unwrap();
+
+<span class="comment">// The device will also respond to the hardware address:
+</span>pwm.set_address(hardware_address).unwrap();
+pwm.set_channel_on_off(Channel::C0, <span class="number">2047</span>, <span class="number">4095</span>).unwrap();
+
+<span class="comment">// when done you can also disable responding to the additional address:
+</span>pwm.disable_programmable_address(ProgrammableAddress::Subaddress1).unwrap();</code></pre></div>
+<h4 id="put-the-device-to-sleep-then-restart-previously-active-pwm-channels"><a href="#put-the-device-to-sleep-then-restart-previously-active-pwm-channels">Put the device to sleep then restart previously active PWM channels</a></h4>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::{Delay, I2cdev};
+<span class="kw">use </span>pwm_pca9685::{Address, Channel, Pca9685};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span><span class="kw-2">mut </span>pwm = Pca9685::new(dev, Address::default()).unwrap();
+pwm.enable().unwrap();
+
+pwm.set_channel_on_off(Channel::C0, <span class="number">0</span>, <span class="number">2047</span>).unwrap();
+<span class="comment">// Prepare for restart and put the device to sleep
+</span>pwm.enable_restart_and_disable().unwrap();
+<span class="comment">// ...
+// re-enable device and reactivate channel 0
+</span><span class="kw">let </span><span class="kw-2">mut </span>delay = Delay{};
+pwm.restart(<span class="kw-2">&amp;mut </span>delay).unwrap();</code></pre></div>
+</div></details><h2 id="reexports" class="small-section-header"><a href="#reexports">Re-exports</a></h2><ul class="item-table"><li><div class="item-name" id="reexport.nb"><code>pub use <a class="mod" href="../nb/index.html" title="mod nb">nb</a>;</code></div></li></ul><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2><ul class="item-table"><li><div class="item-name"><a class="struct" href="struct.Address.html" title="struct pwm_pca9685::Address">Address</a></div><div class="desc docblock-short">I2C device address</div></li><li><div class="item-name"><a class="struct" href="struct.Pca9685.html" title="struct pwm_pca9685::Pca9685">Pca9685</a></div><div class="desc docblock-short">PCA9685 PWM/Servo/LED controller.</div></li></ul><h2 id="enums" class="small-section-header"><a href="#enums">Enums</a></h2><ul class="item-table"><li><div class="item-name"><a class="enum" href="enum.Channel.html" title="enum pwm_pca9685::Channel">Channel</a></div><div class="desc docblock-short">Output channel selection</div></li><li><div class="item-name"><a class="enum" href="enum.DisabledOutputValue.html" title="enum pwm_pca9685::DisabledOutputValue">DisabledOutputValue</a></div><div class="desc docblock-short">Value set to all outputs when the output drivers are disabled (<code>OE</code> = 1).</div></li><li><div class="item-name"><a class="enum" href="enum.Error.html" title="enum pwm_pca9685::Error">Error</a></div><div class="desc docblock-short">All possible errors in this crate</div></li><li><div class="item-name"><a class="enum" href="enum.OutputDriver.html" title="enum pwm_pca9685::OutputDriver">OutputDriver</a></div><div class="desc docblock-short">Output driver configuration</div></li><li><div class="item-name"><a class="enum" href="enum.OutputLogicState.html" title="enum pwm_pca9685::OutputLogicState">OutputLogicState</a></div><div class="desc docblock-short">Output logic state inversion</div></li><li><div class="item-name"><a class="enum" href="enum.OutputStateChange.html" title="enum pwm_pca9685::OutputStateChange">OutputStateChange</a></div><div class="desc docblock-short">Output state change behavior</div></li><li><div class="item-name"><a class="enum" href="enum.ProgrammableAddress.html" title="enum pwm_pca9685::ProgrammableAddress">ProgrammableAddress</a></div><div class="desc docblock-short">Additional programmable address types (volatile programming)</div></li></ul></section></div></main></body></html>

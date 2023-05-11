@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This is a platform-agnostic Rust driver for the ADS1013, ADS1014, ADS1015, ADS1113, ADS1114, and ADS1115 ultra-small, low-power analog-to-digital converters (ADC), based on the `embedded-hal` traits."><title>ads1x1x - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="ads1x1x" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (cba14074b 2023-05-10)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../ads1x1x/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../ads1x1x/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Crate ads1x1x</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 0.2.2</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Crate <a class="mod" href="#">ads1x1x</a><button id="copy-path" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/ads1x1x/lib.rs.html#1-274">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This is a platform-agnostic Rust driver for the ADS1013, ADS1014, ADS1015,
+ADS1113, ADS1114, and ADS1115 ultra-small, low-power
+analog-to-digital converters (ADC), based on the <a href="https://github.com/rust-embedded/embedded-hal"><code>embedded-hal</code></a> traits.</p>
+<p>This driver allows you to:</p>
+<ul>
+<li>Set the operating mode to one-shot or continuous. See: <a href="struct.Ads1x1x.html#method.into_continuous"><code>into_continuous()</code></a>.</li>
+<li>Make a measurement in one-shot mode. See: <a href="struct.Ads1x1x.html#method.read"><code>read()</code></a>.</li>
+<li>Start continuous conversion mode. See: <a href="struct.Ads1x1x.html#method.start"><code>start()</code></a>.</li>
+<li>Read the last measurement made in continuous conversion mode. See: <a href="struct.Ads1x1x.html#impl-OneShot%3CAds1x1x%3CDI%2C%20IC%2C%20CONV%2C%20OneShot%3E%2C%20i16%2C%20CH%3E"><code>read()</code></a>.</li>
+<li>Set the data rate. See: <a href="struct.Ads1x1x.html#method.set_data_rate"><code>set_data_rate()</code></a>.</li>
+<li>Set the full-scale range (gain amplifier). See <a href="struct.Ads1x1x.html#method.set_full_scale_range"><code>set_full_scale_range()</code></a>.</li>
+<li>Read whether a measurement is in progress. See: <a href="struct.Ads1x1x.html#method.is_measurement_in_progress"><code>is_measurement_in_progress()</code></a>.</li>
+<li>Set the ALERT/RDY pin to be used as conversion-ready pin. See: <a href="struct.Ads1x1x.html#method.use_alert_rdy_pin_as_ready"><code>use_alert_rdy_pin_as_ready()</code></a>.</li>
+<li>Comparator:
+<ul>
+<li>Set the low and high thresholds. See: <a href="struct.Ads1x1x.html#method.set_high_threshold_raw"><code>set_high_threshold_raw()</code></a>.</li>
+<li>Set the comparator mode. See: <a href="struct.Ads1x1x.html#method.set_comparator_mode"><code>set_comparator_mode()</code></a>.</li>
+<li>Set the comparator polarity. See: <a href="struct.Ads1x1x.html#method.set_comparator_polarity"><code>set_comparator_polarity()</code></a>.</li>
+<li>Set the comparator latching. See: <a href="struct.Ads1x1x.html#method.set_comparator_latching"><code>set_comparator_latching()</code></a>.</li>
+<li>Set the comparator queue. See: <a href="struct.Ads1x1x.html#method.set_comparator_queue"><code>set_comparator_queue()</code></a>.</li>
+<li>Disable the comparator. See: <a href="struct.Ads1x1x.html#method.disable_comparator"><code>disable_comparator()</code></a>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="the-devices"><a href="#the-devices">The devices</a></h3>
+<p>The devices are precision, low power, 12/16-bit analog-to-digital
+converters (ADC) that provide all features necessary to measure the most
+common sensor signals in an ultra-small package. Depending on the device,
+these  integrate a programmable gain amplifier (PGA), voltage reference,
+oscillator and high-accuracy temperature sensor.</p>
+<p>The devices can perform conversions at data rates up to 3300 samples per
+second (SPS). The PGA offers input ranges from ±256 mV to ±6.144 V,
+allowing both large and small signals to be measured with high resolution.
+An input multiplexer (MUX) allows to measure two differential or four
+single-ended inputs. The high-accuracy temperature sensor can be used for
+system-level temperature monitoring or cold-junction compensation for
+thermocouples.</p>
+<p>The devices operate either in continuous-conversion mode, or in a
+single-shot mode that automatically powers down after a conversion.
+Single-shot mode significantly reduces current consumption during idle
+periods. Data is transferred through I2C.</p>
+<p>Here is a comparison of the caracteristics of the devices:</p>
+<div><table><thead><tr><th>Device</th><th>Resolution</th><th>Sample Rate</th><th>Channels</th><th>Multi-channel</th><th>Features</th></tr></thead><tbody>
+<tr><td>ADS1013</td><td>12-bit</td><td>Max 3300 SPS</td><td>1</td><td>N/A</td><td></td></tr>
+<tr><td>ADS1014</td><td>12-bit</td><td>Max 3300 SPS</td><td>1</td><td>N/A</td><td>Comparator, PGA</td></tr>
+<tr><td>ADS1015</td><td>12-bit</td><td>Max 3300 SPS</td><td>4</td><td>Multiplexed</td><td>Comparator, PGA</td></tr>
+<tr><td>ADS1113</td><td>16-bit</td><td>Max 860 SPS</td><td>1</td><td>N/A</td><td></td></tr>
+<tr><td>ADS1114</td><td>16-bit</td><td>Max 860 SPS</td><td>1</td><td>N/A</td><td>Comparator, PGA</td></tr>
+<tr><td>ADS1115</td><td>16-bit</td><td>Max 860 SPS</td><td>4</td><td>Multiplexed</td><td>Comparator, PGA</td></tr>
+</tbody></table>
+</div>
+<p>Datasheets:</p>
+<ul>
+<li><a href="http://www.ti.com/lit/ds/symlink/ads1015.pdf">ADS101x</a></li>
+<li><a href="http://www.ti.com/lit/ds/symlink/ads1115.pdf">ADS111x</a></li>
+</ul>
+<h3 id="usage-examples-see-also-examples-folder"><a href="#usage-examples-see-also-examples-folder">Usage examples (see also examples folder)</a></h3>
+<p>To use this driver, import this crate and an <code>embedded_hal</code> implementation,
+then instantiate the appropriate device.
+In the following examples an instance of the device ADS1013 will be created
+as an example. Other devices can be created with similar methods like:
+<code>Ads1x1x::new_ads1114(...)</code>.</p>
+<p>Please find additional examples using hardware in this repository: <a href="https://github.com/eldruin/driver-examples">driver-examples</a></p>
+<h4 id="create-a-driver-instance-for-the-ads1013"><a href="#create-a-driver-instance-for-the-ads1013">Create a driver instance for the ADS1013</a></h4>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>ads1x1x::{Ads1x1x, SlaveAddr};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>address = SlaveAddr::default();
+<span class="kw">let </span>adc = Ads1x1x::new_ads1013(dev, address);
+<span class="comment">// do something...
+
+// get the I2C device back
+</span><span class="kw">let </span>dev = adc.destroy_ads1013();</code></pre></div>
+<h4 id="create-a-driver-instance-for-the-ads1013-with-an-alternative-address-method-1"><a href="#create-a-driver-instance-for-the-ads1013-with-an-alternative-address-method-1">Create a driver instance for the ADS1013 with an alternative address (method 1)</a></h4>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>ads1x1x::{Ads1x1x, SlaveAddr};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>(bit1, bit0) = (<span class="bool-val">true</span>, <span class="bool-val">false</span>); <span class="comment">// last two bits of address
+</span><span class="kw">let </span>address = SlaveAddr::Alternative(bit1, bit0);
+<span class="kw">let </span>adc = Ads1x1x::new_ads1013(dev, address);</code></pre></div>
+<h4 id="create-a-driver-instance-for-the-ads1013-with-an-alternative-address-method-2"><a href="#create-a-driver-instance-for-the-ads1013-with-an-alternative-address-method-2">Create a driver instance for the ADS1013 with an alternative address (method 2)</a></h4>
+<p>Using helper <code>SlaveAddr</code> creation method depending on the connection of
+the <code>ADDR</code> pin.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>ads1x1x::{Ads1x1x, SlaveAddr};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="comment">// `ADDR` pin connected to SDA results in the 0x4A effective address
+</span><span class="kw">let </span>address = SlaveAddr::new_sda();
+<span class="kw">let </span>adc = Ads1x1x::new_ads1013(dev, address);</code></pre></div>
+<h4 id="make-a-one-shot-measurement"><a href="#make-a-one-shot-measurement">Make a one-shot measurement</a></h4>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>ads1x1x::{channel, Ads1x1x, SlaveAddr};
+<span class="kw">use </span>embedded_hal::adc::OneShot;
+<span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>nb::block;
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span><span class="kw-2">mut </span>adc = Ads1x1x::new_ads1013(dev, SlaveAddr::default());
+<span class="kw">let </span>measurement = <span class="macro">block!</span>(adc.read(<span class="kw-2">&amp;mut </span>channel::DifferentialA0A1)).unwrap();
+<span class="macro">println!</span>(<span class="string">&quot;Measurement: {}&quot;</span>, measurement);
+<span class="kw">let </span>_dev = adc.destroy_ads1013(); <span class="comment">// get I2C device back</span></code></pre></div>
+<h4 id="change-into-continuous-conversion-mode-and-read-the-last-measurement"><a href="#change-into-continuous-conversion-mode-and-read-the-last-measurement">Change into continuous conversion mode and read the last measurement</a></h4>
+<p>Changing the mode may fail in case there was a communication error.
+In this case, you can retrieve the unchanged device from the error type.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>ads1x1x::{Ads1x1x, ModeChangeError, SlaveAddr};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>address = SlaveAddr::default();
+<span class="kw">let </span>adc = Ads1x1x::new_ads1013(dev, address);
+<span class="kw">match </span>adc.into_continuous() {
+    <span class="prelude-val">Err</span>(ModeChangeError::I2C(e, adc)) =&gt; <span class="comment">/* mode change failed handling */ </span><span class="macro">panic!</span>(),
+    <span class="prelude-val">Ok</span>(<span class="kw-2">mut </span>adc) =&gt; {
+        <span class="kw">let </span>measurement = adc.read().unwrap();
+        <span class="comment">// ...
+    </span>}
+}</code></pre></div>
+<h4 id="set-the-data-rate"><a href="#set-the-data-rate">Set the data rate</a></h4>
+<p>For 12-bit devices, the available data rates are given by <code>DataRate12Bit</code>.
+For 16-bit devices, the available data rates are given by <code>DataRate16Bit</code>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>ads1x1x::{Ads1x1x, DataRate16Bit, SlaveAddr};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>address = SlaveAddr::default();
+<span class="kw">let </span><span class="kw-2">mut </span>adc = Ads1x1x::new_ads1115(dev, address);
+adc.set_data_rate(DataRate16Bit::Sps860).unwrap();</code></pre></div>
+<h4 id="configure-the-comparator"><a href="#configure-the-comparator">Configure the comparator</a></h4>
+<p>Configure the comparator to assert when the voltage drops below -1.5V
+or goes above 1.5V in at least two consecutive conversions. Then the
+ALERT/RDY pin will be set high and it will be kept so until the
+measurement is read or an appropriate SMBus alert response is sent by
+the master.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>linux_embedded_hal::I2cdev;
+<span class="kw">use </span>ads1x1x::{
+    Ads1x1x, SlaveAddr, ComparatorQueue, ComparatorPolarity,
+    ComparatorMode, ComparatorLatching, FullScaleRange
+};
+
+<span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-1&quot;</span>).unwrap();
+<span class="kw">let </span>address = SlaveAddr::default();
+<span class="kw">let </span><span class="kw-2">mut </span>adc = Ads1x1x::new_ads1015(dev, address);
+adc.set_comparator_queue(ComparatorQueue::Two).unwrap();
+adc.set_comparator_polarity(ComparatorPolarity::ActiveHigh).unwrap();
+adc.set_comparator_mode(ComparatorMode::Window).unwrap();
+adc.set_full_scale_range(FullScaleRange::Within2_048V).unwrap();
+adc.set_low_threshold_raw(-<span class="number">1500</span>).unwrap();
+adc.set_high_threshold_raw(<span class="number">1500</span>).unwrap();
+adc.set_comparator_latching(ComparatorLatching::Latching).unwrap();</code></pre></div>
+</div></details><h2 id="modules" class="small-section-header"><a href="#modules">Modules</a></h2><ul class="item-table"><li><div class="item-name"><a class="mod" href="channel/index.html" title="mod ads1x1x::channel">channel</a></div><div class="desc docblock-short">ADC input channel selection</div></li><li><div class="item-name"><a class="mod" href="mode/index.html" title="mod ads1x1x::mode">mode</a></div><div class="desc docblock-short">Mode marker types</div></li></ul><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2><ul class="item-table"><li><div class="item-name"><a class="struct" href="struct.Ads1x1x.html" title="struct ads1x1x::Ads1x1x">Ads1x1x</a></div><div class="desc docblock-short">ADS1x1x ADC driver</div></li></ul><h2 id="enums" class="small-section-header"><a href="#enums">Enums</a></h2><ul class="item-table"><li><div class="item-name"><a class="enum" href="enum.ChannelSelection.html" title="enum ads1x1x::ChannelSelection">ChannelSelection</a></div><div class="desc docblock-short">ADC input channel selection</div></li><li><div class="item-name"><a class="enum" href="enum.ComparatorLatching.html" title="enum ads1x1x::ComparatorLatching">ComparatorLatching</a></div><div class="desc docblock-short">Comparator polarity (only for ADS1x14, ADS1x15)</div></li><li><div class="item-name"><a class="enum" href="enum.ComparatorMode.html" title="enum ads1x1x::ComparatorMode">ComparatorMode</a></div><div class="desc docblock-short">Comparator mode (only for ADS1x14, ADS1x15)</div></li><li><div class="item-name"><a class="enum" href="enum.ComparatorPolarity.html" title="enum ads1x1x::ComparatorPolarity">ComparatorPolarity</a></div><div class="desc docblock-short">Comparator polarity (only for ADS1x14, ADS1x15)</div></li><li><div class="item-name"><a class="enum" href="enum.ComparatorQueue.html" title="enum ads1x1x::ComparatorQueue">ComparatorQueue</a></div><div class="desc docblock-short">Comparator alert queue (only for ADS1x14, ADS1x15)</div></li><li><div class="item-name"><a class="enum" href="enum.DataRate12Bit.html" title="enum ads1x1x::DataRate12Bit">DataRate12Bit</a></div><div class="desc docblock-short">Data rate for ADS1013, ADS1014, ADS1015</div></li><li><div class="item-name"><a class="enum" href="enum.DataRate16Bit.html" title="enum ads1x1x::DataRate16Bit">DataRate16Bit</a></div><div class="desc docblock-short">Data rate for ADS1113, ADS1114, ADS1115</div></li><li><div class="item-name"><a class="enum" href="enum.Error.html" title="enum ads1x1x::Error">Error</a></div><div class="desc docblock-short">Errors in this crate</div></li><li><div class="item-name"><a class="enum" href="enum.FullScaleRange.html" title="enum ads1x1x::FullScaleRange">FullScaleRange</a></div><div class="desc docblock-short">Full-scale range configuration for the programmable gain amplifier (PGA) (only for ADS1x14, ADS1x15)</div></li><li><div class="item-name"><a class="enum" href="enum.ModeChangeError.html" title="enum ads1x1x::ModeChangeError">ModeChangeError</a></div><div class="desc docblock-short">Error type for mode changes.</div></li><li><div class="item-name"><a class="enum" href="enum.SlaveAddr.html" title="enum ads1x1x::SlaveAddr">SlaveAddr</a></div><div class="desc docblock-short">Possible slave addresses</div></li></ul><h2 id="traits" class="small-section-header"><a href="#traits">Traits</a></h2><ul class="item-table"><li><div class="item-name"><a class="trait" href="trait.DynamicOneShot.html" title="trait ads1x1x::DynamicOneShot">DynamicOneShot</a></div><div class="desc docblock-short">Multi channel One-shot ADC</div></li></ul></section></div></main></body></html>

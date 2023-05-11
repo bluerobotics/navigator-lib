@@ -1,0 +1,605 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ads1x1x-0.2.2/src/types.rs`."><title>types.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-f3501f0f5ae15dfb.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="ads1x1x" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (cba14074b 2023-05-10)" data-search-js="search-4926e5fc22a5646a.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../ads1x1x/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<a href="#2" id="2">2</a>
+<a href="#3" id="3">3</a>
+<a href="#4" id="4">4</a>
+<a href="#5" id="5">5</a>
+<a href="#6" id="6">6</a>
+<a href="#7" id="7">7</a>
+<a href="#8" id="8">8</a>
+<a href="#9" id="9">9</a>
+<a href="#10" id="10">10</a>
+<a href="#11" id="11">11</a>
+<a href="#12" id="12">12</a>
+<a href="#13" id="13">13</a>
+<a href="#14" id="14">14</a>
+<a href="#15" id="15">15</a>
+<a href="#16" id="16">16</a>
+<a href="#17" id="17">17</a>
+<a href="#18" id="18">18</a>
+<a href="#19" id="19">19</a>
+<a href="#20" id="20">20</a>
+<a href="#21" id="21">21</a>
+<a href="#22" id="22">22</a>
+<a href="#23" id="23">23</a>
+<a href="#24" id="24">24</a>
+<a href="#25" id="25">25</a>
+<a href="#26" id="26">26</a>
+<a href="#27" id="27">27</a>
+<a href="#28" id="28">28</a>
+<a href="#29" id="29">29</a>
+<a href="#30" id="30">30</a>
+<a href="#31" id="31">31</a>
+<a href="#32" id="32">32</a>
+<a href="#33" id="33">33</a>
+<a href="#34" id="34">34</a>
+<a href="#35" id="35">35</a>
+<a href="#36" id="36">36</a>
+<a href="#37" id="37">37</a>
+<a href="#38" id="38">38</a>
+<a href="#39" id="39">39</a>
+<a href="#40" id="40">40</a>
+<a href="#41" id="41">41</a>
+<a href="#42" id="42">42</a>
+<a href="#43" id="43">43</a>
+<a href="#44" id="44">44</a>
+<a href="#45" id="45">45</a>
+<a href="#46" id="46">46</a>
+<a href="#47" id="47">47</a>
+<a href="#48" id="48">48</a>
+<a href="#49" id="49">49</a>
+<a href="#50" id="50">50</a>
+<a href="#51" id="51">51</a>
+<a href="#52" id="52">52</a>
+<a href="#53" id="53">53</a>
+<a href="#54" id="54">54</a>
+<a href="#55" id="55">55</a>
+<a href="#56" id="56">56</a>
+<a href="#57" id="57">57</a>
+<a href="#58" id="58">58</a>
+<a href="#59" id="59">59</a>
+<a href="#60" id="60">60</a>
+<a href="#61" id="61">61</a>
+<a href="#62" id="62">62</a>
+<a href="#63" id="63">63</a>
+<a href="#64" id="64">64</a>
+<a href="#65" id="65">65</a>
+<a href="#66" id="66">66</a>
+<a href="#67" id="67">67</a>
+<a href="#68" id="68">68</a>
+<a href="#69" id="69">69</a>
+<a href="#70" id="70">70</a>
+<a href="#71" id="71">71</a>
+<a href="#72" id="72">72</a>
+<a href="#73" id="73">73</a>
+<a href="#74" id="74">74</a>
+<a href="#75" id="75">75</a>
+<a href="#76" id="76">76</a>
+<a href="#77" id="77">77</a>
+<a href="#78" id="78">78</a>
+<a href="#79" id="79">79</a>
+<a href="#80" id="80">80</a>
+<a href="#81" id="81">81</a>
+<a href="#82" id="82">82</a>
+<a href="#83" id="83">83</a>
+<a href="#84" id="84">84</a>
+<a href="#85" id="85">85</a>
+<a href="#86" id="86">86</a>
+<a href="#87" id="87">87</a>
+<a href="#88" id="88">88</a>
+<a href="#89" id="89">89</a>
+<a href="#90" id="90">90</a>
+<a href="#91" id="91">91</a>
+<a href="#92" id="92">92</a>
+<a href="#93" id="93">93</a>
+<a href="#94" id="94">94</a>
+<a href="#95" id="95">95</a>
+<a href="#96" id="96">96</a>
+<a href="#97" id="97">97</a>
+<a href="#98" id="98">98</a>
+<a href="#99" id="99">99</a>
+<a href="#100" id="100">100</a>
+<a href="#101" id="101">101</a>
+<a href="#102" id="102">102</a>
+<a href="#103" id="103">103</a>
+<a href="#104" id="104">104</a>
+<a href="#105" id="105">105</a>
+<a href="#106" id="106">106</a>
+<a href="#107" id="107">107</a>
+<a href="#108" id="108">108</a>
+<a href="#109" id="109">109</a>
+<a href="#110" id="110">110</a>
+<a href="#111" id="111">111</a>
+<a href="#112" id="112">112</a>
+<a href="#113" id="113">113</a>
+<a href="#114" id="114">114</a>
+<a href="#115" id="115">115</a>
+<a href="#116" id="116">116</a>
+<a href="#117" id="117">117</a>
+<a href="#118" id="118">118</a>
+<a href="#119" id="119">119</a>
+<a href="#120" id="120">120</a>
+<a href="#121" id="121">121</a>
+<a href="#122" id="122">122</a>
+<a href="#123" id="123">123</a>
+<a href="#124" id="124">124</a>
+<a href="#125" id="125">125</a>
+<a href="#126" id="126">126</a>
+<a href="#127" id="127">127</a>
+<a href="#128" id="128">128</a>
+<a href="#129" id="129">129</a>
+<a href="#130" id="130">130</a>
+<a href="#131" id="131">131</a>
+<a href="#132" id="132">132</a>
+<a href="#133" id="133">133</a>
+<a href="#134" id="134">134</a>
+<a href="#135" id="135">135</a>
+<a href="#136" id="136">136</a>
+<a href="#137" id="137">137</a>
+<a href="#138" id="138">138</a>
+<a href="#139" id="139">139</a>
+<a href="#140" id="140">140</a>
+<a href="#141" id="141">141</a>
+<a href="#142" id="142">142</a>
+<a href="#143" id="143">143</a>
+<a href="#144" id="144">144</a>
+<a href="#145" id="145">145</a>
+<a href="#146" id="146">146</a>
+<a href="#147" id="147">147</a>
+<a href="#148" id="148">148</a>
+<a href="#149" id="149">149</a>
+<a href="#150" id="150">150</a>
+<a href="#151" id="151">151</a>
+<a href="#152" id="152">152</a>
+<a href="#153" id="153">153</a>
+<a href="#154" id="154">154</a>
+<a href="#155" id="155">155</a>
+<a href="#156" id="156">156</a>
+<a href="#157" id="157">157</a>
+<a href="#158" id="158">158</a>
+<a href="#159" id="159">159</a>
+<a href="#160" id="160">160</a>
+<a href="#161" id="161">161</a>
+<a href="#162" id="162">162</a>
+<a href="#163" id="163">163</a>
+<a href="#164" id="164">164</a>
+<a href="#165" id="165">165</a>
+<a href="#166" id="166">166</a>
+<a href="#167" id="167">167</a>
+<a href="#168" id="168">168</a>
+<a href="#169" id="169">169</a>
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
+<a href="#172" id="172">172</a>
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
+<a href="#176" id="176">176</a>
+<a href="#177" id="177">177</a>
+<a href="#178" id="178">178</a>
+<a href="#179" id="179">179</a>
+<a href="#180" id="180">180</a>
+<a href="#181" id="181">181</a>
+<a href="#182" id="182">182</a>
+<a href="#183" id="183">183</a>
+<a href="#184" id="184">184</a>
+<a href="#185" id="185">185</a>
+<a href="#186" id="186">186</a>
+<a href="#187" id="187">187</a>
+<a href="#188" id="188">188</a>
+<a href="#189" id="189">189</a>
+<a href="#190" id="190">190</a>
+<a href="#191" id="191">191</a>
+<a href="#192" id="192">192</a>
+<a href="#193" id="193">193</a>
+<a href="#194" id="194">194</a>
+<a href="#195" id="195">195</a>
+<a href="#196" id="196">196</a>
+<a href="#197" id="197">197</a>
+<a href="#198" id="198">198</a>
+<a href="#199" id="199">199</a>
+<a href="#200" id="200">200</a>
+<a href="#201" id="201">201</a>
+<a href="#202" id="202">202</a>
+<a href="#203" id="203">203</a>
+<a href="#204" id="204">204</a>
+<a href="#205" id="205">205</a>
+<a href="#206" id="206">206</a>
+<a href="#207" id="207">207</a>
+<a href="#208" id="208">208</a>
+<a href="#209" id="209">209</a>
+<a href="#210" id="210">210</a>
+<a href="#211" id="211">211</a>
+<a href="#212" id="212">212</a>
+<a href="#213" id="213">213</a>
+<a href="#214" id="214">214</a>
+<a href="#215" id="215">215</a>
+<a href="#216" id="216">216</a>
+<a href="#217" id="217">217</a>
+<a href="#218" id="218">218</a>
+<a href="#219" id="219">219</a>
+<a href="#220" id="220">220</a>
+<a href="#221" id="221">221</a>
+<a href="#222" id="222">222</a>
+<a href="#223" id="223">223</a>
+<a href="#224" id="224">224</a>
+<a href="#225" id="225">225</a>
+<a href="#226" id="226">226</a>
+<a href="#227" id="227">227</a>
+<a href="#228" id="228">228</a>
+<a href="#229" id="229">229</a>
+<a href="#230" id="230">230</a>
+<a href="#231" id="231">231</a>
+<a href="#232" id="232">232</a>
+<a href="#233" id="233">233</a>
+<a href="#234" id="234">234</a>
+<a href="#235" id="235">235</a>
+<a href="#236" id="236">236</a>
+<a href="#237" id="237">237</a>
+<a href="#238" id="238">238</a>
+<a href="#239" id="239">239</a>
+<a href="#240" id="240">240</a>
+<a href="#241" id="241">241</a>
+<a href="#242" id="242">242</a>
+<a href="#243" id="243">243</a>
+<a href="#244" id="244">244</a>
+<a href="#245" id="245">245</a>
+<a href="#246" id="246">246</a>
+<a href="#247" id="247">247</a>
+<a href="#248" id="248">248</a>
+<a href="#249" id="249">249</a>
+<a href="#250" id="250">250</a>
+<a href="#251" id="251">251</a>
+<a href="#252" id="252">252</a>
+<a href="#253" id="253">253</a>
+<a href="#254" id="254">254</a>
+<a href="#255" id="255">255</a>
+<a href="#256" id="256">256</a>
+<a href="#257" id="257">257</a>
+<a href="#258" id="258">258</a>
+<a href="#259" id="259">259</a>
+<a href="#260" id="260">260</a>
+<a href="#261" id="261">261</a>
+<a href="#262" id="262">262</a>
+<a href="#263" id="263">263</a>
+<a href="#264" id="264">264</a>
+<a href="#265" id="265">265</a>
+<a href="#266" id="266">266</a>
+<a href="#267" id="267">267</a>
+<a href="#268" id="268">268</a>
+<a href="#269" id="269">269</a>
+<a href="#270" id="270">270</a>
+<a href="#271" id="271">271</a>
+<a href="#272" id="272">272</a>
+<a href="#273" id="273">273</a>
+<a href="#274" id="274">274</a>
+<a href="#275" id="275">275</a>
+<a href="#276" id="276">276</a>
+<a href="#277" id="277">277</a>
+<a href="#278" id="278">278</a>
+<a href="#279" id="279">279</a>
+<a href="#280" id="280">280</a>
+<a href="#281" id="281">281</a>
+<a href="#282" id="282">282</a>
+<a href="#283" id="283">283</a>
+<a href="#284" id="284">284</a>
+<a href="#285" id="285">285</a>
+<a href="#286" id="286">286</a>
+<a href="#287" id="287">287</a>
+<a href="#288" id="288">288</a>
+<a href="#289" id="289">289</a>
+<a href="#290" id="290">290</a>
+<a href="#291" id="291">291</a>
+<a href="#292" id="292">292</a>
+<a href="#293" id="293">293</a>
+<a href="#294" id="294">294</a>
+<a href="#295" id="295">295</a>
+<a href="#296" id="296">296</a>
+<a href="#297" id="297">297</a>
+<a href="#298" id="298">298</a>
+<a href="#299" id="299">299</a>
+<a href="#300" id="300">300</a>
+<a href="#301" id="301">301</a>
+<a href="#302" id="302">302</a>
+</pre></div><pre class="rust"><code><span class="doccomment">//! Type definitions.
+
+</span><span class="kw">use crate</span>::{channels::ChannelSelection, private};
+<span class="kw">use </span>core::marker::PhantomData;
+
+<span class="doccomment">/// Errors in this crate
+</span><span class="attr">#[derive(Debug)]
+</span><span class="kw">pub enum </span>Error&lt;E&gt; {
+    <span class="doccomment">/// I²C bus error
+    </span>I2C(E),
+    <span class="doccomment">/// Invalid input data provided
+    </span>InvalidInputData,
+}
+
+<span class="doccomment">/// Error type for mode changes.
+///
+/// This allows to retrieve the unchanged device in case of an error.
+</span><span class="kw">pub enum </span>ModeChangeError&lt;E, DEV&gt; {
+    <span class="doccomment">/// I²C bus error while changing mode.
+    ///
+    /// `E` is the error that happened.
+    /// `DEV` is the device with the mode unchanged.
+    </span>I2C(E, DEV),
+}
+
+<span class="doccomment">/// Mode marker types
+</span><span class="kw">pub mod </span>mode {
+    <span class="doccomment">/// One-shot operating mode / power-down state (default)
+    </span><span class="kw">pub struct </span>OneShot(());
+
+    <span class="doccomment">/// Continuous conversion mode
+    </span><span class="kw">pub struct </span>Continuous(());
+}
+
+<span class="doccomment">/// Data rate for ADS1013, ADS1014, ADS1015
+</span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq)]
+</span><span class="kw">pub enum </span>DataRate12Bit {
+    <span class="doccomment">/// 128 SPS
+    </span>Sps128,
+    <span class="doccomment">/// 250 SPS
+    </span>Sps250,
+    <span class="doccomment">/// 490 SPS
+    </span>Sps490,
+    <span class="doccomment">/// 920 SPS
+    </span>Sps920,
+    <span class="doccomment">/// 1600 SPS (default)
+    </span>Sps1600,
+    <span class="doccomment">/// 2400 SPS
+    </span>Sps2400,
+    <span class="doccomment">/// 3300 SPS
+    </span>Sps3300,
+}
+
+<span class="doccomment">/// Data rate for ADS1113, ADS1114, ADS1115
+</span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq)]
+</span><span class="kw">pub enum </span>DataRate16Bit {
+    <span class="doccomment">/// 8 SPS
+    </span>Sps8,
+    <span class="doccomment">/// 16 SPS
+    </span>Sps16,
+    <span class="doccomment">/// 32 SPS
+    </span>Sps32,
+    <span class="doccomment">/// 64 SPS
+    </span>Sps64,
+    <span class="doccomment">/// 128 SPS (default)
+    </span>Sps128,
+    <span class="doccomment">/// 250 SPS
+    </span>Sps250,
+    <span class="doccomment">/// 475 SPS
+    </span>Sps475,
+    <span class="doccomment">/// 860 SPS
+    </span>Sps860,
+}
+
+<span class="doccomment">/// Comparator mode (only for ADS1x14, ADS1x15)
+</span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq)]
+</span><span class="kw">pub enum </span>ComparatorMode {
+    <span class="doccomment">/// Traditional comparator (default)
+    ///
+    /// In this mode the ALERT/RDY pin asserts (according to selected active
+    /// polarity) when the conversion data exceeds the limit set as *high*
+    /// threshold and remains active until the conversion data falls below the
+    /// value set as *low* threshold.
+    </span>Traditional,
+    <span class="doccomment">/// Window comparator
+    ///
+    /// In this mode the ALERT/RDY pin asserts (according to selected active
+    /// polarity) when the conversion data exceeds the value set as *high*
+    /// threshold or goes below the value set as *low* temperature threshold.
+    </span>Window,
+}
+
+<span class="doccomment">/// Comparator polarity (only for ADS1x14, ADS1x15)
+</span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq)]
+</span><span class="kw">pub enum </span>ComparatorPolarity {
+    <span class="doccomment">/// Active low (default)
+    </span>ActiveLow,
+    <span class="doccomment">/// Active high
+    </span>ActiveHigh,
+}
+
+<span class="doccomment">/// Comparator polarity (only for ADS1x14, ADS1x15)
+///
+/// Select whether the ALERT/RDY pin latches after being asserted or clears
+/// after conversions are within the margin of the upper and lower
+/// threshold values.
+</span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq)]
+</span><span class="kw">pub enum </span>ComparatorLatching {
+    <span class="doccomment">/// Nonlatching (default)
+    ///
+    /// The ALERT/RDY pin does not latch when asserted.
+    </span>Nonlatching,
+    <span class="doccomment">/// Latching
+    ///
+    /// The asserted ALERT/RDY pin remains latched until conversion data are
+    /// read by the master or an appropriate SMBus alert response is sent by
+    /// the master. The device responds with its address, and it is the lowest
+    /// address currently asserting the ALERT/RDY bus line.
+    </span>Latching,
+}
+
+<span class="doccomment">/// Comparator alert queue (only for ADS1x14, ADS1x15)
+///
+/// The default state of the comparator is deactivated. It can be activated by setting
+/// the comparator queue.
+</span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq)]
+</span><span class="kw">pub enum </span>ComparatorQueue {
+    <span class="doccomment">/// Activate comparator and assert after one conversion exceeding thresholds
+    </span>One,
+    <span class="doccomment">/// Activate comparator and assert after two consecutive conversions exceeding thresholds
+    </span>Two,
+    <span class="doccomment">/// Activate comparator and assert after four consecutive conversions exceeding thresholds
+    </span>Four,
+}
+
+<span class="doccomment">/// Full-scale range configuration for the programmable gain amplifier (PGA) (only for ADS1x14, ADS1x15)
+///
+/// This sets the input voltage measurable range.
+/// The FSR is fixed at ±2.048 V in the ADS1x13.
+</span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq)]
+#[allow(non_camel_case_types)]
+</span><span class="kw">pub enum </span>FullScaleRange {
+    <span class="doccomment">/// The measurable range is ±6.144V.
+    </span>Within6_144V,
+    <span class="doccomment">/// The measurable range is ±4.096V.
+    </span>Within4_096V,
+    <span class="doccomment">/// The measurable range is ±2.048V. (default)
+    </span>Within2_048V,
+    <span class="doccomment">/// The measurable range is ±1.024V.
+    </span>Within1_024V,
+    <span class="doccomment">/// The measurable range is ±0.512V.
+    </span>Within0_512V,
+    <span class="doccomment">/// The measurable range is ±0.256V.
+    </span>Within0_256V,
+}
+
+<span class="doccomment">/// Possible slave addresses
+</span><span class="attr">#[derive(Debug, Clone, Copy, PartialEq)]
+</span><span class="kw">pub enum </span>SlaveAddr {
+    <span class="doccomment">/// Default slave address
+    </span>Default,
+    <span class="doccomment">/// Alternative slave address using the provided values
+    /// for the last two bits (A1, A0)
+    </span>Alternative(bool, bool),
+}
+
+<span class="kw">impl </span>Default <span class="kw">for </span>SlaveAddr {
+    <span class="doccomment">/// Default slave address
+    </span><span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+        SlaveAddr::Default
+    }
+}
+
+<span class="kw">impl </span>SlaveAddr {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>addr(<span class="self">self</span>, default: u8) -&gt; u8 {
+        <span class="kw">match </span><span class="self">self </span>{
+            SlaveAddr::Default =&gt; default,
+            SlaveAddr::Alternative(a1, a0) =&gt; default | ((a1 <span class="kw">as </span>u8) &lt;&lt; <span class="number">1</span>) | a0 <span class="kw">as </span>u8,
+        }
+    }
+
+    <span class="doccomment">/// Create `SlaveAddr` instance corresponding to the address
+    /// effective when connecting the pin `ADDR` to GND (0x48).
+    ///
+    /// See [Table 4 in the datasheet](https://www.ti.com/lit/ds/symlink/ads1115.pdf#%5B%7B%22num%22%3A716%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C0%2C602.2%2C0%5D).
+    </span><span class="kw">pub fn </span>new_gnd() -&gt; <span class="self">Self </span>{
+        SlaveAddr::default()
+    }
+
+    <span class="doccomment">/// Create `SlaveAddr` instance corresponding to the address
+    /// effective when connecting the pin `ADDR` to VDD (0x49).
+    ///
+    /// See [Table 4 in the datasheet](https://www.ti.com/lit/ds/symlink/ads1115.pdf#%5B%7B%22num%22%3A716%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C0%2C602.2%2C0%5D).
+    </span><span class="kw">pub fn </span>new_vdd() -&gt; <span class="self">Self </span>{
+        SlaveAddr::Alternative(<span class="bool-val">false</span>, <span class="bool-val">true</span>)
+    }
+
+    <span class="doccomment">/// Create `SlaveAddr` instance corresponding to the address
+    /// effective when connecting the pin `ADDR` to SDA (0x4A).
+    ///
+    /// See [Table 4 in the datasheet](https://www.ti.com/lit/ds/symlink/ads1115.pdf#%5B%7B%22num%22%3A716%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C0%2C602.2%2C0%5D).
+    </span><span class="kw">pub fn </span>new_sda() -&gt; <span class="self">Self </span>{
+        SlaveAddr::Alternative(<span class="bool-val">true</span>, <span class="bool-val">false</span>)
+    }
+
+    <span class="doccomment">/// Create `SlaveAddr` instance corresponding to the address
+    /// effective when connecting the pin `ADDR` to SCL (0x4B).
+    ///
+    /// See [Table 4 in the datasheet](https://www.ti.com/lit/ds/symlink/ads1115.pdf#%5B%7B%22num%22%3A716%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C0%2C602.2%2C0%5D).
+    </span><span class="kw">pub fn </span>new_scl() -&gt; <span class="self">Self </span>{
+        SlaveAddr::Alternative(<span class="bool-val">true</span>, <span class="bool-val">true</span>)
+    }
+}
+
+<span class="attr">#[derive(Debug, Clone, PartialEq)]
+</span><span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct </span>Config {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) bits: u16,
+}
+
+<span class="kw">impl </span>Config {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>is_high(<span class="kw-2">&amp;</span><span class="self">self</span>, mask: u16) -&gt; bool {
+        (<span class="self">self</span>.bits &amp; mask) != <span class="number">0
+    </span>}
+
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>with_high(<span class="kw-2">&amp;</span><span class="self">self</span>, mask: u16) -&gt; <span class="self">Self </span>{
+        Config {
+            bits: <span class="self">self</span>.bits | mask,
+        }
+    }
+
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn </span>with_low(<span class="kw-2">&amp;</span><span class="self">self</span>, mask: u16) -&gt; <span class="self">Self </span>{
+        Config {
+            bits: <span class="self">self</span>.bits &amp; !mask,
+        }
+    }
+}
+
+<span class="kw">impl </span>Default <span class="kw">for </span>Config {
+    <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+        Config { bits: <span class="number">0x8583 </span>}
+    }
+}
+
+<span class="kw">impl </span>Default <span class="kw">for </span>FullScaleRange {
+    <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
+        FullScaleRange::Within2_048V
+    }
+}
+
+<span class="doccomment">/// ADS1x1x ADC driver
+</span><span class="attr">#[derive(Debug, Default)]
+</span><span class="kw">pub struct </span>Ads1x1x&lt;DI, IC, CONV, MODE&gt; {
+    <span class="kw">pub</span>(<span class="kw">crate</span>) iface: DI,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) config: Config,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) fsr: FullScaleRange,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) a_conversion_was_started: bool,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) _conv: PhantomData&lt;CONV&gt;,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) _ic: PhantomData&lt;IC&gt;,
+    <span class="kw">pub</span>(<span class="kw">crate</span>) _mode: PhantomData&lt;MODE&gt;,
+}
+
+<span class="doccomment">/// Multi channel One-shot ADC
+</span><span class="kw">pub trait </span>DynamicOneShot: private::Sealed {
+    <span class="doccomment">/// Error type
+    </span><span class="kw">type </span>Error;
+
+    <span class="doccomment">/// Read a measurement
+    </span><span class="kw">fn </span>read(<span class="kw-2">&amp;mut </span><span class="self">self</span>, channel: ChannelSelection) -&gt; nb::Result&lt;i16, <span class="self">Self</span>::Error&gt;;
+}
+
+<span class="attr">#[cfg(test)]
+</span><span class="kw">mod </span>tests {
+    <span class="kw">use </span><span class="kw">crate</span>::DEVICE_BASE_ADDRESS <span class="kw">as </span>ADDR;
+    <span class="kw">use crate</span>::{FullScaleRange, SlaveAddr};
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>can_get_default_address() {
+        <span class="kw">let </span>addr = SlaveAddr::default();
+        <span class="macro">assert_eq!</span>(ADDR, addr.addr(ADDR));
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>can_generate_alternative_addresses() {
+        <span class="macro">assert_eq!</span>(<span class="number">0b100_1000</span>, SlaveAddr::Alternative(<span class="bool-val">false</span>, <span class="bool-val">false</span>).addr(ADDR));
+        <span class="macro">assert_eq!</span>(<span class="number">0b100_1001</span>, SlaveAddr::Alternative(<span class="bool-val">false</span>, <span class="bool-val">true</span>).addr(ADDR));
+        <span class="macro">assert_eq!</span>(<span class="number">0b100_1010</span>, SlaveAddr::Alternative(<span class="bool-val">true</span>, <span class="bool-val">false</span>).addr(ADDR));
+        <span class="macro">assert_eq!</span>(<span class="number">0b100_1011</span>, SlaveAddr::Alternative(<span class="bool-val">true</span>, <span class="bool-val">true</span>).addr(ADDR));
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>can_generate_alternative_addresses_using_helper_constructors() {
+        <span class="macro">assert_eq!</span>(<span class="number">0b100_1000</span>, SlaveAddr::new_gnd().addr(ADDR));
+        <span class="macro">assert_eq!</span>(<span class="number">0b100_1001</span>, SlaveAddr::new_vdd().addr(ADDR));
+        <span class="macro">assert_eq!</span>(<span class="number">0b100_1010</span>, SlaveAddr::new_sda().addr(ADDR));
+        <span class="macro">assert_eq!</span>(<span class="number">0b100_1011</span>, SlaveAddr::new_scl().addr(ADDR));
+    }
+
+    <span class="attr">#[test]
+    </span><span class="kw">fn </span>default_full_scale_range() {
+        <span class="macro">assert_eq!</span>(FullScaleRange::Within2_048V, FullScaleRange::default());
+    }
+}
+</code></pre></div></section></main></body></html>
