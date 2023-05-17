@@ -40,6 +40,75 @@ jobs:
         cmake --build build --config Debug --parallel
         ./build/example
 
+  build-cpp:
+    needs: [quick-tests]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - TARGET: armv7-unknown-linux-gnueabihf
+        - TARGET: aarch64-unknown-linux-gnu
+        - TARGET: armv7-unknown-linux-musleabihf
+        - TARGET: aarch64-unknown-linux-musl
+    steps:
+    - name: Building ${{ matrix.TARGET }}
+      run: echo "${{ matrix.TARGET }}"
+    - uses: actions/checkout@master
+    - name: Rust Setup
+      uses: actions-rs/toolchain@v1.0.1
+      with:
+        toolchain: nightly
+        target: ${{ matrix.TARGET }}
+        override: true
+    - name: Rust Cache
+      uses: Swatinem/rust-cache@v2
+      with:
+        key: deploy-cpp-cargo-target-${{ matrix.TARGET }}
+    - name: Rust Cross Build Cpp
+      uses: actions-rs/cargo@v1
+      with:
+        use-cross: true
+        command: build
+        args: --verbose --release --target=${{ matrix.TARGET }} -Z unstable-options --out-dir output/
+    - name: Move to it's target
+      run: |
+        mkdir dist
+        mkdir "dist/${{ matrix.TARGET }}"
+        mv output/* "dist/${{ matrix.TARGET }}"
+        mv target/release/bindings.h dist/
+    - name: Upload bin
+      uses: actions/upload-artifact@v3
+      with:
+        name: cpp
+        path: dist
+
+  build-python:
+    needs: [quick-tests]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [aarch64, armv7]
+        libc: [musllinux_1_1, auto]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+    - name: Build wheels
+      uses: PyO3/maturin-action@v1
+      with:
+        target: ${{ matrix.target }}
+        args: --release --out dist -i python3.9
+        sccache: "true"
+        manylinux: ${{ matrix.libc }}
+    - name: Upload wheels
+      uses: actions/upload-artifact@v3
+      with:
+        name: python
+        path: dist
+
   deploy-doc:
     needs: quick-tests
     runs-on: ubuntu-latest
