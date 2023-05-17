@@ -17,6 +17,8 @@ jobs:
         toolchain: nightly
         override: true
         components: rustfmt, clippy
+    - name: Rust | Cache
+      uses: Swatinem/rust-cache@v2
     - name: Check Rust formatting
       run: cargo fmt -- --check
     - name: Check Rust code with Clippy
