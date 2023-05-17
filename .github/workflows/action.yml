@@ -9,31 +9,33 @@ jobs:
   quick-tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions-rs/toolchain@v1.0.6
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+    - name: Rust setup
+      uses: actions-rs/toolchain@v1.0.6
       with:
         toolchain: nightly
         override: true
         components: rustfmt, clippy
-    - name: Check Type
+    - name: Check Rust formatting
       run: cargo fmt -- --check
-    - name: Check Clippy
+    - name: Check Rust code with Clippy
       run: cargo clippy -- -Dwarnings
     - name: Run internal tests
       run: cargo test --verbose -- --nocapture
-    - name: Build
+    - name: Build Rust project
       run: cargo build
-    - name: Install pip
+    - name: Build Python module
       run: |
         pip install --user maturin
         pip install . --user
-    - name: Check Python
-      run: |
-        python examples/python/main.py
-    - name: Check Cpp
+    - name: Check Python integration
+      run: python examples/python/main.py
+    - name: Check C++ integration
       run: |
         cd examples/cpp
-        cmake -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build --config Debug --parallel
+        cmake -B build -DCMAKE_BUILD_TYPE=Debug
+        cmake --build build --config Debug --parallel
         ./build/example
 
   deploy-doc:
