@@ -69,10 +69,10 @@ export_cpy!(
             NavigationManager::get_instance().navigator.set_led_off()
         }
 
-        fn read_adc() -> ADCData {
+        fn read_adc_all() -> ADCData {
             NavigationManager::get_instance()
                 .navigator
-                .read_adc()
+                .read_adc_all()
                 .into()
         }
 
