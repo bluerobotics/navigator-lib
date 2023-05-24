@@ -32,7 +32,7 @@ int main() {
 
   printf("Pressure: %f\n", read_pressure());
 
-  ADCData adc = read_adc();
+  ADCData adc = read_adc_all();
   printf("Reading ADC Channels: 1 = %i, 2 = %i, 3 = %i, 4 = %i\n",
          adc.channel[0], adc.channel[1], adc.channel[2], adc.channel[3]);
 
