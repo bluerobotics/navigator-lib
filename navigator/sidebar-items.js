@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["init","read_accel","read_adc","read_gyro","read_mag","read_pressure","read_temp","set_led_off","set_led_on"],"struct":["ADCData","AxisData"]};
+window.SIDEBAR_ITEMS = {"fn":["init","read_accel","read_adc_all","read_gyro","read_mag","read_pressure","read_temp","set_led_off","set_led_on"],"struct":["ADCData","AxisData"]};
