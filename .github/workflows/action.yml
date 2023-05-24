@@ -19,6 +19,9 @@ jobs:
         components: rustfmt, clippy
     - name: Rust | Cache
       uses: Swatinem/rust-cache@v2
+      with:
+        prefix-key: "rust-cache"
+        shared-key: "quick-tests"
     - name: Check Rust formatting
       run: cargo fmt -- --check
     - name: Check Rust code with Clippy
@@ -64,7 +67,8 @@ jobs:
     - name: Rust Cache
       uses: Swatinem/rust-cache@v2
       with:
-        key: deploy-cpp-cargo-target-${{ matrix.TARGET }}
+        prefix-key: "rust-cache"
+        shared-key: "build-cpp-${{ matrix.TARGET }}"
     - name: Rust Cross Build Cpp
       uses: actions-rs/cargo@v1
       with:
