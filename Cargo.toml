@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 [dependencies]
 cpy-binder = { version = "0.1.0" }
 libc = "0.2"
-pyo3 = { version = "0.18", features = ["extension-module"], optional = true }
+pyo3 = { version = "0.18", features = ["extension-module", "abi3-py39"], optional = true }
 navigator-rs = { git = "https://github.com/bluerobotics/navigator-rs" }
 rand = "0.8"
 
