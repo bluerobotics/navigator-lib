@@ -22,6 +22,21 @@ impl NavigationManager {
     }
 }
 
+impl From<adc_Channel> for navigator_rs::adc_Channel {
+    fn from(channel: adc_Channel) -> Self {
+        match channel {
+            adc_Channel::Ch0 => navigator_rs::adc_Channel::SingleA0,
+            adc_Channel::Ch1 => navigator_rs::adc_Channel::SingleA1,
+            adc_Channel::Ch2 => navigator_rs::adc_Channel::SingleA2,
+            adc_Channel::Ch3 => navigator_rs::adc_Channel::SingleA3,
+            adc_Channel::DiffCh0Ch1 => navigator_rs::adc_Channel::DifferentialA0A1,
+            adc_Channel::DiffCh0C3h => navigator_rs::adc_Channel::DifferentialA0A3,
+            adc_Channel::DiffCh1Ch3 => navigator_rs::adc_Channel::DifferentialA1A3,
+            adc_Channel::DiffCh2Ch3 => navigator_rs::adc_Channel::DifferentialA2A3,
+        }
+    }
+}
+
 impl From<navigator_rs::AxisData> for AxisData {
     fn from(read_axis: navigator_rs::AxisData) -> Self {
         Self {
@@ -47,6 +62,17 @@ impl From<navigator_rs::ADCData> for ADCData {
 
 export_cpy!(
     mod navigator {
+        enum adc_Channel {
+            Ch0,
+            Ch1,
+            Ch2,
+            Ch3,
+            DiffCh0Ch1,
+            DiffCh0C3h,
+            DiffCh1Ch3,
+            DiffCh2Ch3,
+        }
+
         struct AxisData {
             x: f32,
             y: f32,
@@ -74,6 +100,12 @@ export_cpy!(
                 .navigator
                 .read_adc_all()
                 .into()
+        }
+
+        fn read_adc(channel: adc_Channel) -> i16 {
+            NavigationManager::get_instance()
+                .navigator
+                .read_adc(channel.into())
         }
 
         fn read_pressure() -> f32 {
