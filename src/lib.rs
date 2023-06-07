@@ -37,6 +37,29 @@ impl From<adc_Channel> for navigator_rs::adc_Channel {
     }
 }
 
+impl From<pwm_Channel> for navigator_rs::pwm_Channel {
+    fn from(channel: pwm_Channel) -> Self {
+        match channel {
+            pwm_Channel::Ch0 => navigator_rs::pwm_Channel::C0,
+            pwm_Channel::Ch1 => navigator_rs::pwm_Channel::C1,
+            pwm_Channel::Ch2 => navigator_rs::pwm_Channel::C2,
+            pwm_Channel::Ch3 => navigator_rs::pwm_Channel::C3,
+            pwm_Channel::Ch4 => navigator_rs::pwm_Channel::C4,
+            pwm_Channel::Ch5 => navigator_rs::pwm_Channel::C5,
+            pwm_Channel::Ch6 => navigator_rs::pwm_Channel::C6,
+            pwm_Channel::Ch7 => navigator_rs::pwm_Channel::C7,
+            pwm_Channel::Ch8 => navigator_rs::pwm_Channel::C8,
+            pwm_Channel::Ch9 => navigator_rs::pwm_Channel::C9,
+            pwm_Channel::Ch10 => navigator_rs::pwm_Channel::C10,
+            pwm_Channel::Ch11 => navigator_rs::pwm_Channel::C11,
+            pwm_Channel::Ch12 => navigator_rs::pwm_Channel::C12,
+            pwm_Channel::Ch13 => navigator_rs::pwm_Channel::C13,
+            pwm_Channel::Ch14 => navigator_rs::pwm_Channel::C14,
+            pwm_Channel::Ch15 => navigator_rs::pwm_Channel::C15,
+        }
+    }
+}
+
 impl From<navigator_rs::AxisData> for AxisData {
     fn from(read_axis: navigator_rs::AxisData) -> Self {
         Self {
@@ -71,6 +94,25 @@ export_cpy!(
             DiffCh0C3h,
             DiffCh1Ch3,
             DiffCh2Ch3,
+        }
+
+        enum pwm_Channel {
+            Ch0,
+            Ch1,
+            Ch2,
+            Ch3,
+            Ch4,
+            Ch5,
+            Ch6,
+            Ch7,
+            Ch8,
+            Ch9,
+            Ch10,
+            Ch11,
+            Ch12,
+            Ch13,
+            Ch14,
+            Ch15,
         }
 
         struct AxisData {
@@ -137,6 +179,12 @@ export_cpy!(
                 .navigator
                 .read_gyro()
                 .into()
+        }
+
+        fn set_pwm_channel_value(channel: pwm_Channel, value: u16) -> () {
+            NavigationManager::get_instance()
+                .navigator
+                .set_pwm_channel_value(channel.into(), value)
         }
     }
 );
