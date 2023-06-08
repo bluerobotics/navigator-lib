@@ -108,7 +108,7 @@ jobs:
         manylinux: ${{ matrix.libc }}
     - uses: uraimo/run-on-arch-action@master
       if: matrix.libc == 'auto'
-      name: Install built wheel manylinux      
+      name: Install built wheel manylinux
       with:
         arch: ${{ matrix.target }}
         distro: bullseye
@@ -121,7 +121,7 @@ jobs:
           pip3 install navigator --no-index --find-links dist/ --force-reinstall
     - uses: uraimo/run-on-arch-action@master
       if: matrix.libc == 'musllinux_1_1'
-      name: Install built wheel musl  
+      name: Install built wheel musl
       with:
         arch: ${{ matrix.target}}
         distro: alpine_latest
@@ -136,6 +136,21 @@ jobs:
       with:
         name: python
         path: dist
+
+  python-release-pypi:
+    needs: [build-python]
+    runs-on: ubuntu-latest
+    if: "startsWith(github.ref, 'refs/tags/')"
+    permissions:
+      id-token: write
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: python
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        packages-dir: .
 
   deploy-doc:
     needs: quick-tests
