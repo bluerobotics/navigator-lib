@@ -2,8 +2,7 @@
 
 import os
 import navigator
-from navigator import adc_Channel
-
+from navigator import adc_Channel,pwm_Channel
 
 def navigator_check():
     print(f"Fucntions available: {navigator.__all__}")
@@ -31,6 +30,8 @@ def navigator_check():
     print(
         f"Data ADC Channel: 1 = {navigator.read_adc(navigator.adc_Channel.Ch1)}"
     )
+
+    navigator.set_pwm_channel_value(navigator.pwm_Channel.Ch1, 10)
 
     Data = navigator.read_mag()
     print(f"Magnetic field: X = {Data.x}, Y = {Data.y}, Z = {Data.z}")
