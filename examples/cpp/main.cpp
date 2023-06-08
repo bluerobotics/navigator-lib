@@ -36,6 +36,8 @@ int main() {
   printf("Reading ADC Channels: 1 = %i, 2 = %i, 3 = %i, 4 = %i\n",
          adc.channel[0], adc.channel[1], adc.channel[2], adc.channel[3]);
 
+  printf("Data ADC Channels: 1 = %i\n", read_adc(adc_Channel::Ch1));
+
   AxisData mag = read_mag();
   printf("Magnetic field: X = %f, Y = %f, Z = %f\n", mag.x, mag.y, mag.z);
 
