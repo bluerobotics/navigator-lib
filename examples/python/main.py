@@ -2,6 +2,7 @@
 
 import os
 import navigator
+from navigator import adc_Channel
 
 
 def navigator_check():
@@ -25,6 +26,10 @@ def navigator_check():
     Data = navigator.read_adc_all()
     print(
         f"Data ADC Channels: 1 = {Data.channel[0]}, 2 = {Data.channel[1]}, 3 = {Data.channel[2]}, 4 = {Data.channel[3]}"
+    )
+
+    print(
+        f"Data ADC Channel: 1 = {navigator.read_adc(navigator.adc_Channel.Ch1)}"
     )
 
     Data = navigator.read_mag()
