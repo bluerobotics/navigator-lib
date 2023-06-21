@@ -46,7 +46,8 @@ jobs:
       uses: jidicula/clang-format-action@v4.11.0
       with:
         clang-format-version: '16'
-        check-path: 'examples/cpp/main.cpp'
+        check-path: 'examples/cpp/'
+        exclude-regex: 'examples/cpp/build'
 
   build-cpp:
     needs: [quick-tests]
@@ -113,7 +114,7 @@ jobs:
         manylinux: ${{ matrix.libc }}
     - uses: uraimo/run-on-arch-action@master
       if: matrix.libc == 'auto'
-      name: Install built wheel manylinux      
+      name: Install built wheel manylinux
       with:
         arch: ${{ matrix.target }}
         distro: bullseye
@@ -126,7 +127,7 @@ jobs:
           pip3 install navigator --no-index --find-links dist/ --force-reinstall
     - uses: uraimo/run-on-arch-action@master
       if: matrix.libc == 'musllinux_1_1'
-      name: Install built wheel musl  
+      name: Install built wheel musl
       with:
         arch: ${{ matrix.target}}
         distro: alpine_latest
