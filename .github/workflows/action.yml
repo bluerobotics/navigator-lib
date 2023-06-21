@@ -42,6 +42,11 @@ jobs:
         cmake -B build -DCMAKE_BUILD_TYPE=Debug
         cmake --build build --config Debug --parallel
         ./build/example
+    - name: Run clang-format style check for C++ example.
+      uses: jidicula/clang-format-action@v4.11.0
+      with:
+        clang-format-version: '16'
+        check-path: 'examples/cpp/main.cpp'
 
   build-cpp:
     needs: [quick-tests]
