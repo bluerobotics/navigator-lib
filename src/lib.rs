@@ -2,23 +2,37 @@
 use pyo3::{prelude::*, wrap_pyfunction};
 
 use cpy_binder::export_cpy;
+use lazy_static::lazy_static;
+use std::sync::Mutex;
 
 struct NavigationManager {
     navigator: navigator_rs::Navigator,
 }
+
+lazy_static! {
+    static ref NAVIGATOR: Mutex<Option<NavigationManager>> = Mutex::new(None);
+}
+
 impl NavigationManager {
     // private constructor to prevent direct instantiation
-    fn new() -> NavigationManager {
-        NavigationManager {
-            navigator: navigator_rs::Navigator::new(),
+    fn new() -> &'static Mutex<Option<Self>> {
+        let mut st = NAVIGATOR.lock().unwrap();
+        if st.is_none() {
+            *st = Some(NavigationManager {
+                navigator: navigator_rs::Navigator::new(),
+            });
+            &NAVIGATOR
+        } else {
+            panic!("NavigationManager is already initialized")
         }
     }
 
-    fn get_instance() -> &'static mut NavigationManager {
-        static mut SINGLETON_INSTANCE: Option<NavigationManager> = None;
-
-        // use unsafe block to ensure thread safety
-        unsafe { SINGLETON_INSTANCE.get_or_insert_with(NavigationManager::new) }
+    fn get_instance() -> &'static Mutex<Option<Self>> {
+        if NAVIGATOR.lock().unwrap().is_some() {
+            &NAVIGATOR
+        } else {
+            panic!("NavigationManager must be initialized before use")
+        }
     }
 }
 
@@ -126,19 +140,41 @@ export_cpy!(
         }
 
         fn init() -> () {
-            NavigationManager::get_instance().navigator.init()
+            NavigationManager::new()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .init();
         }
 
         fn set_led_on() -> () {
-            NavigationManager::get_instance().navigator.set_led_on()
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_led_on()
         }
 
         fn set_led_off() -> () {
-            NavigationManager::get_instance().navigator.set_led_off()
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_led_off()
         }
 
         fn read_adc_all() -> ADCData {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_adc_all()
                 .into()
@@ -146,22 +182,40 @@ export_cpy!(
 
         fn read_adc(channel: adc_Channel) -> i16 {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_adc(channel.into())
         }
 
         fn read_pressure() -> f32 {
-            NavigationManager::get_instance().navigator.read_pressure()
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .read_pressure()
         }
 
         fn read_temp() -> f32 {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_temperature()
         }
 
         fn read_mag() -> AxisData {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_mag()
                 .into()
@@ -169,6 +223,10 @@ export_cpy!(
 
         fn read_accel() -> AxisData {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_accel()
                 .into()
@@ -176,6 +234,10 @@ export_cpy!(
 
         fn read_gyro() -> AxisData {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_gyro()
                 .into()
@@ -183,6 +245,10 @@ export_cpy!(
 
         fn set_pwm_channel_value(channel: pwm_Channel, value: u16) -> () {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .set_pwm_channel_value(channel.into(), value)
         }
