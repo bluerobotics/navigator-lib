@@ -13,6 +13,7 @@ libc = "0.2"
 pyo3 = { version = "0.18", features = ["extension-module", "abi3-py39"], optional = true }
 navigator-rs = { git = "https://github.com/bluerobotics/navigator-rs" }
 rand = "0.8"
+lazy_static = "1.4.0"
 
 [build-dependencies]
 cbindgen = "0.21"
