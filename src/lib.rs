@@ -14,25 +14,13 @@ lazy_static! {
 }
 
 impl NavigationManager {
-    // private constructor to prevent direct instantiation
-    fn new() -> &'static Mutex<Option<Self>> {
-        let mut st = NAVIGATOR.lock().unwrap();
-        if st.is_none() {
-            *st = Some(NavigationManager {
+    fn get_instance() -> &'static Mutex<Option<Self>> {
+        if NAVIGATOR.lock().unwrap().is_none() {
+            *NAVIGATOR.lock().unwrap() = Some(NavigationManager {
                 navigator: navigator_rs::Navigator::new(),
             });
-            &NAVIGATOR
-        } else {
-            panic!("NavigationManager is already initialized")
         }
-    }
-
-    fn get_instance() -> &'static Mutex<Option<Self>> {
-        if NAVIGATOR.lock().unwrap().is_some() {
-            &NAVIGATOR
-        } else {
-            panic!("NavigationManager must be initialized before use")
-        }
+        &NAVIGATOR
     }
 }
 
@@ -140,7 +128,7 @@ export_cpy!(
         }
 
         fn init() -> () {
-            NavigationManager::new()
+            NavigationManager::get_instance()
                 .lock()
                 .unwrap()
                 .as_mut()
