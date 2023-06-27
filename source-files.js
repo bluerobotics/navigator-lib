@@ -13,6 +13,7 @@ var sourcesIndex = JSON.parse('{\
 "i2cdev":["",[],["core.rs","ffi.rs","lib.rs","linux.rs","mock.rs"]],\
 "icm20689":["",[["interface",[],["i2c.rs","mod.rs","spi.rs"]]],["lib.rs"]],\
 "ioctl_rs":["",[["os",[],["linux.rs","mod.rs"]]],["lib.rs"]],\
+"lazy_static":["",[],["inline_lazy.rs","lib.rs"]],\
 "libc":["",[["unix",[["linux_like",[["linux",[["arch",[["generic",[],["mod.rs"]]],["mod.rs"]],["gnu",[["b64",[["x86_64",[],["align.rs","mod.rs","not_x32.rs"]]],["mod.rs"]]],["align.rs","mod.rs"]]],["align.rs","mod.rs","non_exhaustive.rs"]]],["mod.rs"]]],["align.rs","mod.rs"]]],["fixed_width_ints.rs","lib.rs","macros.rs"]],\
 "linux_embedded_hal":["",[],["cdev_pin.rs","lib.rs","serial.rs","sysfs_pin.rs","timer.rs"]],\
 "memoffset":["",[],["lib.rs","offset_of.rs","raw_field.rs","span_of.rs"]],\

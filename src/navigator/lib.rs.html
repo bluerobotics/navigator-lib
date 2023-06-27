@@ -188,27 +188,83 @@
 <a href="#188" id="188">188</a>
 <a href="#189" id="189">189</a>
 <a href="#190" id="190">190</a>
+<a href="#191" id="191">191</a>
+<a href="#192" id="192">192</a>
+<a href="#193" id="193">193</a>
+<a href="#194" id="194">194</a>
+<a href="#195" id="195">195</a>
+<a href="#196" id="196">196</a>
+<a href="#197" id="197">197</a>
+<a href="#198" id="198">198</a>
+<a href="#199" id="199">199</a>
+<a href="#200" id="200">200</a>
+<a href="#201" id="201">201</a>
+<a href="#202" id="202">202</a>
+<a href="#203" id="203">203</a>
+<a href="#204" id="204">204</a>
+<a href="#205" id="205">205</a>
+<a href="#206" id="206">206</a>
+<a href="#207" id="207">207</a>
+<a href="#208" id="208">208</a>
+<a href="#209" id="209">209</a>
+<a href="#210" id="210">210</a>
+<a href="#211" id="211">211</a>
+<a href="#212" id="212">212</a>
+<a href="#213" id="213">213</a>
+<a href="#214" id="214">214</a>
+<a href="#215" id="215">215</a>
+<a href="#216" id="216">216</a>
+<a href="#217" id="217">217</a>
+<a href="#218" id="218">218</a>
+<a href="#219" id="219">219</a>
+<a href="#220" id="220">220</a>
+<a href="#221" id="221">221</a>
+<a href="#222" id="222">222</a>
+<a href="#223" id="223">223</a>
+<a href="#224" id="224">224</a>
+<a href="#225" id="225">225</a>
+<a href="#226" id="226">226</a>
+<a href="#227" id="227">227</a>
+<a href="#228" id="228">228</a>
+<a href="#229" id="229">229</a>
+<a href="#230" id="230">230</a>
+<a href="#231" id="231">231</a>
+<a href="#232" id="232">232</a>
+<a href="#233" id="233">233</a>
+<a href="#234" id="234">234</a>
+<a href="#235" id="235">235</a>
+<a href="#236" id="236">236</a>
+<a href="#237" id="237">237</a>
+<a href="#238" id="238">238</a>
+<a href="#239" id="239">239</a>
+<a href="#240" id="240">240</a>
+<a href="#241" id="241">241</a>
+<a href="#242" id="242">242</a>
+<a href="#243" id="243">243</a>
+<a href="#244" id="244">244</a>
 </pre></div><pre class="rust"><code><span class="attr">#[cfg(feature = <span class="string">&quot;python&quot;</span>)]
 </span><span class="kw">use </span>pyo3::{prelude::<span class="kw-2">*</span>, wrap_pyfunction};
 
 <span class="kw">use </span>cpy_binder::export_cpy;
+<span class="kw">use </span>lazy_static::lazy_static;
+<span class="kw">use </span>std::sync::Mutex;
 
 <span class="kw">struct </span>NavigationManager {
     navigator: navigator_rs::Navigator,
 }
+
+<span class="macro">lazy_static! </span>{
+    <span class="kw">static </span><span class="kw-2">ref </span>NAVIGATOR: Mutex&lt;<span class="prelude-ty">Option</span>&lt;NavigationManager&gt;&gt; = Mutex::new(<span class="prelude-val">None</span>);
+}
+
 <span class="kw">impl </span>NavigationManager {
-    <span class="comment">// private constructor to prevent direct instantiation
-    </span><span class="kw">fn </span>new() -&gt; NavigationManager {
-        NavigationManager {
-            navigator: navigator_rs::Navigator::new(),
+    <span class="kw">fn </span>get_instance() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>Mutex&lt;<span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt;&gt; {
+        <span class="kw">if </span>NAVIGATOR.lock().unwrap().is_none() {
+            <span class="kw-2">*</span>NAVIGATOR.lock().unwrap() = <span class="prelude-val">Some</span>(NavigationManager {
+                navigator: navigator_rs::Navigator::new(),
+            });
         }
-    }
-
-    <span class="kw">fn </span>get_instance() -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span><span class="kw-2">mut </span>NavigationManager {
-        <span class="kw">static </span><span class="kw-2">mut </span>SINGLETON_INSTANCE: <span class="prelude-ty">Option</span>&lt;NavigationManager&gt; = <span class="prelude-val">None</span>;
-
-        <span class="comment">// use unsafe block to ensure thread safety
-        </span><span class="kw">unsafe </span>{ SINGLETON_INSTANCE.get_or_insert_with(NavigationManager::new) }
+        <span class="kw-2">&amp;</span>NAVIGATOR
     }
 }
 
@@ -316,19 +372,41 @@
         }
 
         <span class="kw">fn </span>init() -&gt; () {
-            NavigationManager::get_instance().navigator.init()
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .init();
         }
 
         <span class="kw">fn </span>set_led_on() -&gt; () {
-            NavigationManager::get_instance().navigator.set_led_on()
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_led_on()
         }
 
         <span class="kw">fn </span>set_led_off() -&gt; () {
-            NavigationManager::get_instance().navigator.set_led_off()
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_led_off()
         }
 
         <span class="kw">fn </span>read_adc_all() -&gt; ADCData {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_adc_all()
                 .into()
@@ -336,22 +414,40 @@
 
         <span class="kw">fn </span>read_adc(channel: adc_Channel) -&gt; i16 {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_adc(channel.into())
         }
 
         <span class="kw">fn </span>read_pressure() -&gt; f32 {
-            NavigationManager::get_instance().navigator.read_pressure()
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .read_pressure()
         }
 
         <span class="kw">fn </span>read_temp() -&gt; f32 {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_temperature()
         }
 
         <span class="kw">fn </span>read_mag() -&gt; AxisData {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_mag()
                 .into()
@@ -359,6 +455,10 @@
 
         <span class="kw">fn </span>read_accel() -&gt; AxisData {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_accel()
                 .into()
@@ -366,6 +466,10 @@
 
         <span class="kw">fn </span>read_gyro() -&gt; AxisData {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .read_gyro()
                 .into()
@@ -373,6 +477,10 @@
 
         <span class="kw">fn </span>set_pwm_channel_value(channel: pwm_Channel, value: u16) -&gt; () {
             NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
                 .navigator
                 .set_pwm_channel_value(channel.into(), value)
         }
