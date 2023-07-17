@@ -24,40 +24,46 @@ impl NavigationManager {
     }
 }
 
-impl From<adc_Channel> for navigator_rs::adc_Channel {
-    fn from(channel: adc_Channel) -> Self {
+impl From<AdcChannel> for navigator_rs::AdcChannel {
+    fn from(channel: AdcChannel) -> Self {
         match channel {
-            adc_Channel::Ch0 => navigator_rs::adc_Channel::SingleA0,
-            adc_Channel::Ch1 => navigator_rs::adc_Channel::SingleA1,
-            adc_Channel::Ch2 => navigator_rs::adc_Channel::SingleA2,
-            adc_Channel::Ch3 => navigator_rs::adc_Channel::SingleA3,
-            adc_Channel::DiffCh0Ch1 => navigator_rs::adc_Channel::DifferentialA0A1,
-            adc_Channel::DiffCh0C3h => navigator_rs::adc_Channel::DifferentialA0A3,
-            adc_Channel::DiffCh1Ch3 => navigator_rs::adc_Channel::DifferentialA1A3,
-            adc_Channel::DiffCh2Ch3 => navigator_rs::adc_Channel::DifferentialA2A3,
+            AdcChannel::Ch0 => navigator_rs::AdcChannel::Ch0,
+            AdcChannel::Ch1 => navigator_rs::AdcChannel::Ch1,
+            AdcChannel::Ch2 => navigator_rs::AdcChannel::Ch2,
+            AdcChannel::Ch3 => navigator_rs::AdcChannel::Ch3,
         }
     }
 }
 
-impl From<pwm_Channel> for navigator_rs::pwm_Channel {
-    fn from(channel: pwm_Channel) -> Self {
+impl From<PwmChannel> for navigator_rs::PwmChannel {
+    fn from(channel: PwmChannel) -> Self {
         match channel {
-            pwm_Channel::Ch0 => navigator_rs::pwm_Channel::C0,
-            pwm_Channel::Ch1 => navigator_rs::pwm_Channel::C1,
-            pwm_Channel::Ch2 => navigator_rs::pwm_Channel::C2,
-            pwm_Channel::Ch3 => navigator_rs::pwm_Channel::C3,
-            pwm_Channel::Ch4 => navigator_rs::pwm_Channel::C4,
-            pwm_Channel::Ch5 => navigator_rs::pwm_Channel::C5,
-            pwm_Channel::Ch6 => navigator_rs::pwm_Channel::C6,
-            pwm_Channel::Ch7 => navigator_rs::pwm_Channel::C7,
-            pwm_Channel::Ch8 => navigator_rs::pwm_Channel::C8,
-            pwm_Channel::Ch9 => navigator_rs::pwm_Channel::C9,
-            pwm_Channel::Ch10 => navigator_rs::pwm_Channel::C10,
-            pwm_Channel::Ch11 => navigator_rs::pwm_Channel::C11,
-            pwm_Channel::Ch12 => navigator_rs::pwm_Channel::C12,
-            pwm_Channel::Ch13 => navigator_rs::pwm_Channel::C13,
-            pwm_Channel::Ch14 => navigator_rs::pwm_Channel::C14,
-            pwm_Channel::Ch15 => navigator_rs::pwm_Channel::C15,
+            PwmChannel::Ch1 => navigator_rs::PwmChannel::Ch1,
+            PwmChannel::Ch2 => navigator_rs::PwmChannel::Ch2,
+            PwmChannel::Ch3 => navigator_rs::PwmChannel::Ch3,
+            PwmChannel::Ch4 => navigator_rs::PwmChannel::Ch4,
+            PwmChannel::Ch5 => navigator_rs::PwmChannel::Ch5,
+            PwmChannel::Ch6 => navigator_rs::PwmChannel::Ch6,
+            PwmChannel::Ch7 => navigator_rs::PwmChannel::Ch7,
+            PwmChannel::Ch8 => navigator_rs::PwmChannel::Ch8,
+            PwmChannel::Ch9 => navigator_rs::PwmChannel::Ch9,
+            PwmChannel::Ch10 => navigator_rs::PwmChannel::Ch10,
+            PwmChannel::Ch11 => navigator_rs::PwmChannel::Ch11,
+            PwmChannel::Ch12 => navigator_rs::PwmChannel::Ch12,
+            PwmChannel::Ch13 => navigator_rs::PwmChannel::Ch13,
+            PwmChannel::Ch14 => navigator_rs::PwmChannel::Ch14,
+            PwmChannel::Ch15 => navigator_rs::PwmChannel::Ch15,
+            PwmChannel::Ch16 => navigator_rs::PwmChannel::Ch16,
+        }
+    }
+}
+
+impl From<UserLed> for navigator_rs::UserLed {
+    fn from(led: UserLed) -> Self {
+        match led {
+            UserLed::Led1 => navigator_rs::UserLed::Led1,
+            UserLed::Led2 => navigator_rs::UserLed::Led2,
+            UserLed::Led3 => navigator_rs::UserLed::Led3,
         }
     }
 }
@@ -87,19 +93,20 @@ impl From<navigator_rs::ADCData> for ADCData {
 
 export_cpy!(
     mod navigator {
-        enum adc_Channel {
+        enum AdcChannel {
             Ch0,
             Ch1,
             Ch2,
             Ch3,
-            DiffCh0Ch1,
-            DiffCh0C3h,
-            DiffCh1Ch3,
-            DiffCh2Ch3,
         }
 
-        enum pwm_Channel {
-            Ch0,
+        enum UserLed {
+            Led1,
+            Led2,
+            Led3,
+        }
+
+        enum PwmChannel {
             Ch1,
             Ch2,
             Ch3,
@@ -115,6 +122,7 @@ export_cpy!(
             Ch13,
             Ch14,
             Ch15,
+            Ch16,
         }
 
         struct AxisData {
@@ -124,7 +132,7 @@ export_cpy!(
         }
 
         struct ADCData {
-            channel: [i16; 4],
+            channel: [f32; 4],
         }
 
         fn init() -> () {
@@ -137,24 +145,14 @@ export_cpy!(
                 .init();
         }
 
-        fn set_led_on() -> () {
+        fn set_led(select: UserLed, state: bool) -> () {
             NavigationManager::get_instance()
                 .lock()
                 .unwrap()
                 .as_mut()
                 .unwrap()
                 .navigator
-                .set_led_on()
-        }
-
-        fn set_led_off() -> () {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_led_off()
+                .set_led(select.into(), state)
         }
 
         fn read_adc_all() -> ADCData {
@@ -168,7 +166,7 @@ export_cpy!(
                 .into()
         }
 
-        fn read_adc(channel: adc_Channel) -> i16 {
+        fn read_adc(channel: AdcChannel) -> f32 {
             NavigationManager::get_instance()
                 .lock()
                 .unwrap()
@@ -231,7 +229,7 @@ export_cpy!(
                 .into()
         }
 
-        fn set_pwm_channel_value(channel: pwm_Channel, value: u16) -> () {
+        fn set_pwm_channel_value(channel: PwmChannel, value: u16) -> () {
             NavigationManager::get_instance()
                 .lock()
                 .unwrap()
