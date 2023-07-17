@@ -2,10 +2,10 @@
 
 import os
 import navigator
-from navigator import adc_Channel,pwm_Channel
+from navigator import AdcChannel,PwmChannel,UserLed
 
 def navigator_check():
-    print(f"Fucntions available: {navigator.__all__}")
+    print(f"Functions available: {navigator.__all__}")
 
     if os.environ.get("CI") == "true":
         print("Running in CI")
@@ -15,8 +15,8 @@ def navigator_check():
     print("Initializing navigator module.")
     navigator.init()
 
-    print("Setting leds on!")
-    navigator.set_led_on()
+    print("Setting led on!")
+    navigator.set_led(UserLed.Led1, True)
 
     print(f"Temperature: {navigator.read_temp()}")
 
@@ -28,7 +28,7 @@ def navigator_check():
     )
 
     print(
-        f"Data ADC Channel: 1 = {navigator.read_adc(navigator.adc_Channel.Ch1)}"
+        f"Data ADC Channel: 1 = {navigator.read_adc(AdcChannel.Ch1)}"
     )
 
     navigator.set_pwm_channel_value(navigator.pwm_Channel.Ch1, 10)
@@ -42,9 +42,8 @@ def navigator_check():
     Data = navigator.read_gyro()
     print(f"Gyroscope: X = {Data.x}, Y = {Data.y}, Z = {Data.z}")
 
-    print("Setting leds off!")
-    navigator.set_led_off()
-
+    print("Setting led off!")
+    navigator.set_led(UserLed.Led1, False)
 
 if __name__ == "__main__":
     navigator_check()
