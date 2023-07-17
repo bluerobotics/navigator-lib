@@ -38,8 +38,6 @@ int main() {
 
   printf("Data ADC Channels: 1 = %i\n", read_adc(AdcChannel::Ch1));
 
-  set_pwm_channel_value(PwmChannel::Ch1, 10);
-
   AxisData mag = read_mag();
   printf("Magnetic field: X = %f, Y = %f, Z = %f\n", mag.x, mag.y, mag.z);
 
