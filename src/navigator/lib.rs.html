@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-8092eaa720ad3b6f.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="navigator" data-themes="" data-resource-suffix="" data-rustdoc-version="1.72.0-nightly (36fb58e43 2023-06-26)" data-channel="nightly" data-search-js="search-c507e026dd61038c.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../navigator/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-07416f8512e0e04c.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="navigator" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (0e8e857b1 2023-07-16)" data-channel="nightly" data-search-js="search-f6292fe389d70017.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../navigator/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -240,8 +240,6 @@
 <a href="#240" id="240">240</a>
 <a href="#241" id="241">241</a>
 <a href="#242" id="242">242</a>
-<a href="#243" id="243">243</a>
-<a href="#244" id="244">244</a>
 </pre></div><pre class="rust"><code><span class="attr">#[cfg(feature = <span class="string">&quot;python&quot;</span>)]
 </span><span class="kw">use </span>pyo3::{prelude::<span class="kw-2">*</span>, wrap_pyfunction};
 
@@ -268,40 +266,46 @@
     }
 }
 
-<span class="kw">impl </span>From&lt;adc_Channel&gt; <span class="kw">for </span>navigator_rs::adc_Channel {
-    <span class="kw">fn </span>from(channel: adc_Channel) -&gt; <span class="self">Self </span>{
+<span class="kw">impl </span>From&lt;AdcChannel&gt; <span class="kw">for </span>navigator_rs::AdcChannel {
+    <span class="kw">fn </span>from(channel: AdcChannel) -&gt; <span class="self">Self </span>{
         <span class="kw">match </span>channel {
-            adc_Channel::Ch0 =&gt; navigator_rs::adc_Channel::SingleA0,
-            adc_Channel::Ch1 =&gt; navigator_rs::adc_Channel::SingleA1,
-            adc_Channel::Ch2 =&gt; navigator_rs::adc_Channel::SingleA2,
-            adc_Channel::Ch3 =&gt; navigator_rs::adc_Channel::SingleA3,
-            adc_Channel::DiffCh0Ch1 =&gt; navigator_rs::adc_Channel::DifferentialA0A1,
-            adc_Channel::DiffCh0C3h =&gt; navigator_rs::adc_Channel::DifferentialA0A3,
-            adc_Channel::DiffCh1Ch3 =&gt; navigator_rs::adc_Channel::DifferentialA1A3,
-            adc_Channel::DiffCh2Ch3 =&gt; navigator_rs::adc_Channel::DifferentialA2A3,
+            AdcChannel::Ch0 =&gt; navigator_rs::AdcChannel::Ch0,
+            AdcChannel::Ch1 =&gt; navigator_rs::AdcChannel::Ch1,
+            AdcChannel::Ch2 =&gt; navigator_rs::AdcChannel::Ch2,
+            AdcChannel::Ch3 =&gt; navigator_rs::AdcChannel::Ch3,
         }
     }
 }
 
-<span class="kw">impl </span>From&lt;pwm_Channel&gt; <span class="kw">for </span>navigator_rs::pwm_Channel {
-    <span class="kw">fn </span>from(channel: pwm_Channel) -&gt; <span class="self">Self </span>{
+<span class="kw">impl </span>From&lt;PwmChannel&gt; <span class="kw">for </span>navigator_rs::PwmChannel {
+    <span class="kw">fn </span>from(channel: PwmChannel) -&gt; <span class="self">Self </span>{
         <span class="kw">match </span>channel {
-            pwm_Channel::Ch0 =&gt; navigator_rs::pwm_Channel::C0,
-            pwm_Channel::Ch1 =&gt; navigator_rs::pwm_Channel::C1,
-            pwm_Channel::Ch2 =&gt; navigator_rs::pwm_Channel::C2,
-            pwm_Channel::Ch3 =&gt; navigator_rs::pwm_Channel::C3,
-            pwm_Channel::Ch4 =&gt; navigator_rs::pwm_Channel::C4,
-            pwm_Channel::Ch5 =&gt; navigator_rs::pwm_Channel::C5,
-            pwm_Channel::Ch6 =&gt; navigator_rs::pwm_Channel::C6,
-            pwm_Channel::Ch7 =&gt; navigator_rs::pwm_Channel::C7,
-            pwm_Channel::Ch8 =&gt; navigator_rs::pwm_Channel::C8,
-            pwm_Channel::Ch9 =&gt; navigator_rs::pwm_Channel::C9,
-            pwm_Channel::Ch10 =&gt; navigator_rs::pwm_Channel::C10,
-            pwm_Channel::Ch11 =&gt; navigator_rs::pwm_Channel::C11,
-            pwm_Channel::Ch12 =&gt; navigator_rs::pwm_Channel::C12,
-            pwm_Channel::Ch13 =&gt; navigator_rs::pwm_Channel::C13,
-            pwm_Channel::Ch14 =&gt; navigator_rs::pwm_Channel::C14,
-            pwm_Channel::Ch15 =&gt; navigator_rs::pwm_Channel::C15,
+            PwmChannel::Ch1 =&gt; navigator_rs::PwmChannel::Ch1,
+            PwmChannel::Ch2 =&gt; navigator_rs::PwmChannel::Ch2,
+            PwmChannel::Ch3 =&gt; navigator_rs::PwmChannel::Ch3,
+            PwmChannel::Ch4 =&gt; navigator_rs::PwmChannel::Ch4,
+            PwmChannel::Ch5 =&gt; navigator_rs::PwmChannel::Ch5,
+            PwmChannel::Ch6 =&gt; navigator_rs::PwmChannel::Ch6,
+            PwmChannel::Ch7 =&gt; navigator_rs::PwmChannel::Ch7,
+            PwmChannel::Ch8 =&gt; navigator_rs::PwmChannel::Ch8,
+            PwmChannel::Ch9 =&gt; navigator_rs::PwmChannel::Ch9,
+            PwmChannel::Ch10 =&gt; navigator_rs::PwmChannel::Ch10,
+            PwmChannel::Ch11 =&gt; navigator_rs::PwmChannel::Ch11,
+            PwmChannel::Ch12 =&gt; navigator_rs::PwmChannel::Ch12,
+            PwmChannel::Ch13 =&gt; navigator_rs::PwmChannel::Ch13,
+            PwmChannel::Ch14 =&gt; navigator_rs::PwmChannel::Ch14,
+            PwmChannel::Ch15 =&gt; navigator_rs::PwmChannel::Ch15,
+            PwmChannel::Ch16 =&gt; navigator_rs::PwmChannel::Ch16,
+        }
+    }
+}
+
+<span class="kw">impl </span>From&lt;UserLed&gt; <span class="kw">for </span>navigator_rs::UserLed {
+    <span class="kw">fn </span>from(led: UserLed) -&gt; <span class="self">Self </span>{
+        <span class="kw">match </span>led {
+            UserLed::Led1 =&gt; navigator_rs::UserLed::Led1,
+            UserLed::Led2 =&gt; navigator_rs::UserLed::Led2,
+            UserLed::Led3 =&gt; navigator_rs::UserLed::Led3,
         }
     }
 }
@@ -331,19 +335,20 @@
 
 <span class="macro">export_cpy!</span>(
     <span class="kw">mod </span>navigator {
-        <span class="kw">enum </span>adc_Channel {
+        <span class="kw">enum </span>AdcChannel {
             Ch0,
             Ch1,
             Ch2,
             Ch3,
-            DiffCh0Ch1,
-            DiffCh0C3h,
-            DiffCh1Ch3,
-            DiffCh2Ch3,
         }
 
-        <span class="kw">enum </span>pwm_Channel {
-            Ch0,
+        <span class="kw">enum </span>UserLed {
+            Led1,
+            Led2,
+            Led3,
+        }
+
+        <span class="kw">enum </span>PwmChannel {
             Ch1,
             Ch2,
             Ch3,
@@ -359,6 +364,7 @@
             Ch13,
             Ch14,
             Ch15,
+            Ch16,
         }
 
         <span class="kw">struct </span>AxisData {
@@ -368,7 +374,7 @@
         }
 
         <span class="kw">struct </span>ADCData {
-            channel: [i16; <span class="number">4</span>],
+            channel: [f32; <span class="number">4</span>],
         }
 
         <span class="kw">fn </span>init() -&gt; () {
@@ -381,24 +387,14 @@
                 .init();
         }
 
-        <span class="kw">fn </span>set_led_on() -&gt; () {
+        <span class="kw">fn </span>set_led(select: UserLed, state: bool) -&gt; () {
             NavigationManager::get_instance()
                 .lock()
                 .unwrap()
                 .as_mut()
                 .unwrap()
                 .navigator
-                .set_led_on()
-        }
-
-        <span class="kw">fn </span>set_led_off() -&gt; () {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_led_off()
+                .set_led(select.into(), state)
         }
 
         <span class="kw">fn </span>read_adc_all() -&gt; ADCData {
@@ -412,7 +408,7 @@
                 .into()
         }
 
-        <span class="kw">fn </span>read_adc(channel: adc_Channel) -&gt; i16 {
+        <span class="kw">fn </span>read_adc(channel: AdcChannel) -&gt; f32 {
             NavigationManager::get_instance()
                 .lock()
                 .unwrap()
@@ -475,7 +471,7 @@
                 .into()
         }
 
-        <span class="kw">fn </span>set_pwm_channel_value(channel: pwm_Channel, value: u16) -&gt; () {
+        <span class="kw">fn </span>set_pwm_channel_value(channel: PwmChannel, value: u16) -&gt; () {
             NavigationManager::get_instance()
                 .lock()
                 .unwrap()
