@@ -22,11 +22,11 @@ int main() {
     return 0;
   }
 
-  printf("Iniciating navigator module.\n");
+  printf("Initiating navigator module.\n");
   init();
 
-  printf("Setting leds on!\n");
-  set_led_on();
+  printf("Setting led on!\n");
+  set_led(UserLed::Led1, true);
 
   printf("Temperature: %f\n", read_temp());
 
@@ -36,9 +36,9 @@ int main() {
   printf("Reading ADC Channels: 1 = %i, 2 = %i, 3 = %i, 4 = %i\n",
          adc.channel[0], adc.channel[1], adc.channel[2], adc.channel[3]);
 
-  printf("Data ADC Channels: 1 = %i\n", read_adc(adc_Channel::Ch1));
+  printf("Data ADC Channels: 1 = %i\n", read_adc(AdcChannel::Ch1));
 
-  set_pwm_channel_value(pwm_Channel::Ch0, 10);
+  set_pwm_channel_value(PwmChannel::Ch1, 10);
 
   AxisData mag = read_mag();
   printf("Magnetic field: X = %f, Y = %f, Z = %f\n", mag.x, mag.y, mag.z);
@@ -49,8 +49,8 @@ int main() {
   AxisData gyro = read_gyro();
   printf("Gyroscope: X = %f, Y = %f, Z = %f\n", gyro.x, gyro.y, gyro.z);
 
-  printf("Setting leds off!\n");
-  set_led_off();
+  printf("Setting led off!\n");
+  set_led(UserLed::Led1, false);
 
   return 0;
 }
