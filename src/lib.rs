@@ -155,6 +155,26 @@ export_cpy!(
                 .set_led(select.into(), state)
         }
 
+        fn get_led(select: UserLed) -> bool {
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .get_led(select.into())
+        }
+
+        fn set_led_toggle(select: UserLed) {
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_led_toggle(select.into())
+        }
+
         fn set_led_all(state: bool) -> () {
             NavigationManager::get_instance()
                 .lock()
