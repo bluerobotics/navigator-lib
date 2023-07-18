@@ -145,6 +145,16 @@ export_cpy!(
                 .init();
         }
 
+        fn self_test() -> bool {
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .self_test()
+        }
+
         fn set_led(select: UserLed, state: bool) -> () {
             NavigationManager::get_instance()
                 .lock()
