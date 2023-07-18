@@ -155,6 +155,16 @@ export_cpy!(
                 .set_led(select.into(), state)
         }
 
+        fn set_led_all(state: bool) -> () {
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_led_all(state)
+        }
+
         fn read_adc_all() -> ADCData {
             NavigationManager::get_instance()
                 .lock()
