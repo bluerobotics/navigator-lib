@@ -195,6 +195,30 @@ export_cpy!(
                 .set_led_all(state)
         }
 
+        fn_c set_neopixel(rgb_array: *const [u8; 3], length: usize) {
+            let array = unsafe {
+                assert!(!rgb_array.is_null());
+                std::slice::from_raw_parts(rgb_array, length)
+            };
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_neopixel(array);
+        }
+
+        fn_py set_neopixel(rgb_array: Vec<[u8;3]>) {
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_neopixel(&rgb_array)
+        }
+
         fn read_adc_all() -> ADCData {
             NavigationManager::get_instance()
                 .lock()
