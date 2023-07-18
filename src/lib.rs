@@ -239,7 +239,17 @@ export_cpy!(
                 .into()
         }
 
-        fn set_pwm_channel_value(channel: PwmChannel, value: u16) -> () {
+        fn pwm_enable(state: bool) {
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .pwm_enable(state)
+        }
+
+        fn set_pwm_channel_value(channel: PwmChannel, value: u16) {
             NavigationManager::get_instance()
                 .lock()
                 .unwrap()
