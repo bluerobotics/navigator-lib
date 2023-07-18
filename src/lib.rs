@@ -332,5 +332,65 @@ export_cpy!(
                 .navigator
                 .set_pwm_channel_value(channel.into(), value)
         }
+
+        fn_c set_pwm_channels_value(channels: *const PwmChannel, value:u16, length: usize) {
+            let array_channels = unsafe {
+                assert!(!channels.is_null());
+                std::slice::from_raw_parts(channels, length)
+            };
+            for channel in array_channels.iter().take(length) {
+                NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_pwm_channel_value(channel.clone().into(), value);
+            }
+        }
+
+        fn_py set_pwm_channels_value(channels: Vec<PwmChannel>, value:u16) {
+            for i in 0..channels.len() {
+                NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_pwm_channel_value(channels[i].clone().into(), value);
+            }
+        }
+
+        fn_c set_pwm_channels_values(channels: *const PwmChannel, values : *const u16, length: usize) {
+            let array_channels = unsafe {
+                assert!(!channels.is_null());
+                std::slice::from_raw_parts(channels, length)
+            };
+            let array_values = unsafe {
+                assert!(!values.is_null());
+                std::slice::from_raw_parts(values, length)
+            };
+            for i in 0..length {
+                NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_pwm_channel_value(array_channels[i].clone().into(), array_values[i]);
+            }
+        }
+
+        fn_py set_pwm_channels_values(channels: Vec<PwmChannel>, values: Vec<u16>) {
+            for i in 0..channels.len() {
+                NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_pwm_channel_value(channels[i].clone().into(), values[i]);
+            }
+        }
     }
 );
