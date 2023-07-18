@@ -279,6 +279,26 @@ export_cpy!(
                 .pwm_enable(state)
         }
 
+        fn set_pwm_freq_prescale(value: u8) {
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_pwm_freq_prescale(value)
+        }
+
+        fn set_pwm_freq_hz(freq: f32) {
+            NavigationManager::get_instance()
+                .lock()
+                .unwrap()
+                .as_mut()
+                .unwrap()
+                .navigator
+                .set_pwm_freq_hz(freq)
+        }
+
         fn set_pwm_channel_value(channel: PwmChannel, value: u16) {
             NavigationManager::get_instance()
                 .lock()
