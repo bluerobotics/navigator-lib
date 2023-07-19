@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["AdcChannel","PwmChannel","UserLed"],"fn":["init","read_accel","read_adc","read_adc_all","read_gyro","read_mag","read_pressure","read_temp","set_led","set_pwm_channel_value"],"struct":["ADCData","AxisData"]};
+window.SIDEBAR_ITEMS = {"enum":["AdcChannel","PwmChannel","UserLed"],"fn":["get_led","init","read_accel","read_adc","read_adc_all","read_gyro","read_mag","read_pressure","read_temp","set_led","set_led_all","set_led_toggle","set_pwm_channel_value"],"struct":["ADCData","AxisData"]};
