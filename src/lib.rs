@@ -54,6 +54,7 @@ impl From<PwmChannel> for navigator_rs::PwmChannel {
             PwmChannel::Ch14 => navigator_rs::PwmChannel::Ch14,
             PwmChannel::Ch15 => navigator_rs::PwmChannel::Ch15,
             PwmChannel::Ch16 => navigator_rs::PwmChannel::Ch16,
+            PwmChannel::All => navigator_rs::PwmChannel::All,
         }
     }
 }
@@ -123,6 +124,7 @@ export_cpy!(
             Ch14,
             Ch15,
             Ch16,
+            All,
         }
 
         struct AxisData {
