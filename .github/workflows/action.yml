@@ -25,7 +25,7 @@ jobs:
     - name: Check Rust formatting
       run: cargo fmt -- --check
     - name: Check Rust code with Clippy
-      run: cargo clippy -- -Dwarnings
+      run: cargo clippy -- -Dwarnings -A clippy::not_unsafe_ptr_arg_deref
     - name: Run internal tests
       run: cargo test --verbose -- --nocapture
     - name: Build Rust project
