@@ -24,50 +24,44 @@ impl NavigationManager {
     }
 }
 
-impl From<AdcChannel> for navigator_rs::AdcChannel {
-    fn from(channel: AdcChannel) -> Self {
-        match channel {
-            AdcChannel::Ch0 => navigator_rs::AdcChannel::Ch0,
-            AdcChannel::Ch1 => navigator_rs::AdcChannel::Ch1,
-            AdcChannel::Ch2 => navigator_rs::AdcChannel::Ch2,
-            AdcChannel::Ch3 => navigator_rs::AdcChannel::Ch3,
+macro_rules! impl_from_enum {
+    ($from:ty, $to:ty, $($variant:ident),+ $(,)?) => {
+        impl From<$from> for $to {
+            fn from(item: $from) -> Self {
+                match item {
+                    $(
+                        <$from>::$variant => <$to>::$variant,
+                    )+
+                }
+            }
         }
-    }
+    };
 }
 
-impl From<PwmChannel> for navigator_rs::PwmChannel {
-    fn from(channel: PwmChannel) -> Self {
-        match channel {
-            PwmChannel::Ch1 => navigator_rs::PwmChannel::Ch1,
-            PwmChannel::Ch2 => navigator_rs::PwmChannel::Ch2,
-            PwmChannel::Ch3 => navigator_rs::PwmChannel::Ch3,
-            PwmChannel::Ch4 => navigator_rs::PwmChannel::Ch4,
-            PwmChannel::Ch5 => navigator_rs::PwmChannel::Ch5,
-            PwmChannel::Ch6 => navigator_rs::PwmChannel::Ch6,
-            PwmChannel::Ch7 => navigator_rs::PwmChannel::Ch7,
-            PwmChannel::Ch8 => navigator_rs::PwmChannel::Ch8,
-            PwmChannel::Ch9 => navigator_rs::PwmChannel::Ch9,
-            PwmChannel::Ch10 => navigator_rs::PwmChannel::Ch10,
-            PwmChannel::Ch11 => navigator_rs::PwmChannel::Ch11,
-            PwmChannel::Ch12 => navigator_rs::PwmChannel::Ch12,
-            PwmChannel::Ch13 => navigator_rs::PwmChannel::Ch13,
-            PwmChannel::Ch14 => navigator_rs::PwmChannel::Ch14,
-            PwmChannel::Ch15 => navigator_rs::PwmChannel::Ch15,
-            PwmChannel::Ch16 => navigator_rs::PwmChannel::Ch16,
-            PwmChannel::All => navigator_rs::PwmChannel::All,
-        }
-    }
-}
-
-impl From<UserLed> for navigator_rs::UserLed {
-    fn from(led: UserLed) -> Self {
-        match led {
-            UserLed::Led1 => navigator_rs::UserLed::Led1,
-            UserLed::Led2 => navigator_rs::UserLed::Led2,
-            UserLed::Led3 => navigator_rs::UserLed::Led3,
-        }
-    }
-}
+// Help with conversion from navigator enum API to our stable API
+impl_from_enum!(AdcChannel, navigator_rs::AdcChannel, Ch0, Ch1, Ch2, Ch3);
+impl_from_enum!(
+    PwmChannel,
+    navigator_rs::PwmChannel,
+    Ch1,
+    Ch2,
+    Ch3,
+    Ch4,
+    Ch5,
+    Ch6,
+    Ch7,
+    Ch8,
+    Ch9,
+    Ch10,
+    Ch11,
+    Ch12,
+    Ch13,
+    Ch14,
+    Ch15,
+    Ch16,
+    All
+);
+impl_from_enum!(UserLed, navigator_rs::UserLed, Led1, Led2, Led3);
 
 impl From<navigator_rs::AxisData> for AxisData {
     fn from(read_axis: navigator_rs::AxisData) -> Self {
