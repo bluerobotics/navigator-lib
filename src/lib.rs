@@ -528,7 +528,7 @@ export_cpy!(
             >>> navigator.set_pwm_channels_values([PwmChannel.Ch1, PwmChannel.Ch5], [1000, 500])
         "
         set_pwm_channels_values(channels: Vec<PwmChannel>, values: Vec<u16>) {
-            if (channels.len() != values.len()) {
+            if channels.len() != values.len() {
                 println!("The number of values is different from the number of PWM channels.");
                 return
             }
