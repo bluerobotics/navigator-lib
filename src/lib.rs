@@ -24,6 +24,17 @@ impl NavigationManager {
     }
 }
 
+macro_rules! with_navigator {
+    () => {
+        NavigationManager::get_instance()
+            .lock()
+            .unwrap()
+            .as_mut()
+            .unwrap()
+            .navigator
+    };
+}
+
 macro_rules! impl_from_enum {
     ($from:ty, $to:ty, $($variant:ident),+ $(,)?) => {
         impl From<$from> for $to {
@@ -132,63 +143,29 @@ export_cpy!(
         }
 
         fn init() -> () {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
+            with_navigator!()
                 .init();
         }
 
         fn self_test() -> bool {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
+            with_navigator!()
                 .self_test()
         }
 
         fn set_led(select: UserLed, state: bool) -> () {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_led(select.into(), state)
+            with_navigator!().set_led(select.into(), state)
         }
 
         fn get_led(select: UserLed) -> bool {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .get_led(select.into())
+            with_navigator!().get_led(select.into())
         }
 
         fn set_led_toggle(select: UserLed) {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_led_toggle(select.into())
+            with_navigator!().set_led_toggle(select.into())
         }
 
         fn set_led_all(state: bool) -> () {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_led_all(state)
+            with_navigator!().set_led_all(state)
         }
 
         fn_c set_neopixel(rgb_array: *const [u8; 3], length: usize) {
@@ -196,137 +173,59 @@ export_cpy!(
                 assert!(!rgb_array.is_null());
                 std::slice::from_raw_parts(rgb_array, length)
             };
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_neopixel(array);
+            with_navigator!().set_neopixel(array);
         }
 
         fn_py set_neopixel(rgb_array: Vec<[u8;3]>) {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_neopixel(&rgb_array)
+            with_navigator!().set_neopixel(&rgb_array)
         }
 
         fn read_adc_all() -> ADCData {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .read_adc_all()
+            with_navigator!().read_adc_all()
                 .into()
         }
 
         fn read_adc(channel: AdcChannel) -> f32 {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .read_adc(channel.into())
+            with_navigator!().read_adc(channel.into())
         }
 
         fn read_pressure() -> f32 {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .read_pressure()
+            with_navigator!().read_pressure()
         }
 
         fn read_temp() -> f32 {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .read_temperature()
+            with_navigator!().read_temperature()
         }
 
         fn read_mag() -> AxisData {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .read_mag()
+            with_navigator!().read_mag()
                 .into()
         }
 
         fn read_accel() -> AxisData {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .read_accel()
+            with_navigator!().read_accel()
                 .into()
         }
 
         fn read_gyro() -> AxisData {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .read_gyro()
+            with_navigator!().read_gyro()
                 .into()
         }
 
         fn pwm_enable(state: bool) {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .pwm_enable(state)
+            with_navigator!().pwm_enable(state)
         }
 
         fn set_pwm_freq_prescale(value: u8) {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_pwm_freq_prescale(value)
+            with_navigator!().set_pwm_freq_prescale(value)
         }
 
         fn set_pwm_freq_hz(freq: f32) {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_pwm_freq_hz(freq)
+            with_navigator!().set_pwm_freq_hz(freq)
         }
 
         fn set_pwm_channel_value(channel: PwmChannel, value: u16) {
-            NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_pwm_channel_value(channel.into(), value)
+            with_navigator!().set_pwm_channel_value(channel.into(), value)
         }
 
         fn_c set_pwm_channels_value(channels: *const PwmChannel, value:u16, length: usize) {
@@ -335,25 +234,13 @@ export_cpy!(
                 std::slice::from_raw_parts(channels, length)
             };
             for channel in array_channels.iter().take(length) {
-                NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_pwm_channel_value(channel.clone().into(), value);
+                with_navigator!().set_pwm_channel_value(channel.clone().into(), value);
             }
         }
 
         fn_py set_pwm_channels_value(channels: Vec<PwmChannel>, value:u16) {
             for i in 0..channels.len() {
-                NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_pwm_channel_value(channels[i].clone().into(), value);
+                with_navigator!().set_pwm_channel_value(channels[i].clone().into(), value);
             }
         }
 
@@ -367,13 +254,7 @@ export_cpy!(
                 std::slice::from_raw_parts(values, length)
             };
             for i in 0..length {
-                NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_pwm_channel_value(array_channels[i].clone().into(), array_values[i]);
+                with_navigator!().set_pwm_channel_value(array_channels[i].clone().into(), array_values[i]);
             }
         }
 
@@ -384,13 +265,7 @@ export_cpy!(
             }
 
             for i in 0..channels.len() {
-                NavigationManager::get_instance()
-                .lock()
-                .unwrap()
-                .as_mut()
-                .unwrap()
-                .navigator
-                .set_pwm_channel_value(channels[i].clone().into(), values[i]);
+                with_navigator!().set_pwm_channel_value(channels[i].clone().into(), values[i]);
             }
         }
     }
