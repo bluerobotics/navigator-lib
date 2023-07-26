@@ -384,6 +384,11 @@ export_cpy!(
         }
 
         fn_py set_pwm_channels_values(channels: Vec<PwmChannel>, values: Vec<u16>) {
+            if (channels.len() != values.len()) {
+                println!("The number of values is different from the number of PWM channels.");
+                return
+            }
+
             for i in 0..channels.len() {
                 NavigationManager::get_instance()
                 .lock()
