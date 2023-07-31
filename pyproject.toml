@@ -6,11 +6,18 @@ build-backend = "maturin"
 name = "navigator"
 requires-python = ">=3.7"
 classifiers = [
+    "Framework :: Robot Framework",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Embedded Systems",
     "Programming Language :: Rust",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
 ]
+description = "This package serves as the entry point for embedded applications using Python on Blue Robotics's Navigator"
+readme = "README.md"
 
+[project.urls]
+Homepage = "https://bluerobotics.com/store/comm-control-power/control/navigator/"
+Documentation = "https://docs.bluerobotics.com/navigator-lib/python"
+Repository = "https://github.com/bluerobotics/navigator-lib"
 
 [tool.maturin]
 features = ["python"]
