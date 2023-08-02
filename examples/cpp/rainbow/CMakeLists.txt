@@ -26,7 +26,7 @@ endif()
 
 target_link_libraries(
     ${PROJECT_NAME}
-        "${RUST_OUT_DIR}/libnavigator.${LIB_EXT}"
+        "${RUST_OUT_DIR}/libbluerobotics_navigator.${LIB_EXT}"
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 11 CXX_STANDARD_REQUIRED ON)
