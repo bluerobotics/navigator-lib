@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/navigator-rs-0.2.0/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="navigator_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (864bdf784 2023-07-25)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../navigator_rs/index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Bluerobotics-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/index.crates.io-6f17d22bba15001f/navigator-rs-0.2.1/src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="navigator_rs" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (d12c6e947 2023-08-01)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../navigator_rs/index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Bluerobotics-logo.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -992,6 +992,33 @@
 <a href="#992" id="992">992</a>
 <a href="#993" id="993">993</a>
 <a href="#994" id="994">994</a>
+<a href="#995" id="995">995</a>
+<a href="#996" id="996">996</a>
+<a href="#997" id="997">997</a>
+<a href="#998" id="998">998</a>
+<a href="#999" id="999">999</a>
+<a href="#1000" id="1000">1000</a>
+<a href="#1001" id="1001">1001</a>
+<a href="#1002" id="1002">1002</a>
+<a href="#1003" id="1003">1003</a>
+<a href="#1004" id="1004">1004</a>
+<a href="#1005" id="1005">1005</a>
+<a href="#1006" id="1006">1006</a>
+<a href="#1007" id="1007">1007</a>
+<a href="#1008" id="1008">1008</a>
+<a href="#1009" id="1009">1009</a>
+<a href="#1010" id="1010">1010</a>
+<a href="#1011" id="1011">1011</a>
+<a href="#1012" id="1012">1012</a>
+<a href="#1013" id="1013">1013</a>
+<a href="#1014" id="1014">1014</a>
+<a href="#1015" id="1015">1015</a>
+<a href="#1016" id="1016">1016</a>
+<a href="#1017" id="1017">1017</a>
+<a href="#1018" id="1018">1018</a>
+<a href="#1019" id="1019">1019</a>
+<a href="#1020" id="1020">1020</a>
+<a href="#1021" id="1021">1021</a>
 </pre></div><pre class="rust"><code><span class="attr">#![deny(unsafe_code)]
 #![doc(html_logo_url = <span class="string">&quot;https://upload.wikimedia.org/wikipedia/commons/1/12/Bluerobotics-logo.svg&quot;</span>)]
 #![doc = <span class="macro">include_str!</span>(<span class="string">&quot;../README.md&quot;</span>)]
@@ -1012,6 +1039,7 @@
 <span class="kw">use </span>log::{info, warn};
 <span class="kw">use </span>nb::block;
 <span class="kw">use </span>pwm_pca9685::{Address <span class="kw">as </span>pwm_Address, Pca9685};
+<span class="kw">use </span>sk6812_rpi::led::Led <span class="kw">as </span>StripLed;
 <span class="kw">use </span>sk6812_rpi::strip::{Bus, Strip};
 <span class="kw">use </span>std::{
     fmt,
@@ -1184,6 +1212,11 @@
     </span>oe_pin: Pin,
 }
 
+<span class="doccomment">/// Build pattern structure
+</span><span class="kw">pub struct </span>NavigatorBuilder {
+    rgb_led_strip_size: usize,
+}
+
 <span class="kw">impl </span>Default <span class="kw">for </span>Led {
     <span class="kw">fn </span>default() -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>::new()
@@ -1256,8 +1289,13 @@
     }
 }
 
-<span class="kw">impl </span>Navigator {
-    <span class="kw">pub fn </span>new() -&gt; Navigator {
+<span class="kw">impl </span>NavigatorBuilder {
+    <span class="kw">pub fn </span>with_rgb_led_strip_size(<span class="kw-2">mut </span><span class="self">self</span>, size: usize) -&gt; <span class="self">Self </span>{
+        <span class="self">self</span>.rgb_led_strip_size = size;
+        <span class="self">self
+    </span>}
+
+    <span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; Navigator {
         env_logger::init();
 
         <span class="kw">let </span>dev = I2cdev::new(<span class="string">&quot;/dev/i2c-4&quot;</span>).unwrap();
@@ -1278,7 +1316,9 @@
             .expect(<span class="string">&quot;Error: Failed to build BMP280 device&quot;</span>);
         bmp.zero().unwrap();
 
-        <span class="kw">let </span>neopixel = Strip::new(Bus::Spi0, <span class="number">1</span>).unwrap();
+        <span class="kw">let </span><span class="kw-2">mut </span>neopixel = Strip::new(Bus::Spi0, <span class="self">self</span>.rgb_led_strip_size).unwrap();
+        <span class="comment">// Clear RGB led strip before starting using it
+        </span>neopixel.clear();
 
         <span class="kw">let </span><span class="kw-2">mut </span>spi = Spidev::open(<span class="string">&quot;/dev/spidev1.0&quot;</span>).expect(<span class="string">&quot;Error: Failed during setting up SPI&quot;</span>);
         <span class="kw">let </span>options = SpidevOptions::new()
@@ -1315,7 +1355,7 @@
 
         <span class="kw">let </span>led = Led::new();
 
-        <span class="self">Self </span>{
+        Navigator {
             adc: (adc),
             bmp: (bmp),
             pwm: Pwm { pca: pwm, oe_pin },
@@ -1324,6 +1364,18 @@
             led: (led),
             neopixel: (neopixel),
         }
+    }
+}
+
+<span class="kw">impl </span>Navigator {
+    <span class="kw">pub fn </span>new() -&gt; Navigator {
+        <span class="self">Self</span>::create().build()
+    }
+
+    <span class="kw">pub fn </span>create() -&gt; NavigatorBuilder {
+        NavigatorBuilder {
+            rgb_led_strip_size: <span class="number">1</span>, <span class="comment">// There is only a single LED on the board
+        </span>}
     }
 
     <span class="kw">pub fn </span>init(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
@@ -1689,7 +1741,9 @@
     ///
     /// This will set the first LED to blue, second to green, and third to red.
     </span><span class="kw">pub fn </span>set_neopixel(<span class="kw-2">&amp;mut </span><span class="self">self</span>, array: <span class="kw-2">&amp;</span>[[u8; <span class="number">3</span>]]) {
-        <span class="self">self</span>.neopixel.fill(array[<span class="number">0</span>].into());
+        <span class="kw">for </span>(index, value) <span class="kw">in </span>array.iter().enumerate() {
+            <span class="self">self</span>.neopixel.leds[index] = StripLed::from_rgb(value[<span class="number">0</span>], value[<span class="number">1</span>], value[<span class="number">2</span>]);
+        }
         <span class="self">self</span>.neopixel.update().unwrap();
     }
 
