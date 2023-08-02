@@ -11,7 +11,7 @@ fn main() {
         .with_crate(crate_dir)
         .with_parse_deps(false)
         .with_language(cbindgen::Language::Cxx)
-        .with_parse_expand(&["navigator"])
+        .with_parse_expand(&["bluerobotics_navigator"])
         .generate()
         .expect("Unable to generate bindings")
         .write_to_file(bindings_file);

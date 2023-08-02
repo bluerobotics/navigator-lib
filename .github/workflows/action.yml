@@ -124,7 +124,7 @@ jobs:
           apt-get install -y --no-install-recommends python3 python3-pip
           pip3 install -U pip
         run: |
-          pip3 install navigator --no-index --find-links dist/ --force-reinstall
+          pip3 install bluerobotics_navigator --no-index --find-links dist/ --force-reinstall
     - uses: uraimo/run-on-arch-action@master
       if: matrix.libc == 'musllinux_1_1'
       name: Install built wheel musl
@@ -136,7 +136,7 @@ jobs:
           apk add py3-pip
           pip3 install -U pip
         run: |
-          pip3 install navigator --no-index --find-links dist/ --force-reinstall
+          pip3 install bluerobotics_navigator --no-index --find-links dist/ --force-reinstall
     - name: Upload wheels
       uses: actions/upload-artifact@v3
       with:

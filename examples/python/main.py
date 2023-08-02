@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import os
-import navigator
-from navigator import AdcChannel, PwmChannel, UserLed
+import bluerobotics_navigator as navigator
+from bluerobotics_navigator import AdcChannel, PwmChannel, UserLed
 
 
 def navigator_check():

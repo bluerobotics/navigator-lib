@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import navigator
+import bluerobotics_navigator as navigator
 import time
 import math
 

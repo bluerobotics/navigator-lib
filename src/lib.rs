@@ -98,7 +98,7 @@ impl From<navigator_rs::ADCData> for ADCData {
 }
 
 export_cpy!(
-    mod navigator {
+    mod bluerobotics_navigator {
         enum AdcChannel {
             Ch0,
             Ch1,
