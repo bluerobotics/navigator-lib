@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["Error"],"struct":["Bmp280","Bmp280Builder"],"type":["Result"]};

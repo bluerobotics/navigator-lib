@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["F2p2","Gamma","GammaFn"],"trait":["Number"]};

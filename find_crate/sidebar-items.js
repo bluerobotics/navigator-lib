@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["Dependencies","Error"],"fn":["find_crate"],"struct":["Manifest","Package"]};

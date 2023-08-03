@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"macro":["toml"],"mod":["de","map","ser","value"],"struct":["Spanned"]};

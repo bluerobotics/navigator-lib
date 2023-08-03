@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["DifferentialA0A1","DifferentialA0A3","DifferentialA1A3","DifferentialA2A3","SingleA0","SingleA1","SingleA2","SingleA3"]};

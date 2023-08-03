@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":["gamma","linear","pixel","srgb"],"trait":["TransferFn"]};

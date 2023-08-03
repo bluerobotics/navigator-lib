@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"struct":["Luma"],"trait":["LumaStandard"],"type":["GammaLuma","GammaLumaa","LinLuma","LinLumaa","Lumaa","SrgbLuma","SrgbLumaa"]};

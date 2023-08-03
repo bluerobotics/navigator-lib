@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"enum":["Resource"],"fn":["getrlimit","setrlimit"],"type":["rlim_t"]};
