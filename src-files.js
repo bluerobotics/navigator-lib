@@ -5,6 +5,7 @@ var srcIndex = JSON.parse('{\
 "approx":["",[],["abs_diff_eq.rs","lib.rs","macros.rs","relative_eq.rs","ulps_eq.rs"]],\
 "bitflags":["",[],["external.rs","internal.rs","iter.rs","lib.rs","parser.rs","public.rs","traits.rs"]],\
 "bitvec":["",[["array",[],["api.rs","iter.rs","ops.rs","traits.rs"]],["boxed",[],["api.rs","iter.rs","ops.rs","traits.rs"]],["field",[],["io.rs"]],["macros",[],["internal.rs"]],["ptr",[],["addr.rs","proxy.rs","range.rs","single.rs","span.rs"]],["slice",[["specialization",[],["lsb0.rs","msb0.rs"]]],["api.rs","iter.rs","ops.rs","specialization.rs","traits.rs"]],["vec",[],["api.rs","iter.rs","ops.rs","traits.rs"]]],["access.rs","array.rs","boxed.rs","devel.rs","domain.rs","field.rs","index.rs","lib.rs","macros.rs","mem.rs","order.rs","ptr.rs","slice.rs","store.rs","vec.rs","view.rs"]],\
+"bluerobotics_navigator":["",[],["lib.rs"]],\
 "bmp280":["",[],["lib.rs"]],\
 "byteorder":["",[],["io.rs","lib.rs"]],\
 "cast":["",[],["lib.rs"]],\
@@ -28,7 +29,6 @@ var srcIndex = JSON.parse('{\
 "log":["",[],["lib.rs","macros.rs"]],\
 "memchr":["",[["memchr",[["x86",[],["avx.rs","mod.rs","sse2.rs"]]],["fallback.rs","iter.rs","mod.rs","naive.rs"]],["memmem",[["prefilter",[["x86",[],["avx.rs","mod.rs","sse.rs"]]],["fallback.rs","genericsimd.rs","mod.rs"]],["x86",[],["avx.rs","mod.rs","sse.rs"]]],["byte_frequencies.rs","genericsimd.rs","mod.rs","rabinkarp.rs","rarebytes.rs","twoway.rs","util.rs","vector.rs"]]],["cow.rs","lib.rs"]],\
 "memoffset":["",[],["lib.rs","offset_of.rs","raw_field.rs","span_of.rs"]],\
-"navigator":["",[],["lib.rs"]],\
 "navigator_rs":["",[],["lib.rs"]],\
 "nb":["",[],["lib.rs"]],\
 "nix":["",[["mount",[],["linux.rs","mod.rs"]],["net",[],["if_.rs","mod.rs"]],["sys",[["ioctl",[],["linux.rs","mod.rs"]],["ptrace",[],["linux.rs","mod.rs"]],["socket",[],["addr.rs","mod.rs","sockopt.rs"]]],["aio.rs","epoll.rs","eventfd.rs","inotify.rs","memfd.rs","mman.rs","mod.rs","personality.rs","pthread.rs","quota.rs","reboot.rs","resource.rs","select.rs","sendfile.rs","signal.rs","signalfd.rs","stat.rs","statfs.rs","statvfs.rs","sysinfo.rs","termios.rs","time.rs","timerfd.rs","uio.rs","utsname.rs","wait.rs"]]],["dir.rs","env.rs","errno.rs","fcntl.rs","features.rs","ifaddrs.rs","kmod.rs","lib.rs","macros.rs","mqueue.rs","poll.rs","pty.rs","sched.rs","time.rs","ucontext.rs","unistd.rs"]],\
