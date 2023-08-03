@@ -13,6 +13,7 @@ classifiers = [
 ]
 description = "This package serves as the entry point for embedded applications using Python on Blue Robotics's Navigator"
 readme = "README.md"
+dynamic = ["version"]
 
 [project.urls]
 Homepage = "https://bluerobotics.com/store/comm-control-power/control/navigator/"
@@ -21,3 +22,17 @@ Repository = "https://github.com/bluerobotics/navigator-lib"
 
 [tool.maturin]
 features = ["python"]
+
+[tool.hatch.envs.dev]
+dependencies = [
+    "maturin >=1.0.1",
+    "sphinx >=6.2.1",
+    "sphinx-rtd-theme >=1.2.2",
+    "sphinxcontrib-napoleon >=0.7",
+    "sphinx-pyproject >=0.1.0",
+    "ziglang >=0.10.1",
+]
+
+[tool.hatch.envs.dev.scripts]
+install = "maturin develop"
+build-doc = "install && sphinx-build ./docs/source docs/_build"
