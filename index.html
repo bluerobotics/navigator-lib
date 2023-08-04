@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlueRobotics’s Navigator Library &mdash; bluerobotics-navigator 0.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            bluerobotics-navigator
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Bluerobotics-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">BlueRobotics’s Navigator Library</a><ul>
+<li><a class="reference internal" href="#bluerobotics_navigator.ADCData"><code class="docutils literal notranslate"><span class="pre">ADCData</span></code></a><ul>
+<li><a class="reference internal" href="#bluerobotics_navigator.ADCData.channel"><code class="docutils literal notranslate"><span class="pre">ADCData.channel</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bluerobotics_navigator.AdcChannel"><code class="docutils literal notranslate"><span class="pre">AdcChannel</span></code></a><ul>
+<li><a class="reference internal" href="#bluerobotics_navigator.AdcChannel.Ch0"><code class="docutils literal notranslate"><span class="pre">AdcChannel.Ch0</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.AdcChannel.Ch1"><code class="docutils literal notranslate"><span class="pre">AdcChannel.Ch1</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.AdcChannel.Ch2"><code class="docutils literal notranslate"><span class="pre">AdcChannel.Ch2</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.AdcChannel.Ch3"><code class="docutils literal notranslate"><span class="pre">AdcChannel.Ch3</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bluerobotics_navigator.AxisData"><code class="docutils literal notranslate"><span class="pre">AxisData</span></code></a><ul>
+<li><a class="reference internal" href="#bluerobotics_navigator.AxisData.x"><code class="docutils literal notranslate"><span class="pre">AxisData.x</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.AxisData.y"><code class="docutils literal notranslate"><span class="pre">AxisData.y</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.AxisData.z"><code class="docutils literal notranslate"><span class="pre">AxisData.z</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel"><code class="docutils literal notranslate"><span class="pre">PwmChannel</span></code></a><ul>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.All"><code class="docutils literal notranslate"><span class="pre">PwmChannel.All</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch1"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch1</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch10"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch10</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch11"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch11</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch12"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch12</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch13"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch13</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch14"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch14</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch15"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch15</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch16"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch16</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch2"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch2</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch3"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch3</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch4"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch4</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch5"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch5</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch6"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch6</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch7"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch7</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch8"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch8</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch9"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch9</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bluerobotics_navigator.UserLed"><code class="docutils literal notranslate"><span class="pre">UserLed</span></code></a><ul>
+<li><a class="reference internal" href="#bluerobotics_navigator.UserLed.Led1"><code class="docutils literal notranslate"><span class="pre">UserLed.Led1</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.UserLed.Led2"><code class="docutils literal notranslate"><span class="pre">UserLed.Led2</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.UserLed.Led3"><code class="docutils literal notranslate"><span class="pre">UserLed.Led3</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bluerobotics_navigator.get_led"><code class="docutils literal notranslate"><span class="pre">get_led()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.pwm_enable"><code class="docutils literal notranslate"><span class="pre">pwm_enable()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.read_accel"><code class="docutils literal notranslate"><span class="pre">read_accel()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.read_adc"><code class="docutils literal notranslate"><span class="pre">read_adc()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.read_adc_all"><code class="docutils literal notranslate"><span class="pre">read_adc_all()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.read_gyro"><code class="docutils literal notranslate"><span class="pre">read_gyro()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.read_mag"><code class="docutils literal notranslate"><span class="pre">read_mag()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.read_pressure"><code class="docutils literal notranslate"><span class="pre">read_pressure()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.read_temp"><code class="docutils literal notranslate"><span class="pre">read_temp()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.self_test"><code class="docutils literal notranslate"><span class="pre">self_test()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_led"><code class="docutils literal notranslate"><span class="pre">set_led()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_led_all"><code class="docutils literal notranslate"><span class="pre">set_led_all()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_led_toggle"><code class="docutils literal notranslate"><span class="pre">set_led_toggle()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_neopixel"><code class="docutils literal notranslate"><span class="pre">set_neopixel()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value"><code class="docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channels_value"><code class="docutils literal notranslate"><span class="pre">set_pwm_channels_value()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channels_values"><code class="docutils literal notranslate"><span class="pre">set_pwm_channels_values()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_hz"><code class="docutils literal notranslate"><span class="pre">set_pwm_freq_hz()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_prescale"><code class="docutils literal notranslate"><span class="pre">set_pwm_freq_prescale()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">bluerobotics-navigator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BlueRobotics’s Navigator Library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bluerobotics-s-navigator-library">
+<h1>BlueRobotics’s Navigator Library<a class="headerlink" href="#bluerobotics-s-navigator-library" title="Permalink to this heading"></a></h1>
+<p>This library serves as the entry point for embedding applications using Python on Blue Robotics’s <a class="reference external" href="https://bluerobotics.com/store/comm-control-power/control/navigator/">Navigator</a>.</p>
+<p>The Navigator board has the Raspberry Pi HAT form factor, which allows you to easily attach it to a Raspberry Pi 4 board. Then you can unleash the power of Navigator to develop new solutions or interact with your ROV hardware.</p>
+<p>The board offers the following capabilities:</p>
+<p>Control:</p>
+<ul class="simple">
+<li><p>LEDs</p></li>
+<li><p>PWM (Pulse Width Modulation) with 16 channels</p></li>
+</ul>
+<p>Measurements:</p>
+<ul class="simple">
+<li><p>ADC (Analog Digital Converter) entries</p></li>
+<li><p>Magnetic field</p></li>
+<li><p>Acceleration</p></li>
+<li><p>Angular velocity</p></li>
+<li><p>Temperature</p></li>
+<li><p>Pressure</p></li>
+</ul>
+<p>Currently, it supports <strong>armv7</strong> and <strong>aarch64</strong> architectures, which are the official defaults for <a class="reference external" href="https://docs.bluerobotics.com/ardusub-zola/software/onboard/BlueOS-1.1/">BlueOS</a>.
+However, despite using the embedded-hal concept, new ports can be added as long as the platform matches the hardware design and specifications.</p>
+<p>For more information, including installation instructions, schematics, and hardware specifications, please check the navigator hardware setup <a class="reference external" href="https://bluerobotics.com/learn/navigator-hardware-setup/#introduction">guide</a>.</p>
+<span class="target" id="module-bluerobotics_navigator"></span><dl class="py class">
+<dt class="sig sig-object py" id="bluerobotics_navigator.ADCData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">ADCData</span></span><a class="headerlink" href="#bluerobotics_navigator.ADCData" title="Permalink to this definition"></a></dt>
+<dd><p>Encapsulates the value of ADC’s four channels.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.ADCData.channel">
+<span class="sig-name descname"><span class="pre">channel</span></span><a class="headerlink" href="#bluerobotics_navigator.ADCData.channel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bluerobotics_navigator.AdcChannel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">AdcChannel</span></span><a class="headerlink" href="#bluerobotics_navigator.AdcChannel" title="Permalink to this definition"></a></dt>
+<dd><p>Set of available options to select ADC’s channel.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.AdcChannel.Ch0">
+<span class="sig-name descname"><span class="pre">Ch0</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">AdcChannel.Ch0</span></em><a class="headerlink" href="#bluerobotics_navigator.AdcChannel.Ch0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.AdcChannel.Ch1">
+<span class="sig-name descname"><span class="pre">Ch1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">AdcChannel.Ch1</span></em><a class="headerlink" href="#bluerobotics_navigator.AdcChannel.Ch1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.AdcChannel.Ch2">
+<span class="sig-name descname"><span class="pre">Ch2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">AdcChannel.Ch2</span></em><a class="headerlink" href="#bluerobotics_navigator.AdcChannel.Ch2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.AdcChannel.Ch3">
+<span class="sig-name descname"><span class="pre">Ch3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">AdcChannel.Ch3</span></em><a class="headerlink" href="#bluerobotics_navigator.AdcChannel.Ch3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bluerobotics_navigator.AxisData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">AxisData</span></span><a class="headerlink" href="#bluerobotics_navigator.AxisData" title="Permalink to this definition"></a></dt>
+<dd><p>The AxisData encapsulate values for the x, y, and z axes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.AxisData.x">
+<span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#bluerobotics_navigator.AxisData.x" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.AxisData.y">
+<span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#bluerobotics_navigator.AxisData.y" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.AxisData.z">
+<span class="sig-name descname"><span class="pre">z</span></span><a class="headerlink" href="#bluerobotics_navigator.AxisData.z" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">PwmChannel</span></span><a class="headerlink" href="#bluerobotics_navigator.PwmChannel" title="Permalink to this definition"></a></dt>
+<dd><p>Set of available options to select PWM’s channel.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.All">
+<span class="sig-name descname"><span class="pre">All</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.All</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.All" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch1">
+<span class="sig-name descname"><span class="pre">Ch1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch1</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch10">
+<span class="sig-name descname"><span class="pre">Ch10</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch10</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch10" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch11">
+<span class="sig-name descname"><span class="pre">Ch11</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch11</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch11" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch12">
+<span class="sig-name descname"><span class="pre">Ch12</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch12</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch12" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch13">
+<span class="sig-name descname"><span class="pre">Ch13</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch13</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch13" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch14">
+<span class="sig-name descname"><span class="pre">Ch14</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch14</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch14" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch15">
+<span class="sig-name descname"><span class="pre">Ch15</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch15</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch15" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch16">
+<span class="sig-name descname"><span class="pre">Ch16</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch16</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch16" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch2">
+<span class="sig-name descname"><span class="pre">Ch2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch2</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch3">
+<span class="sig-name descname"><span class="pre">Ch3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch3</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch4">
+<span class="sig-name descname"><span class="pre">Ch4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch4</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch5">
+<span class="sig-name descname"><span class="pre">Ch5</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch5</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch6">
+<span class="sig-name descname"><span class="pre">Ch6</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch6</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch6" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch7">
+<span class="sig-name descname"><span class="pre">Ch7</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch7</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch7" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch8">
+<span class="sig-name descname"><span class="pre">Ch8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch8</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch8" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch9">
+<span class="sig-name descname"><span class="pre">Ch9</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch9</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch9" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bluerobotics_navigator.UserLed">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">UserLed</span></span><a class="headerlink" href="#bluerobotics_navigator.UserLed" title="Permalink to this definition"></a></dt>
+<dd><p>Set of options to control navigator’s LEDs.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.UserLed.Led1">
+<span class="sig-name descname"><span class="pre">Led1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">UserLed.Led1</span></em><a class="headerlink" href="#bluerobotics_navigator.UserLed.Led1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.UserLed.Led2">
+<span class="sig-name descname"><span class="pre">Led2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">UserLed.Led2</span></em><a class="headerlink" href="#bluerobotics_navigator.UserLed.Led2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.UserLed.Led3">
+<span class="sig-name descname"><span class="pre">Led3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">UserLed.Led3</span></em><a class="headerlink" href="#bluerobotics_navigator.UserLed.Led3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.get_led">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">get_led</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">select</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.get_led" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the selected navigator LED output state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>select</strong> (<a class="reference internal" href="#bluerobotics_navigator.UserLed" title="bluerobotics_navigator.UserLed"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserLed</span></code></a>) – A pin to be selected.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The true state means the LED is on.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">get_led</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.init">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.init" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the navigator module with default settings.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.pwm_enable">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">pwm_enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.pwm_enable" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the PWM IC to be enabled through firmware and OE_pin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>bool</em>) – The state of PWM output, it’s enabled with a true logic value.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Please check <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.read_accel">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_accel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_accel" title="Permalink to this definition"></a></dt>
+<dd><p>Reads acceleration based on ICM20689 of Navigator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Measurements in [m/s²]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bluerobotics_navigator.AxisData" title="bluerobotics_navigator.AxisData"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxisData</span></code></a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_accel</span><span class="p">()</span><span class="o">.</span><span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">z</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.read_adc">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_adc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_adc" title="Permalink to this definition"></a></dt>
+<dd><p>Reads the ADC based on ADS1115 of Navigator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>select</strong> (<a class="reference internal" href="#bluerobotics_navigator.AdcChannel" title="bluerobotics_navigator.AdcChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">AdcChannel</span></code></a>) – A pin to be selected.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Measurements in [V].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float32</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">AdcChannel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_adc</span><span class="p">(</span><span class="n">AdcChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.read_adc_all">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_adc_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_adc_all" title="Permalink to this definition"></a></dt>
+<dd><p>Reads the ADC based on ADS1115 of Navigator.</p>
+<p>Same as <a class="reference internal" href="#bluerobotics_navigator.read_adc" title="bluerobotics_navigator.read_adc"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_adc()</span></code></a>, but it returns an array with all channel readings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Measurements in [V].</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bluerobotics_navigator.ADCData" title="bluerobotics_navigator.ADCData"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADCData</span></code></a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_adc_all</span><span class="p">()</span><span class="o">.</span><span class="n">channel</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.read_gyro">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_gyro</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_gyro" title="Permalink to this definition"></a></dt>
+<dd><p>Reads angular velocity based on ICM20689 of Navigator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Measurements in [rad/s]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bluerobotics_navigator.AxisData" title="bluerobotics_navigator.AxisData"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxisData</span></code></a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_gyro</span><span class="p">()</span><span class="o">.</span><span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">z</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.read_mag">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_mag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_mag" title="Permalink to this definition"></a></dt>
+<dd><p>Reads the magnetometer Ak09915 of Navigator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Measurements in [µT]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#bluerobotics_navigator.AxisData" title="bluerobotics_navigator.AxisData"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxisData</span></code></a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_mag</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">z</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.read_pressure">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_pressure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_pressure" title="Permalink to this definition"></a></dt>
+<dd><p>Reads the pressure based on BMP280 of Navigator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Measurements in [kPa]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float32</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_pressure</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.read_temp">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_temp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_temp" title="Permalink to this definition"></a></dt>
+<dd><p>Reads the temperature using BMP280 of Navigator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Measurements in [˚C]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float32</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_temperature</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.self_test">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">self_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.self_test" title="Permalink to this definition"></a></dt>
+<dd><p>Runs some tests on available sensors, then returns the result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The true state means the sensors are OK.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">self_test</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_led">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_led</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">select</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_led" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the selected navigator LED output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>select</strong> (<a class="reference internal" href="#bluerobotics_navigator.UserLed" title="bluerobotics_navigator.UserLed"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserLed</span></code></a>) – A pin to be selected.</p></li>
+<li><p><strong>state</strong> (<em>bool</em>) – The value of output, LED is on with a true logic value.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_led_all">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_led_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_led_all" title="Permalink to this definition"></a></dt>
+<dd><p>Set all LEDs on desired state ( Blue, Green and Red ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>bool</em>) – The value of output, LED is on with a true logic value.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led_all</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_led_toggle">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_led_toggle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">select</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_led_toggle" title="Permalink to this definition"></a></dt>
+<dd><p>Toggle the output of selected LED.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>select</strong> (<a class="reference internal" href="#bluerobotics_navigator.UserLed" title="bluerobotics_navigator.UserLed"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserLed</span></code></a>) – A pin to be selected.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led_toggle</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_neopixel">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_neopixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgb_array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_neopixel" title="Permalink to this definition"></a></dt>
+<dd><p>Set the values of the neopixel LED array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>[</em><em>[</em><em>uint8</em><em>, </em><em>uint8</em><em>, </em><em>uint8</em><em>]</em><em>]</em>) – A 2D array containing RGB values for each LED. Each inner value representing the Red, Green and Blue from a LED.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_neopixel</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_channel_value">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_channel_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_channel_value" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the Duty Cycle (high value time) of selected channel.</p>
+<p>On PCA9685, this function sets the OFF counter and uses ON value as 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channel</strong> (<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>) – The channel to be selected for PWM.</p></li>
+<li><p><strong>value</strong> (<em>u16</em>) – Duty cycle value.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">PwmChannel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_hz</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_channels_value">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_channels_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_channels_value" title="Permalink to this definition"></a></dt>
+<dd><p>Like <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a>. This function sets the Duty Cycle for a list of multiple channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channels</strong> ([<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>]) – An array of channels to be selected for PWM.</p></li>
+<li><p><strong>value</strong> (<em>u16</em>) – The duty cycle value.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>You can use this method like <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channels_value</span><span class="p">([</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch16</span><span class="p">],</span> <span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_channels_values">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_channels_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_channels_values" title="Permalink to this definition"></a></dt>
+<dd><p>Like <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a>. This function sets the Duty Cycle for a list of multiple channels with multiple values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>channels</strong> ([<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>]) – An array of channels to be selected for PWM.</p></li>
+<li><p><strong>values</strong> (<em>[</em><em>u16</em><em>]</em>) – An array Duty cycle value.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>You can use this method like <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channels_values</span><span class="p">([</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">500</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_freq_hz">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_freq_hz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_freq_hz" title="Permalink to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Sets the pwm frequency in Hertz of Navigator. Similar to <a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_prescale" title="bluerobotics_navigator.set_pwm_freq_prescale"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_freq_prescale()</span></code></a>.</p>
+</div></blockquote>
+<p class="rubric">Notes</p>
+<p>The navigator module uses a crystal with a 24.5760 MHz clock.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>freq</strong> (<em>float32</em>) – The prescaler value (24..1526)[Hz].</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_hz</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_freq_prescale">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_freq_prescale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_freq_prescale" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the PWM frequency of Navigator.</p>
+<p>It changes the PRE_SCALE value on PCA9685.</p>
+<p>The prescaler value can be calculated for an update rate using the formula:</p>
+<p>prescale_value = round(clock_freq / (4096 * desired_freq)) - 1.</p>
+<p>If you want to control a servo, set a prescaler value of 100. This will correspond to a frequency of about 60 Hz, which is the frequency at which servos work.</p>
+<p class="rubric">Notes</p>
+<p>Re-run the set_pwm_channel_value() is required.</p>
+<p>The minimum prescaler value is 3, which corresponds to 1526 Hz. The maximum prescaler value is 255, which corresponds to 24 Hz.</p>
+<p>Internally, this function stops the oscillator and restarts it after setting the prescaler value if it was running.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>uint8</em>) – The prescaler value (3..255).</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_prescale</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
