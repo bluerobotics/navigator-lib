@@ -1,6 +1,6 @@
 [build-system]
-requires = ["maturin>=0.14,<0.15"]
-build-backend = "maturin"
+requires = ["maturin>=1.0.1", "hatchling>=1.21.1"]
+build-backend = "hatchling.build"
 
 [project]
 name = "bluerobotics_navigator"
