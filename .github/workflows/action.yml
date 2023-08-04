@@ -169,9 +169,12 @@ jobs:
         override: true
     - name: Build docs
       run: pip install hatch && hatch run dev:build-doc
+    # Move it to its own folder
+    - name: Move python documentation
+      run: mkdir -p pages/python && mv docs/_build/* pages/python/
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       if: ${{ github.ref == 'refs/heads/master' }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/_build
+        publish_dir: ./pages
