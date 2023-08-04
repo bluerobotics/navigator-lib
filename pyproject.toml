@@ -37,5 +37,6 @@ dependencies = [
 ]
 
 [tool.hatch.envs.dev.scripts]
+build = "maturin build"
 install = "maturin develop"
 build-doc = "install && sphinx-build ./docs/source docs/_build"
