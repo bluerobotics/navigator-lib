@@ -158,6 +158,37 @@ jobs:
       with:
         packages-dir: .
 
+  release-assets:
+    needs: ["build-cpp","build-python"]
+    runs-on: ubuntu-latest
+    if: "startsWith(github.ref, 'refs/tags/')"
+    steps:
+    - name: Download cpp artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: cpp
+        path: cpp
+    - name: Download python artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: python
+        path: python
+    - name: Compress artifacts
+      run: |
+        sudo apt update
+        sudo apt install -y zip
+        cd cpp
+        zip -rT ../cpp.zip *
+        cd ../python
+        zip -rT ../python.zip *
+    - name: Upload assets to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./*.zip
+        tag: ${{ github.ref }}
+        file_glob: true
+
   deploy-doc:
     needs: quick-tests
     runs-on: ubuntu-latest
