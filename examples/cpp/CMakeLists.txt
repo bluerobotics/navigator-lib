@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(example)
 
-add_executable(${PROJECT_NAME} main.cpp)
-
 include(ExternalProject)
 
 set_directory_properties(PROPERTIES EP_PREFIX ${CMAKE_BINARY_DIR}/Rust)
@@ -14,8 +12,6 @@ add_custom_target(navigator
     COMMENT "C binds generated: ${RUST_OUT_DIR}"
 )
 
-add_dependencies(${PROJECT_NAME} navigator)
-
 if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     set(LIB_EXT "dylib")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
@@ -24,10 +20,18 @@ else()
     set(LIB_EXT "so")
 endif()
 
-target_link_libraries(
-    ${PROJECT_NAME}
-        "${RUST_OUT_DIR}/libbluerobotics_navigator.${LIB_EXT}"
-)
+# List of binaries
+set(BINARIES simple rainbow)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 11 CXX_STANDARD_REQUIRED ON)
-target_include_directories(${PROJECT_NAME} PRIVATE "${RUST_OUT_DIR}")
+foreach(BINARY ${BINARIES})
+    add_executable(${BINARY} ${BINARY}.cpp)
+    add_dependencies(${BINARY} navigator)
+
+    target_link_libraries(
+        ${BINARY}
+            "${RUST_OUT_DIR}/libbluerobotics_navigator.${LIB_EXT}"
+    )
+
+    set_target_properties(${BINARY} PROPERTIES CXX_STANDARD 11 CXX_STANDARD_REQUIRED ON)
+    target_include_directories(${BINARY} PRIVATE "${RUST_OUT_DIR}")
+endforeach()
