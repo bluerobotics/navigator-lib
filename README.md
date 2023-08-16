@@ -1,7 +1,7 @@
 # Navigator Library
 
 [![Actions](https://github.com/bluerobotics/navigator-lib/actions/workflows/action.yml/badge.svg)](https://github.com/bluerobotics/navigator-lib/actions/workflows/action.yml)
-![PyPI](https://img.shields.io/pypi/v/bluerobotics_navigator)
+[![PyPI](https://img.shields.io/pypi/v/bluerobotics_navigator)](https://pypi.org/project/bluerobotics-navigator/)
 
 This library serves as the entry point for applications that want to use [Navigator](https://bluerobotics.com/store/comm-control-power/control/navigator/) with Python or C++.
 
