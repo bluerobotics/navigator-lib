@@ -348,8 +348,12 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">get_led</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">get_led</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -360,7 +364,9 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 <dd><p>Initialize the navigator module with default settings.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -395,10 +401,18 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_accel</span><span class="p">()</span><span class="o">.</span><span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">y</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">z</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_accel</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">z</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -420,8 +434,12 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">AdcChannel</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_adc</span><span class="p">(</span><span class="n">AdcChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">AdcChannel</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_adc</span><span class="p">(</span><span class="n">AdcChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -441,7 +459,9 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_adc_all</span><span class="p">()</span><span class="o">.</span><span class="n">channel</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_adc_all</span><span class="p">()</span><span class="o">.</span><span class="n">channel</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -460,10 +480,18 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_gyro</span><span class="p">()</span><span class="o">.</span><span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">y</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">z</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_gyro</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">z</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -482,10 +510,18 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_mag</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">y</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">z</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_mag</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">AxisData</span><span class="o">.</span><span class="n">z</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -504,7 +540,9 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_pressure</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_pressure</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -523,7 +561,9 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_temperature</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">read_temperature</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -542,7 +582,9 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">self_test</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">self_test</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -561,8 +603,12 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -578,8 +624,12 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led_all</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led_all</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -595,8 +645,12 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led_toggle</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led_toggle</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -604,15 +658,19 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 <dl class="py function">
 <dt class="sig sig-object py" id="bluerobotics_navigator.set_neopixel">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_neopixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgb_array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_neopixel" title="Permalink to this definition"></a></dt>
-<dd><p>Set the values of the neopixel LED array.</p>
+<dd><p>Set the values of the neopixel LED array for Python.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>state</strong> (<em>[</em><em>[</em><em>uint8</em><em>, </em><em>uint8</em><em>, </em><em>uint8</em><em>]</em><em>]</em>) – A 2D array containing RGB values for each LED. Each inner value representing the Red, Green and Blue from a LED.</p>
+<dd class="field-odd"><p><strong>state</strong> (<em>[</em><em>[</em><em>uint8</em><em>, </em><em>uint8</em><em>, </em><em>uint8</em><em>]</em><em>]</em>) – <p>A 2D array containing RGB values for each LED.</p>
+<p>Each inner value representing the Red, Green and Blue from a LED.</p>
+</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_neopixel</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_neopixel</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -632,11 +690,21 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">PwmChannel</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_hz</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">PwmChannel</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_hz</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -663,28 +731,13 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 <dl class="py function">
 <dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_channels_values">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_channels_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_channels_values" title="Permalink to this definition"></a></dt>
-<dd><p>Like <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a>. This function sets the Duty Cycle for a list of multiple channels with multiple values.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>channels</strong> ([<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>]) – An array of channels to be selected for PWM.</p></li>
-<li><p><strong>values</strong> (<em>[</em><em>u16</em><em>]</em>) – An array Duty cycle value.</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<p>You can use this method like <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channels_values</span><span class="p">([</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">500</span><span class="p">])</span>
-</pre></div>
-</div>
+<dd><p>No documentation</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_freq_hz">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_freq_hz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_freq_hz" title="Permalink to this definition"></a></dt>
-<dd><blockquote>
-<div><p>Sets the pwm frequency in Hertz of Navigator. Similar to <a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_prescale" title="bluerobotics_navigator.set_pwm_freq_prescale"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_freq_prescale()</span></code></a>.</p>
-</div></blockquote>
+<dd><p>Sets the pwm frequency in Hertz of Navigator. Similar to <a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_prescale" title="bluerobotics_navigator.set_pwm_freq_prescale"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_freq_prescale()</span></code></a>.</p>
 <p class="rubric">Notes</p>
 <p>The navigator module uses a crystal with a 24.5760 MHz clock.</p>
 <dl class="field-list simple">
@@ -694,9 +747,15 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_hz</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_hz</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -708,11 +767,14 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 <p>It changes the PRE_SCALE value on PCA9685.</p>
 <p>The prescaler value can be calculated for an update rate using the formula:</p>
 <p>prescale_value = round(clock_freq / (4096 * desired_freq)) - 1.</p>
-<p>If you want to control a servo, set a prescaler value of 100. This will correspond to a frequency of about 60 Hz, which is the frequency at which servos work.</p>
+<p>If you want to control a servo, set a prescaler value of 100.</p>
+<p>This will correspond to a frequency of about 60 Hz, which is the frequency at which servos work.</p>
 <p class="rubric">Notes</p>
 <p>Re-run the set_pwm_channel_value() is required.</p>
-<p>The minimum prescaler value is 3, which corresponds to 1526 Hz. The maximum prescaler value is 255, which corresponds to 24 Hz.</p>
-<p>Internally, this function stops the oscillator and restarts it after setting the prescaler value if it was running.</p>
+<p>The minimum prescaler value is 3, which corresponds to 1526 Hz.</p>
+<p>The maximum prescaler value is 255, which corresponds to 24 Hz.</p>
+<p>Internally, this function stops the oscillator and restarts it after setting the prescaler value</p>
+<p>if it was running.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>uint8</em>) – The prescaler value (3..255).</p>
@@ -720,9 +782,15 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_prescale</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_prescale</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
