@@ -249,7 +249,7 @@ fn set_neopixel_py(rgb_array: Vec<[u8; 3]>) {
 #[cpy_fn]
 #[comment_c = "Reads the ADC channel values (from the ADS1115 chip)."]
 #[comment_py = "Reads the ADC channel values (from the ADS1115 chip).\n
-    Same as :py:func:`read_adc`, but it returns an array with all channel readings\n
+    Same as :py:func:`read_adc`, but it returns an array with all channel readings.\n
     Returns:\n
         :py:class:`ADCData`: Measurements in [V].\n
     Examples:\n
@@ -360,7 +360,7 @@ fn pwm_enable(state: bool) {
     where `clock_freq` is 24_576_000 to match the Navigator's 24.5760 MHz clock.\n
     Notes:\n
         Changing the pre-scaler affects the channel outputs, so they need to be re-configured afterwards
-        (e.g. using py:func:`set_pwm_channel_value`).\n
+        (e.g. using :py:func:`set_pwm_channel_value`).\n
         The minimum prescaler value is 3, which corresponds to 1526 Hz.\n
         The maximum prescaler value is 255, which corresponds to 24 Hz.\n
         Servo motors generally work best with PWM frequencies between 50-200 Hz,
@@ -403,7 +403,7 @@ fn set_pwm_freq_hz(freq: f32) {
 #[comment_py = "Sets the duty cycle (the proportion of ON time) for the selected PWM channel.\n
     This sets the PWM channel's OFF counter, with the ON counter hard-coded to 0.\n
     The output turns ON at the start of each cycle, then turns OFF after the specified count 
-    (value), where each full cycle (defined by py:func:`set_pwm_freq_hz`) is split into 4096
+    (value), where each full cycle (defined by :py:func:`set_pwm_freq_hz`) is split into 4096
     segments.\n
     Notes:\n
         A duty cycle of 20% is achieved using a count of 819.\n
