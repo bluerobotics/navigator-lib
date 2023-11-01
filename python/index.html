@@ -442,7 +442,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 <dt class="sig sig-object py" id="bluerobotics_navigator.read_adc_all">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_adc_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_adc_all" title="Link to this definition"></a></dt>
 <dd><p>Reads the ADC channel values (from the ADS1115 chip).</p>
-<p>Same as <a class="reference internal" href="#bluerobotics_navigator.read_adc" title="bluerobotics_navigator.read_adc"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_adc()</span></code></a>, but it returns an array with all channel readings</p>
+<p>Same as <a class="reference internal" href="#bluerobotics_navigator.read_adc" title="bluerobotics_navigator.read_adc"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_adc()</span></code></a>, but it returns an array with all channel readings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Measurements in [V].</p>
@@ -663,7 +663,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 <dd><p>Sets the duty cycle (the proportion of ON time) for the selected PWM channel.</p>
 <p>This sets the PWM channel’s OFF counter, with the ON counter hard-coded to 0.</p>
 <p>The output turns ON at the start of each cycle, then turns OFF after the specified count
-(value), where each full cycle (defined by py:func:<cite>set_pwm_freq_hz</cite>) is split into 4096
+(value), where each full cycle (defined by <a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_hz" title="bluerobotics_navigator.set_pwm_freq_hz"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_freq_hz()</span></code></a>) is split into 4096
 segments.</p>
 <p class="rubric">Notes</p>
 <p>A duty cycle of 20% is achieved using a count of 819.</p>
@@ -767,7 +767,7 @@ framerate (e.g. a 30fps camera stream should have LEDs at 30/60/90/120/… Hz).<
 <p>where <cite>clock_freq</cite> is 24_576_000 to match the Navigator’s 24.5760 MHz clock.</p>
 <p class="rubric">Notes</p>
 <p>Changing the pre-scaler affects the channel outputs, so they need to be re-configured afterwards
-(e.g. using py:func:<cite>set_pwm_channel_value</cite>).</p>
+(e.g. using <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a>).</p>
 <p>The minimum prescaler value is 3, which corresponds to 1526 Hz.</p>
 <p>The maximum prescaler value is 255, which corresponds to 24 Hz.</p>
 <p>Servo motors generally work best with PWM frequencies between 50-200 Hz,
