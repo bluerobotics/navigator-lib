@@ -469,7 +469,7 @@ fn set_pwm_channels_values_c(channels: *const PwmChannel, values: *const u16, le
 }
 
 #[cpy_fn_py]
-#[comment_py = "Like :py:func:`set_pwm_channel_value`. This function sets the duty cycle for a list of
+#[comment = "Like :py:func:`set_pwm_channel_value`. This function sets the duty cycle for a list of
     multiple channels with multiple values.\n
     Args:\n
         channels ([:py:class:`PwmChannel`]): A list of PWM channels to configure.\n
