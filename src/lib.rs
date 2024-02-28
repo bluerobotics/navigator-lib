@@ -351,6 +351,18 @@ fn set_pwm_enable(state: bool) {
 }
 
 #[cpy_fn]
+#[comment_c = "Get the PWM chip (PCA9685)'s OE_pin state"]
+#[comment_py = "Get the PWM chip (PCA9685)'s OE_pin state.\n
+    Returns:\n
+        bool: `True` -> ON, `False` -> OFF.\n
+    Examples:\n
+        Please check :py:func:`set_pwm_channel_value`\n
+        >>> navigator.get_pwm_enable()"]
+fn get_pwm_enable() -> bool {
+    with_navigator!().get_pwm_enable()
+}
+
+#[cpy_fn]
 #[comment_c = "LOW_LEVEL: Sets the PWM frequency of the PCA9685 chip. All channels use the same frequency."]
 #[comment_py = "LOW_LEVEL: Sets the PWM frequency of the PCA9685 chip. All channels use the same frequency.\n\n
     This directly sets the PRE_SCALE value on the PCA9685 - it is generally easier to use
@@ -507,6 +519,7 @@ cpy_module!(
         read_accel,
         read_gyro,
         set_pwm_enable,
+        get_pwm_enable,
         set_pwm_freq_prescale,
         set_pwm_freq_hz,
         set_pwm_channel_value,
