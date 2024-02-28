@@ -345,9 +345,9 @@ fn read_gyro() -> AxisData {
         state (bool): The desired PWM chip state. `True` -> ON, `False` -> OFF.\n
     Examples:\n
         Please check :py:func:`set_pwm_channel_value`\n
-        >>> navigator.pwm_enable(True)"]
-fn pwm_enable(state: bool) {
-    with_navigator!().pwm_enable(state)
+        >>> navigator.set_pwm_enable(True)"]
+fn set_pwm_enable(state: bool) {
+    with_navigator!().set_pwm_enable(state)
 }
 
 #[cpy_fn]
@@ -373,7 +373,7 @@ fn pwm_enable(state: bool) {
         >>> import bluerobotics_navigator as navigator\n
         >>> navigator.set_pwm_freq_prescale(119)\n
         >>> navigator.set_pwm_channel_value(PwmChannel.Ch1, 2000)\n
-        >>> navigator.pwm_enable(True)"]
+        >>> navigator.set_pwm_enable(True)"]
 fn set_pwm_freq_prescale(value: u8) {
     with_navigator!().set_pwm_freq_prescale(value)
 }
@@ -393,7 +393,7 @@ fn set_pwm_freq_prescale(value: u8) {
         >>> import bluerobotics_navigator as navigator\n
         >>> navigator.set_pwm_freq_hz(60)\n
         >>> navigator.set_pwm_channel_value(PwmChannel.Ch1, 2000)\n
-        >>> navigator.pwm_enable(True)"]
+        >>> navigator.set_pwm_enable(True)"]
 fn set_pwm_freq_hz(freq: f32) {
     with_navigator!().set_pwm_freq_hz(freq)
 }
@@ -402,7 +402,7 @@ fn set_pwm_freq_hz(freq: f32) {
 #[comment_c = "Sets the duty cycle (the proportion of ON time) for the selected PWM channel."]
 #[comment_py = "Sets the duty cycle (the proportion of ON time) for the selected PWM channel.\n
     This sets the PWM channel's OFF counter, with the ON counter hard-coded to 0.\n
-    The output turns ON at the start of each cycle, then turns OFF after the specified count 
+    The output turns ON at the start of each cycle, then turns OFF after the specified count
     (value), where each full cycle (defined by :py:func:`set_pwm_freq_hz`) is split into 4096
     segments.\n
     Notes:\n
@@ -421,7 +421,7 @@ fn set_pwm_freq_hz(freq: f32) {
         >>> navigator.init()\n
         >>> navigator.set_pwm_freq_hz(1000)\n
         >>> navigator.set_pwm_channel_value(PwmChannel.Ch1, 2000)\n
-        >>> navigator.pwm_enable(True)"]
+        >>> navigator.set_pwm_enable(True)"]
 fn set_pwm_channel_value(channel: PwmChannel, value: u16) {
     with_navigator!().set_pwm_channel_value(channel.into(), value)
 }
@@ -506,7 +506,7 @@ cpy_module!(
         read_mag,
         read_accel,
         read_gyro,
-        pwm_enable,
+        set_pwm_enable,
         set_pwm_freq_prescale,
         set_pwm_freq_hz,
         set_pwm_channel_value,
