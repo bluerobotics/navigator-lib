@@ -339,6 +339,18 @@ fn read_gyro() -> AxisData {
 }
 
 #[cpy_fn]
+#[comment_c = "Reads the state of leak detector pin from Navigator."]
+#[comment_py = "Reads the state of leak detector pin from Navigator.\n\n
+    Returns:\n
+        bool: The current state. `True` -> Leak detection, `False` -> No leak.\n
+    Examples:\n
+        >>> import bluerobotics_navigator as navigator\n
+        >>> leak_detector = navigator.read_leak()"]
+fn read_leak() -> bool {
+    with_navigator!().read_leak()
+}
+
+#[cpy_fn]
 #[comment_c = "Enables or disables the PWM chip (PCA9685), using the firmware and OE_pin."]
 #[comment_py = "Enables or disables the PWM chip (PCA9685), using the firmware and OE_pin.\n
     Args:\n
@@ -503,6 +515,7 @@ cpy_module!(
         read_adc,
         read_pressure,
         read_temp,
+        read_leak,
         read_mag,
         read_accel,
         read_gyro,
