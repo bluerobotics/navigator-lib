@@ -473,7 +473,7 @@ fn set_pwm_channel_duty_cycle(channel: PwmChannel, duty_cycle: f32) {
 }
 
 #[cpy_fn_c]
-#[comment = "Sets the duty cycle for a list of multiple PWM channels."]
+#[comment = "Sets the duty cycle (based on OFF counter from 0 to 4096) for a list of multiple PWM channels."]
 fn set_pwm_channels_value_c(channels: *const PwmChannel, value: u16, length: usize) {
     let array_channels = unsafe {
         assert!(!channels.is_null());
@@ -481,6 +481,18 @@ fn set_pwm_channels_value_c(channels: *const PwmChannel, value: u16, length: usi
     };
     for channel in array_channels.iter().take(length) {
         with_navigator!().set_pwm_channel_value(channel.clone().into(), value);
+    }
+}
+
+#[cpy_fn_c]
+#[comment = "Sets the duty cycle (from 0.0 to 1.0) for a list of multiple PWM channels."]
+fn set_pwm_channels_duty_cycle_c(channels: *const PwmChannel, duty_cycle: f32, length: usize) {
+    let array_channels = unsafe {
+        assert!(!channels.is_null());
+        std::slice::from_raw_parts(channels, length)
+    };
+    for channel in array_channels.iter().take(length) {
+        with_navigator!().set_pwm_channel_duty_cycle(channel.clone().into(), duty_cycle);
     }
 }
 
@@ -495,6 +507,20 @@ fn set_pwm_channels_value_c(channels: *const PwmChannel, value: u16, length: usi
 fn set_pwm_channels_value_py(channels: Vec<PwmChannel>, value: u16) {
     for i in 0..channels.len() {
         with_navigator!().set_pwm_channel_value(channels[i].clone().into(), value);
+    }
+}
+
+#[cpy_fn_py]
+#[comment = "Like :py:func:`set_pwm_channel_duty_cycle`. This function sets the duty cycle for a list of multiple PWM channels.\n
+    Args:\n
+        channels ([:py:class:`PwmChannel`]): A list of PWM channels to configure.\n
+        duty_cycle (f32) : Duty cycle count value (0.0 : 1.0).\n
+    Examples:\n
+        You can use this method like :py:func:`set_pwm_channel_duty_cycle`.\n
+        >>> navigator.set_pwm_channels_value([PwmChannel.Ch1, PwmChannel.Ch16], 0.5)"]
+fn set_pwm_channels_duty_cycle_py(channels: Vec<PwmChannel>, duty_cycle: f32) {
+    for channel in channels {
+        with_navigator!().set_pwm_channel_duty_cycle(channel.into(), duty_cycle);
     }
 }
 
@@ -601,6 +627,7 @@ cpy_module!(
         set_pwm_channel_value,
         set_pwm_channel_duty_cycle,
         set_pwm_channels_value,
+        set_pwm_channels_duty_cycle,
         set_pwm_channels_values,
         set_pwm_channels_duty_cycle_values
     ]
