@@ -95,7 +95,6 @@
 </li>
 <li><a class="reference internal" href="#bluerobotics_navigator.get_led"><code class="docutils literal notranslate"><span class="pre">get_led()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.pwm_enable"><code class="docutils literal notranslate"><span class="pre">pwm_enable()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_accel"><code class="docutils literal notranslate"><span class="pre">read_accel()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_adc"><code class="docutils literal notranslate"><span class="pre">read_adc()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_adc_all"><code class="docutils literal notranslate"><span class="pre">read_adc_all()</span></code></a></li>
@@ -111,6 +110,7 @@
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value"><code class="docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channels_value"><code class="docutils literal notranslate"><span class="pre">set_pwm_channels_value()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channels_values"><code class="docutils literal notranslate"><span class="pre">set_pwm_channels_values()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_enable"><code class="docutils literal notranslate"><span class="pre">set_pwm_enable()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_hz"><code class="docutils literal notranslate"><span class="pre">set_pwm_freq_hz()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_prescale"><code class="docutils literal notranslate"><span class="pre">set_pwm_freq_prescale()</span></code></a></li>
 </ul>
@@ -369,22 +369,6 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bluerobotics_navigator.pwm_enable">
-<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">pwm_enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.pwm_enable" title="Link to this definition"></a></dt>
-<dd><p>Enables or disables the PWM chip (PCA9685), using the firmware and OE_pin.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>state</strong> (<em>bool</em>) – The desired PWM chip state. <cite>True</cite> -&gt; ON, <cite>False</cite> -&gt; OFF.</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<p>Please check <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -698,7 +682,7 @@ Similarly, 1900 µs pulses would be achieved with a count of 389.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -743,6 +727,22 @@ multiple channels with multiple values.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_enable">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_enable" title="Link to this definition"></a></dt>
+<dd><p>Enables or disables the PWM chip (PCA9685), using the firmware and OE_pin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>bool</em>) – The desired PWM chip state. <cite>True</cite> -&gt; ON, <cite>False</cite> -&gt; OFF.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Please check <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_freq_hz">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_freq_hz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_freq_hz" title="Link to this definition"></a></dt>
 <dd><p>Sets the PWM frequency of the PCA9685 chip. All channels use the same frequency.</p>
@@ -767,7 +767,7 @@ framerate (e.g. a 30fps camera stream should have LEDs at 30/60/90/120/… Hz).<
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -805,7 +805,7 @@ after setting the prescalar value.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
