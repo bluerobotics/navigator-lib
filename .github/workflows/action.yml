@@ -166,8 +166,10 @@ jobs:
         githubToken: ${{ github.token }}
         install: |
           apk add py3-pip
-          pip3 install -U pip
         run: |
+          python3 -m venv ./venv
+          . ./venv/bin/activate
+          pip3 install -U pip
           pip3 install bluerobotics_navigator --no-index --find-links dist/ --force-reinstall
     - name: Upload wheels
       uses: actions/upload-artifact@v3
