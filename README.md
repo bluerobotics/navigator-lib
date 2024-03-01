@@ -5,7 +5,8 @@
 
 This library serves as the entry point for applications that want to use [Navigator](https://bluerobotics.com/store/comm-control-power/control/navigator/) with Python or C++.
 
-> For Rust 🦀, please check the [navigator-rs library](https://github.com/bluerobotics/navigator-rs).
+> 1 . How-to setup the Raspberry Pi computer, please read [Instructions](#ocean-instructions-for-blueoshttpsdiscussblueroboticscomtblueos-official-release12024-recommended).
+  2 . For **Rust** 🦀, please check the [navigator-rs library](https://github.com/bluerobotics/navigator-rs).
 
 
 ## Features
@@ -107,3 +108,29 @@ int main() {
 Currently, the library supports **armv7** and **aarch64** architectures, which are the official defaults for [BlueOS](https://docs.bluerobotics.com/ardusub-zola/software/onboard/BlueOS-1.1/). The library also provides C++ `.so` files for both `gnu` and `musl`.
 
 For more detailed information, including installation instructions, schematics, and hardware specifications, please refer to the [navigator hardware setup guide](https://bluerobotics.com/learn/navigator-hardware-setup/#introduction).
+
+##  :ocean: Instructions for [BlueOS](https://discuss.bluerobotics.com/t/blueos-official-release/12024) (Recommended)
+
+1. Open the [Autopilot Firmware](https://blueos.cloud/docs/blueos/latest/advanced-usage/#autopilot-firmware) page, enable [Pirate Mode](https://blueos.cloud/docs/blueos/latest/advanced-usage/#pirate-mode), and "change board" to SITL
+    - This stops the autopilot firmware from trying to operate while the WebAssistant is in use
+1. [Reboot](https://blueos.cloud/docs/blueos/latest/advanced-usage/#power) the vehicle computer, and wait for the interface to re-connect
+> Note: Since this library access the Navigator hardware, it **can´t** run in parallel with ArduPilot.
+If you are running ArduPilot, be sure to disable it or set the board as **SITL** (Software Simulation) before running Navigator WebAssistant
+
+##  :cherries: Instructions for [Raspberry Pi OS](https://www.raspberrypi.com/software/)
+
+1. Download the Raspberry OS image (32 or 64 bits)
+> Note: To use a kernel that matches with the BlueOS and avoid incompatilities, please use:
+**32** Bits: [raspios_lite_armhf-2023-02-22](https://downloads.raspberrypi.com/raspios_lite_armhf/images/raspios_lite_armhf-2023-02-22/)
+**64** Bits: [raspios_lite_arm64-2023-02-22](https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2023-02-22/)
+
+2. Install the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and flash the image
+> Note: You can also automatically setup the ssh, user, hostname and wi-fi settings.
+
+3. Execute the following command to setup the overlay required for Navigator ( I2C, SPI, GPIOs & others)
+
+
+```shell
+sudo su -c 'curl -fsSL https://raw.githubusercontent.com/bluerobotics/blueos-docker/master/install/boards/configure_board.sh | bash'
+sudo reboot
+```
