@@ -499,7 +499,7 @@ fn set_pwm_channels_value_py(channels: Vec<PwmChannel>, value: u16) {
 }
 
 #[cpy_fn_c]
-#[comment = "Sets the duty cycle for a list of multiple channels with multiple values."]
+#[comment = "Sets the duty cycle (from 0 to 4096) for a list of multiple channels with multiple values."]
 fn set_pwm_channels_values_c(channels: *const PwmChannel, values: *const u16, length: usize) {
     let array_channels = unsafe {
         assert!(!channels.is_null());
@@ -511,6 +511,27 @@ fn set_pwm_channels_values_c(channels: *const PwmChannel, values: *const u16, le
     };
     for i in 0..length {
         with_navigator!().set_pwm_channel_value(array_channels[i].clone().into(), array_values[i]);
+    }
+}
+
+#[cpy_fn_c]
+#[comment = "Sets the duty cycle (from 0.0 to 1.0) for a list of multiple channels with multiple values."]
+fn set_pwm_channels_duty_cycle_values_c(
+    channels: *const PwmChannel,
+    duty_cycle: *const f32,
+    length: usize,
+) {
+    let array_channels = unsafe {
+        assert!(!channels.is_null());
+        std::slice::from_raw_parts(channels, length)
+    };
+    let array_values = unsafe {
+        assert!(!duty_cycle.is_null());
+        std::slice::from_raw_parts(duty_cycle, length)
+    };
+    for i in 0..length {
+        with_navigator!()
+            .set_pwm_channel_duty_cycle(array_channels[i].clone().into(), array_values[i]);
     }
 }
 
@@ -534,6 +555,26 @@ fn set_pwm_channels_values_py(channels: Vec<PwmChannel>, values: Vec<u16>) {
     }
 }
 
+#[cpy_fn_py]
+#[comment = "Like :py:func:`set_pwm_channel_duty_cycle`. This function sets the duty cycle for a list of
+    multiple channels with multiple values.\n
+    Args:\n
+        channels ([:py:class:`PwmChannel`]): A list of PWM channels to configure.\n
+        duty_cycle_values (f32) : Duty cycle count value (0.0 : 1.0).\n
+    Examples:\n
+        You can use this method like :py:func:`set_pwm_channel_duty_cycle`.\n
+        >>> navigator.set_pwm_channels_duty_cycle_values([PwmChannel.Ch1, PwmChannel.Ch5], [0.25, 0.75])"]
+fn set_pwm_channels_duty_cycle_values_py(channels: Vec<PwmChannel>, duty_cycle_values: Vec<f32>) {
+    if channels.len() != duty_cycle_values.len() {
+        println!("The number of values is different from the number of PWM channels.");
+        return;
+    }
+
+    for i in 0..channels.len() {
+        with_navigator!()
+            .set_pwm_channel_duty_cycle(channels[i].clone().into(), duty_cycle_values[i]);
+    }
+}
 cpy_module!(
     name = bluerobotics_navigator,
     types = [AdcChannel, UserLed, PwmChannel, AxisData, ADCData],
@@ -560,6 +601,7 @@ cpy_module!(
         set_pwm_channel_value,
         set_pwm_channel_duty_cycle,
         set_pwm_channels_value,
-        set_pwm_channels_values
+        set_pwm_channels_values,
+        set_pwm_channels_duty_cycle_values
     ]
 );
