@@ -450,6 +450,28 @@ fn set_pwm_channel_value(channel: PwmChannel, value: u16) {
     with_navigator!().set_pwm_channel_value(channel.into(), value)
 }
 
+#[cpy_fn]
+#[comment_c = "Sets the duty cycle (the proportion of ON time) for the selected PWM channel."]
+#[comment_py = "Sets the duty cycle (the proportion of ON time) for the selected PWM channel.\n
+    Similar to :py:func:`set_pwm_channel_value`, this function calculate the OFF counter
+    value to match desired PWM channel's duty_cyle.\n
+    Notes:\n
+        A duty cycle of 1.0 or 0.0 acts like a relay.\n
+        Details of counters on IC, check :py:func:`set_pwm_channel_value`.
+    Args:\n
+        channel (:py:class:`PwmChannel`): The channel to be selected for PWM.\n
+        duty_cycle (f32) : Duty cycle count value (0.0 : 1.0).\n
+    Examples:\n
+        >>> import bluerobotics_navigator as navigator\n
+        >>> from bluerobotics_navigator import PwmChannel\n
+        >>> navigator.init()\n
+        >>> navigator.set_pwm_freq_hz(1000)\n
+        >>> navigator.set_pwm_channel_duty_cycle(PwmChannel.Ch1, 0.5)\n
+        >>> navigator.set_pwm_enable(True)"]
+fn set_pwm_channel_duty_cycle(channel: PwmChannel, duty_cycle: f32) {
+    with_navigator!().set_pwm_channel_duty_cycle(channel.into(), duty_cycle)
+}
+
 #[cpy_fn_c]
 #[comment = "Sets the duty cycle for a list of multiple PWM channels."]
 fn set_pwm_channels_value_c(channels: *const PwmChannel, value: u16, length: usize) {
@@ -536,6 +558,7 @@ cpy_module!(
         set_pwm_freq_prescale,
         set_pwm_freq_hz,
         set_pwm_channel_value,
+        set_pwm_channel_duty_cycle,
         set_pwm_channels_value,
         set_pwm_channels_values
     ]
