@@ -100,6 +100,7 @@
 <li><a class="reference internal" href="#bluerobotics_navigator.read_adc"><code class="docutils literal notranslate"><span class="pre">read_adc()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_adc_all"><code class="docutils literal notranslate"><span class="pre">read_adc_all()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_gyro"><code class="docutils literal notranslate"><span class="pre">read_gyro()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.read_leak"><code class="docutils literal notranslate"><span class="pre">read_leak()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_mag"><code class="docutils literal notranslate"><span class="pre">read_mag()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_pressure"><code class="docutils literal notranslate"><span class="pre">read_pressure()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_temp"><code class="docutils literal notranslate"><span class="pre">read_temp()</span></code></a></li>
@@ -492,6 +493,27 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yaw_rate</span> <span class="o">=</span> <span class="n">angular_velocity</span><span class="o">.</span><span class="n">z</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.read_leak">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_leak</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_leak" title="Link to this definition"></a></dt>
+<dd><p>Reads the state of leak detector pin from Navigator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current state. <cite>True</cite> -&gt; Leak detection, <cite>False</cite> -&gt; No leak.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">leak_detector</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_leak</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
