@@ -32,10 +32,10 @@ jobs:
       run: cargo build
     - name: Build Python module
       run: |
-        pip install --user maturin
-        pip install . --user
+        pip install --user maturin hatch
+        hatch run dev:install
     - name: Check Python integration
-      run: python examples/python/main.py
+      run: hatch run dev:examples/python/main.py
     - name: Check C++ integration
       run: |
         cd examples/cpp
