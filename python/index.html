@@ -94,6 +94,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#bluerobotics_navigator.get_led"><code class="docutils literal notranslate"><span class="pre">get_led()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.get_pwm_enable"><code class="docutils literal notranslate"><span class="pre">get_pwm_enable()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_accel"><code class="docutils literal notranslate"><span class="pre">read_accel()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_adc"><code class="docutils literal notranslate"><span class="pre">read_adc()</span></code></a></li>
@@ -356,6 +357,25 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">led1_on</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">get_led</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.get_pwm_enable">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">get_pwm_enable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.get_pwm_enable" title="Link to this definition"></a></dt>
+<dd><p>Get the PWM chip (PCA9685)’s OE_pin state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>True</cite> -&gt; ON, <cite>False</cite> -&gt; OFF.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Please check <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">get_pwm_enable</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
