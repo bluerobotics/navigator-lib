@@ -26,6 +26,9 @@ Repository = "https://github.com/bluerobotics/navigator-lib"
 [tool.maturin]
 features = ["python"]
 
+[tool.hatch.build.targets.wheel]
+packages = ["bluerobotics_navigator"]
+
 [tool.hatch.envs.dev]
 dependencies = [
     "maturin >=1.0.1",
