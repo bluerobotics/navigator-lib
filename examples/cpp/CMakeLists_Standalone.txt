@@ -29,7 +29,7 @@ ExternalProject_Add(
 if(${CMAKE_SYSTEM_PROCESSOR} MATCHES "armv7")
     set(LIB_PATH_SUBDIR "armv7-unknown-linux-gnueabihf")
 elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES "armv8" OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES "aarch64")
-    set(LIB_PATH_SUBDIR "aarch64-unknown-linux-gnueabihf")
+    set(LIB_PATH_SUBDIR "aarch64-unknown-linux-gnu")
 else()
     message(FATAL_ERROR "Unsupported architecture")
 endif()
