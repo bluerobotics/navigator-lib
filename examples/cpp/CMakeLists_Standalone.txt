@@ -2,9 +2,19 @@ cmake_minimum_required(VERSION 3.10)
 project(example)
 
 include(ExternalProject)
+include(FetchContent)
+
+# Function to fetch latest release version from GitHub
+function(fetch_latest_release owner_name repo_name out_variable)
+    file(DOWNLOAD "https://api.github.com/repos/${owner_name}/${repo_name}/releases/latest" "${CMAKE_BINARY_DIR}/latest_release.json" TLS_VERIFY ON)
+    file(READ "${CMAKE_BINARY_DIR}/latest_release.json" latest_release_json)
+    string(REGEX MATCH "\"tag_name\": \"([^\"]+)\"" _ ${latest_release_json})
+    set(${out_variable} "${CMAKE_MATCH_1}" PARENT_SCOPE)
+endfunction()
 
 if(NOT DEFINED NAVIGATOR_VERSION)
-    set(NAVIGATOR_VERSION "0.0.1")
+    fetch_latest_release("bluerobotics" "navigator-lib" NAVIGATOR_VERSION)
+    message(STATUS "Latest Navigator lib version: ${NAVIGATOR_VERSION}")
 endif()
 
 set(ZIP_URL "https://github.com/bluerobotics/navigator-lib/releases/download/${NAVIGATOR_VERSION}/cpp.zip")
