@@ -4,12 +4,14 @@ project(example)
 include(ExternalProject)
 
 if(NOT DEFINED NAVIGATOR_VERSION)
-    set(NAVIGATOR_VERSION "0.0.1")
+    set(ZIP_URL "https://github.com/bluerobotics/navigator-lib/releases/latest/download/cpp.zip")
+    message(STATUS "Using Navigator lib version: latest")
+else()
+    set(ZIP_URL "https://github.com/bluerobotics/navigator-lib/releases/download/${NAVIGATOR_VERSION}/cpp.zip")
+    message(STATUS "Using Navigator lib version: ${NAVIGATOR_VERSION}")
 endif()
 
-set(ZIP_URL "https://github.com/bluerobotics/navigator-lib/releases/download/${NAVIGATOR_VERSION}/cpp.zip")
 set(ZIP_UNPACK_DIR "${CMAKE_BINARY_DIR}/navigator_zip_contents")
-message(STATUS "Using Navigator lib version: ${NAVIGATOR_VERSION}")
 message(STATUS "Identified system processor: ${CMAKE_SYSTEM_PROCESSOR}")
 
 # Download released navigator lib files
