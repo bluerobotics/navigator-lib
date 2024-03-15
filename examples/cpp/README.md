@@ -1,6 +1,6 @@
 # How to use
 
-For BlueOS (red-pill)
+## Running example on BlueOS (red-pill)
 
 ```shell
 # Prepare the environment with cmake and cargo
@@ -18,4 +18,11 @@ cmake -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build --config Debug --
 # Run the binary
 ./build/simple
 
+```
+
+## Using Standalone Version
+Rename the CMakeLists_Standalone to CMakeLists.
+By default Standalone project will use latest versions, but a version can be selected as follows:
+```shell
+cmake -B build -DCMAKE_BUILD_TYPE=Debug -DNAVIGATOR_VERSION="0.0.1" && cmake --build build --config Debug --parallel
 ```
