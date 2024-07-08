@@ -246,6 +246,28 @@ fn set_neopixel_py(rgb_array: Vec<[u8; 3]>) {
     with_navigator!().set_neopixel(&rgb_array)
 }
 
+#[cpy_fn_c]
+#[comment = "Set the color brightnesses of a connected NeoPixel LED array."]
+fn set_neopixel_rgbw_c(rgb_array: *const [u8; 4], length: usize) {
+    let array = unsafe {
+        assert!(!rgb_array.is_null());
+        std::slice::from_raw_parts(rgb_array, length)
+    };
+    with_navigator!().set_neopixel_rgbw(array);
+}
+
+#[cpy_fn_py]
+#[comment = "Set the color brightnesses of a connected NeoPixel LED array.\n
+    Args:\n
+        state ([[uint8, uint8, uint8, uint8], ...]): A 2D array containing RGB values for each LED.\n
+            Set the Red, Green, Blue and White components independently, with values from 0-255.\n
+    Examples:\n
+        >>> import bluerobotics_navigator as navigator\n
+        >>> navigator.set_neopixel([[100,0,0,128]])"]
+fn set_neopixel_rgbw_py(rgb_array: Vec<[u8; 4]>) {
+    with_navigator!().set_neopixel_rgbw(&rgb_array)
+}
+
 #[cpy_fn]
 #[comment_c = "Reads the ADC channel values (from the ADS1115 chip)."]
 #[comment_py = "Reads the ADC channel values (from the ADS1115 chip).\n
@@ -612,6 +634,7 @@ cpy_module!(
         set_led_toggle,
         set_led_all,
         set_neopixel,
+        set_neopixel_rgbw,
         read_adc_all,
         read_adc,
         read_pressure,
