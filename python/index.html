@@ -7,7 +7,7 @@
   <title>BlueRobotics’s Navigator Library &mdash; bluerobotics-navigator 0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
 
   
   <!--[if lt IE 9]>
@@ -17,7 +17,7 @@
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="_static/documentation_options.js?v=7026087e"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -109,6 +109,7 @@
 <li><a class="reference internal" href="#bluerobotics_navigator.set_led_all"><code class="docutils literal notranslate"><span class="pre">set_led_all()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_led_toggle"><code class="docutils literal notranslate"><span class="pre">set_led_toggle()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_neopixel"><code class="docutils literal notranslate"><span class="pre">set_neopixel()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_neopixel_rgbw"><code class="docutils literal notranslate"><span class="pre">set_neopixel_rgbw()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_duty_cycle"><code class="docutils literal notranslate"><span class="pre">set_pwm_channel_duty_cycle()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value"><code class="docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channels_duty_cycle"><code class="docutils literal notranslate"><span class="pre">set_pwm_channels_duty_cycle()</span></code></a></li>
@@ -684,6 +685,26 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_neopixel</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_neopixel_rgbw">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_neopixel_rgbw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgb_array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_neopixel_rgbw" title="Link to this definition"></a></dt>
+<dd><p>Set the color brightnesses of a connected NeoPixel LED array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>[</em><em>[</em><em>uint8</em><em>, </em><em>uint8</em><em>, </em><em>uint8</em><em>, </em><em>uint8</em><em>]</em><em>, </em><em>...</em><em>]</em>) – <p>A 2D array containing RGB values for each LED.</p>
+<p>Set the Red, Green, Blue and White components independently, with values from 0-255.</p>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_neopixel</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">128</span><span class="p">]])</span>
 </pre></div>
 </div>
 </dd></dl>
