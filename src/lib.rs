@@ -3,6 +3,34 @@ use cpy_binder::{cpy_enum, cpy_fn, cpy_fn_c, cpy_fn_py, cpy_module, cpy_struct};
 use lazy_static::lazy_static;
 use std::sync::Mutex;
 
+struct NavigatorBuilderManager {
+    rgb_led_strip_size: usize,
+}
+
+lazy_static! {
+    static ref NAVIGATORBUILDER: Mutex<NavigatorBuilderManager> =
+        Mutex::new(NavigatorBuilderManager {
+            rgb_led_strip_size: 1,
+        });
+}
+
+macro_rules! with_navigator_builder {
+    () => {
+        NAVIGATORBUILDER.lock().unwrap()
+    };
+}
+
+#[cpy_fn]
+#[comment_c = "Sets the size of the navigator led strip (1 is the default), should be called before `init`."]
+#[comment_py = "Sets the size of the navigator led strip (1 is the default), should be called before `init`.\n
+    Examples:\n
+        >>> import bluerobotics_navigator as navigator\n
+        >>> navigator.set_rgb_led_strip_size(1)\n
+        >>> navigator.init()"]
+fn set_rgb_led_strip_size(size: usize) {
+    with_navigator_builder!().rgb_led_strip_size = size;
+}
+
 struct NavigatorManager {
     navigator: navigator_rs::Navigator,
 }
@@ -15,7 +43,9 @@ impl NavigatorManager {
     fn get_instance() -> &'static Mutex<Option<Self>> {
         if NAVIGATOR.lock().unwrap().is_none() {
             *NAVIGATOR.lock().unwrap() = Some(NavigatorManager {
-                navigator: navigator_rs::Navigator::new(),
+                navigator: navigator_rs::Navigator::create()
+                    .with_rgb_led_strip_size(with_navigator_builder!().rgb_led_strip_size)
+                    .build(),
             });
         }
         &NAVIGATOR
