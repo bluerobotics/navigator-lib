@@ -3,18 +3,18 @@ use cpy_binder::{cpy_enum, cpy_fn, cpy_fn_c, cpy_fn_py, cpy_module, cpy_struct};
 use lazy_static::lazy_static;
 use std::sync::Mutex;
 
-struct NavigationManager {
+struct NavigatorManager {
     navigator: navigator_rs::Navigator,
 }
 
 lazy_static! {
-    static ref NAVIGATOR: Mutex<Option<NavigationManager>> = Mutex::new(None);
+    static ref NAVIGATOR: Mutex<Option<NavigatorManager>> = Mutex::new(None);
 }
 
-impl NavigationManager {
+impl NavigatorManager {
     fn get_instance() -> &'static Mutex<Option<Self>> {
         if NAVIGATOR.lock().unwrap().is_none() {
-            *NAVIGATOR.lock().unwrap() = Some(NavigationManager {
+            *NAVIGATOR.lock().unwrap() = Some(NavigatorManager {
                 navigator: navigator_rs::Navigator::new(),
             });
         }
@@ -24,7 +24,7 @@ impl NavigationManager {
 
 macro_rules! with_navigator {
     () => {
-        NavigationManager::get_instance()
+        NavigatorManager::get_instance()
             .lock()
             .unwrap()
             .as_mut()
