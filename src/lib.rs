@@ -555,7 +555,7 @@ fn set_pwm_channels_duty_cycle_values_py(channels: Vec<PwmChannel>, duty_cycle_v
 }
 cpy_module!(
     name = bluerobotics_navigator,
-    types = [AdcChannel, UserLed, PwmChannel, AxisData],
+    types = [AdcChannel, UserLed, AxisData],
     functions = [
         init,
         self_test,
