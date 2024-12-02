@@ -34,9 +34,10 @@ int main() {
 
   printf("Leak sensor: %s\n", read_leak() ? "true" : "false");
 
-  ADCData adc = read_adc_all();
+  float adc[4];
+  read_adc_all(adc, 4);
   printf("Reading ADC Channels: 1 = %f, 2 = %f, 3 = %f, 4 = %f\n",
-         adc.channel[0], adc.channel[1], adc.channel[2], adc.channel[3]);
+         adc[0], adc[1], adc[2], adc[3]);
 
   printf("Data ADC Channels: 1 = %f\n", read_adc(AdcChannel::Ch1));
 
