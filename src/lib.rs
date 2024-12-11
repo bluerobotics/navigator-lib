@@ -444,7 +444,7 @@ fn set_pwm_channels_value_c(channels: *const usize, value: f32, length: usize) {
         std::slice::from_raw_parts(channels, length)
     };
     for channel in array_channels.iter().take(length) {
-        with_navigator!().set_pwm_duty_cycle(channel.clone(), value);
+        with_navigator!().set_pwm_duty_cycle(*channel, value);
     }
 }
 
@@ -456,7 +456,7 @@ fn set_pwm_channels_duty_cycle_c(channels: *const usize, duty_cycle: f32, length
         std::slice::from_raw_parts(channels, length)
     };
     for channel in array_channels.iter().take(length) {
-        with_navigator!().set_pwm_duty_cycle(channel.clone(), duty_cycle);
+        with_navigator!().set_pwm_duty_cycle(*channel, duty_cycle);
     }
 }
 
@@ -470,7 +470,7 @@ fn set_pwm_channels_duty_cycle_c(channels: *const usize, duty_cycle: f32, length
         >>> navigator.set_pwm_channels_value([PwmChannel.Ch1, PwmChannel.Ch16], 1000)"]
 fn set_pwm_channels_value_py(channels: Vec<PwmChannel>, value: u16) {
     for i in 0..channels.len() {
-        with_navigator!().set_pwm_channel_value(channels[i].clone(), value);
+        with_navigator!().set_pwm_channel_value(channels[i], value);
     }
 }
 
