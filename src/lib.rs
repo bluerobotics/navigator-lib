@@ -260,9 +260,7 @@ fn read_adc_all_c(adc_array: *mut f32, length: usize) {
     };
 
     let values = with_navigator!().read_adc_all();
-    for i in 0..length {
-        array[i] = values[i];
-    }
+    array[..length].copy_from_slice(&values[..length]);
 }
 
 #[cpy_fn]
@@ -413,7 +411,7 @@ fn set_pwm_freq_hz(freq: f32) {
         >>> navigator.set_pwm_channel_value(PwmChannel.Ch1, 2000)\n
         >>> navigator.set_pwm_enable(True)"]
 fn set_pwm_channel_value(channel: usize, value: f32) {
-    with_navigator!().set_pwm_duty_cycle(channel, value)
+    with_navigator!().set_pwm_duty_cycle(channel, value / 4096)
 }
 
 #[cpy_fn]
@@ -458,7 +456,7 @@ fn set_pwm_channels_duty_cycle_c(channels: *const usize, duty_cycle: f32, length
         std::slice::from_raw_parts(channels, length)
     };
     for channel in array_channels.iter().take(length) {
-        with_navigator!().set_pwm_duty_cycle(channel.clone().into(), duty_cycle);
+        with_navigator!().set_pwm_duty_cycle(channel.clone(), duty_cycle);
     }
 }
 
@@ -472,7 +470,7 @@ fn set_pwm_channels_duty_cycle_c(channels: *const usize, duty_cycle: f32, length
         >>> navigator.set_pwm_channels_value([PwmChannel.Ch1, PwmChannel.Ch16], 1000)"]
 fn set_pwm_channels_value_py(channels: Vec<PwmChannel>, value: u16) {
     for i in 0..channels.len() {
-        with_navigator!().set_pwm_channel_value(channels[i].clone().into(), value);
+        with_navigator!().set_pwm_channel_value(channels[i].clone(), value);
     }
 }
 
@@ -502,7 +500,7 @@ fn set_pwm_channels_values_c(channels: *const usize, values: *const f32, length:
         std::slice::from_raw_parts(values, length)
     };
     for i in 0..length {
-        with_navigator!().set_pwm_duty_cycle(array_channels[i].clone(), array_values[i]);
+        with_navigator!().set_pwm_duty_cycle(array_channels[i].into(), array_values[i]);
     }
 }
 
@@ -522,7 +520,7 @@ fn set_pwm_channels_duty_cycle_values_c(
         std::slice::from_raw_parts(duty_cycle, length)
     };
     for i in 0..length {
-        with_navigator!().set_pwm_duty_cycle(array_channels[i].clone().into(), array_values[i]);
+        with_navigator!().set_pwm_duty_cycle(array_channels[i].into(), array_values[i]);
     }
 }
 
