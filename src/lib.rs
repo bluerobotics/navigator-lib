@@ -411,7 +411,7 @@ fn set_pwm_freq_hz(freq: f32) {
         >>> navigator.set_pwm_channel_value(PwmChannel.Ch1, 2000)\n
         >>> navigator.set_pwm_enable(True)"]
 fn set_pwm_channel_value(channel: usize, value: f32) {
-    with_navigator!().set_pwm_duty_cycle(channel, value / 4096)
+    with_navigator!().set_pwm_duty_cycle(channel, value / 4096.0)
 }
 
 #[cpy_fn]
