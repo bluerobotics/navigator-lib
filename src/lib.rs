@@ -508,8 +508,7 @@ fn set_pwm_channels_duty_cycle_values_c(
         std::slice::from_raw_parts(duty_cycle, length)
     };
     for i in 0..length {
-        with_navigator!()
-            .set_pwm_duty_cycle(array_channels[i].clone().into(), array_values[i]);
+        with_navigator!().set_pwm_duty_cycle(array_channels[i].clone().into(), array_values[i]);
     }
 }
 
@@ -549,8 +548,7 @@ fn set_pwm_channels_duty_cycle_values_py(channels: Vec<PwmChannel>, duty_cycle_v
     }
 
     for i in 0..channels.len() {
-        with_navigator!()
-            .set_pwm_duty_cycle(channels[i].clone().into(), duty_cycle_values[i]);
+        with_navigator!().set_pwm_duty_cycle(channels[i].clone().into(), duty_cycle_values[i]);
     }
 }
 cpy_module!(
