@@ -500,7 +500,7 @@ fn set_pwm_channels_values_c(channels: *const usize, values: *const f32, length:
         std::slice::from_raw_parts(values, length)
     };
     for i in 0..length {
-        with_navigator!().set_pwm_duty_cycle(array_channels[i], array_values[i] as f32 / 4096.0);
+        with_navigator!().set_pwm_duty_cycle(array_channels[i], array_values[i] / 4096.0);
     }
 }
 
