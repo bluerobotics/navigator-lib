@@ -253,8 +253,8 @@ fn read_adc_all_py() -> Vec<f32> {
 
 #[cpy_fn_c]
 #[comment_c = "Reads the ADC channel values (from the ADS1115 chip)."]
-fn read_adc_all_c(mut adc_array: *mut f32, length: usize) {
-    let mut array = unsafe {
+fn read_adc_all_c(adc_array: *mut f32, length: usize) {
+    let array = unsafe {
         assert!(!adc_array.is_null());
         std::slice::from_raw_parts_mut::<f32>(adc_array, length)
     };
