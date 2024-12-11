@@ -468,9 +468,9 @@ fn set_pwm_channels_duty_cycle_c(channels: *const usize, duty_cycle: f32, length
     Examples:\n
         You can use this method like :py:func:`set_pwm_channel_value`.\n
         >>> navigator.set_pwm_channels_value([PwmChannel.Ch1, PwmChannel.Ch16], 1000)"]
-fn set_pwm_channels_value_py(channels: Vec<PwmChannel>, value: u16) {
+fn set_pwm_channels_value_py(channels: Vec<usize>, value: u16) {
     for i in 0..channels.len() {
-        with_navigator!().set_pwm_channel_value(channels[i], value);
+        with_navigator!().set_pwm_duty_cycle(channels[i], value as f32 / 4096.0);
     }
 }
 
@@ -482,7 +482,7 @@ fn set_pwm_channels_value_py(channels: Vec<PwmChannel>, value: u16) {
     Examples:\n
         You can use this method like :py:func:`set_pwm_channel_duty_cycle`.\n
         >>> navigator.set_pwm_channels_value([PwmChannel.Ch1, PwmChannel.Ch16], 0.5)"]
-fn set_pwm_channels_duty_cycle_py(channels: Vec<PwmChannel>, duty_cycle: f32) {
+fn set_pwm_channels_duty_cycle_py(channels: Vec<usize>, duty_cycle: f32) {
     for channel in channels {
         with_navigator!().set_pwm_duty_cycle(channel.into(), duty_cycle);
     }
@@ -500,7 +500,7 @@ fn set_pwm_channels_values_c(channels: *const usize, values: *const f32, length:
         std::slice::from_raw_parts(values, length)
     };
     for i in 0..length {
-        with_navigator!().set_pwm_duty_cycle(array_channels[i], array_values[i]);
+        with_navigator!().set_pwm_duty_cycle(array_channels[i], array_values[i] as f32 / 4096.0);
     }
 }
 
@@ -533,14 +533,14 @@ fn set_pwm_channels_duty_cycle_values_c(
     Examples:\n
         You can use this method like :py:func:`set_pwm_channel_value`.\n
         >>> navigator.set_pwm_channels_values([PwmChannel.Ch1, PwmChannel.Ch5], [1000, 500])"]
-fn set_pwm_channels_values_py(channels: Vec<PwmChannel>, values: Vec<u16>) {
+fn set_pwm_channels_values_py(channels: Vec<usize>, values: Vec<u16>) {
     if channels.len() != values.len() {
         println!("The number of values is different from the number of PWM channels.");
         return;
     }
 
     for i in 0..channels.len() {
-        with_navigator!().set_pwm_duty_cycle(channels[i].clone().into(), values[i]);
+        with_navigator!().set_pwm_duty_cycle(channels[i].clone().into(), values[i] as f32 / 4096.0);
     }
 }
 
@@ -553,7 +553,7 @@ fn set_pwm_channels_values_py(channels: Vec<PwmChannel>, values: Vec<u16>) {
     Examples:\n
         You can use this method like :py:func:`set_pwm_channel_duty_cycle`.\n
         >>> navigator.set_pwm_channels_duty_cycle_values([PwmChannel.Ch1, PwmChannel.Ch5], [0.25, 0.75])"]
-fn set_pwm_channels_duty_cycle_values_py(channels: Vec<PwmChannel>, duty_cycle_values: Vec<f32>) {
+fn set_pwm_channels_duty_cycle_values_py(channels: Vec<usize>, duty_cycle_values: Vec<f32>) {
     if channels.len() != duty_cycle_values.len() {
         println!("The number of values is different from the number of PWM channels.");
         return;
@@ -584,8 +584,6 @@ cpy_module!(
         read_accel,
         read_gyro,
         set_pwm_enable,
-        get_pwm_enable,
-        set_pwm_freq_prescale,
         set_pwm_freq_hz,
         set_pwm_channel_value,
         set_pwm_channel_duty_cycle,
