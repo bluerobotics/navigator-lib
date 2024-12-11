@@ -181,6 +181,20 @@ fn set_led_toggle(select: UserLed) {
     with_navigator!().set_led_toggle(select.into())
 }
 
+#[cpy_fn]
+#[comment_c = "Sets all user LEDs to the desired state ( Blue, Green, and Red )."]
+#[comment_py = "Sets all user LEDs to the desired state ( Blue, Green, and Red ).\n
+    Args:\n
+        state (bool): The desired output state. `True` -> ON, `False` -> OFF.\n
+    Examples:\n
+        >>> import bluerobotics_navigator as navigator\n
+        >>> navigator.set_led_all(True)"]
+fn set_led_all(state: bool) {
+    for led in [UserLed::Led1, UserLed::Led2, UserLed::Led3] {
+        with_navigator!().set_led(led.into(), state);
+    }
+}
+
 #[cpy_fn_c]
 #[comment = "Set the color brightnesses of a connected NeoPixel LED array."]
 fn set_neopixel_c(rgb_array: *const [u8; 3], length: usize) {
