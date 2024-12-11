@@ -2,7 +2,7 @@
 
 import os
 import bluerobotics_navigator as navigator
-from bluerobotics_navigator import AdcChannel, PwmChannel, UserLed
+from bluerobotics_navigator import AdcChannel, UserLed
 
 
 def navigator_check():
