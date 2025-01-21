@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -5,20 +7,16 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BlueRobotics’s Navigator Library &mdash; bluerobotics-navigator 0.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=7026087e"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=7026087e"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -36,9 +34,6 @@
             bluerobotics-navigator
               <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Bluerobotics-logo.svg" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                0.0.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -50,10 +45,6 @@
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">BlueRobotics’s Navigator Library</a><ul>
-<li><a class="reference internal" href="#bluerobotics_navigator.ADCData"><code class="docutils literal notranslate"><span class="pre">ADCData</span></code></a><ul>
-<li><a class="reference internal" href="#bluerobotics_navigator.ADCData.channel"><code class="docutils literal notranslate"><span class="pre">ADCData.channel</span></code></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#bluerobotics_navigator.AdcChannel"><code class="docutils literal notranslate"><span class="pre">AdcChannel</span></code></a><ul>
 <li><a class="reference internal" href="#bluerobotics_navigator.AdcChannel.Ch0"><code class="docutils literal notranslate"><span class="pre">AdcChannel.Ch0</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.AdcChannel.Ch1"><code class="docutils literal notranslate"><span class="pre">AdcChannel.Ch1</span></code></a></li>
@@ -67,26 +58,6 @@
 <li><a class="reference internal" href="#bluerobotics_navigator.AxisData.z"><code class="docutils literal notranslate"><span class="pre">AxisData.z</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel"><code class="docutils literal notranslate"><span class="pre">PwmChannel</span></code></a><ul>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.All"><code class="docutils literal notranslate"><span class="pre">PwmChannel.All</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch1"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch1</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch10"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch10</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch11"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch11</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch12"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch12</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch13"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch13</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch14"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch14</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch15"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch15</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch16"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch16</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch2"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch2</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch3"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch3</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch4"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch4</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch5"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch5</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch6"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch6</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch7"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch7</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch8"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch8</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.PwmChannel.Ch9"><code class="docutils literal notranslate"><span class="pre">PwmChannel.Ch9</span></code></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#bluerobotics_navigator.UserLed"><code class="docutils literal notranslate"><span class="pre">UserLed</span></code></a><ul>
 <li><a class="reference internal" href="#bluerobotics_navigator.UserLed.Led1"><code class="docutils literal notranslate"><span class="pre">UserLed.Led1</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.UserLed.Led2"><code class="docutils literal notranslate"><span class="pre">UserLed.Led2</span></code></a></li>
@@ -94,7 +65,6 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#bluerobotics_navigator.get_led"><code class="docutils literal notranslate"><span class="pre">get_led()</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.get_pwm_enable"><code class="docutils literal notranslate"><span class="pre">get_pwm_enable()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_accel"><code class="docutils literal notranslate"><span class="pre">read_accel()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.read_adc"><code class="docutils literal notranslate"><span class="pre">read_adc()</span></code></a></li>
@@ -118,7 +88,6 @@
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channels_values"><code class="docutils literal notranslate"><span class="pre">set_pwm_channels_values()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_enable"><code class="docutils literal notranslate"><span class="pre">set_pwm_enable()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_hz"><code class="docutils literal notranslate"><span class="pre">set_pwm_freq_hz()</span></code></a></li>
-<li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_prescale"><code class="docutils literal notranslate"><span class="pre">set_pwm_freq_prescale()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -170,17 +139,6 @@
 However, despite using the embedded-hal concept, new ports can be added as long as the platform matches the hardware design and specifications.</p>
 <p>For more information, including installation instructions, schematics, and hardware specifications, please check the navigator hardware setup <a class="reference external" href="https://bluerobotics.com/learn/navigator-hardware-setup/#introduction">guide</a>.</p>
 <dl class="py class" id="module-bluerobotics_navigator">
-<dt class="sig sig-object py" id="bluerobotics_navigator.ADCData">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">ADCData</span></span><a class="headerlink" href="#bluerobotics_navigator.ADCData" title="Link to this definition"></a></dt>
-<dd><p>An array of readings from the different ADC channels.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.ADCData.channel">
-<span class="sig-name descname"><span class="pre">channel</span></span><a class="headerlink" href="#bluerobotics_navigator.ADCData.channel" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="bluerobotics_navigator.AdcChannel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">AdcChannel</span></span><a class="headerlink" href="#bluerobotics_navigator.AdcChannel" title="Link to this definition"></a></dt>
 <dd><p>Available ADC channels to read from.</p>
@@ -228,97 +186,6 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">PwmChannel</span></span><a class="headerlink" href="#bluerobotics_navigator.PwmChannel" title="Link to this definition"></a></dt>
-<dd><p>Controllable PWM output channels.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.All">
-<span class="sig-name descname"><span class="pre">All</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.All</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.All" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch1">
-<span class="sig-name descname"><span class="pre">Ch1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch1</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch1" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch10">
-<span class="sig-name descname"><span class="pre">Ch10</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch10</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch10" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch11">
-<span class="sig-name descname"><span class="pre">Ch11</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch11</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch11" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch12">
-<span class="sig-name descname"><span class="pre">Ch12</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch12</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch12" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch13">
-<span class="sig-name descname"><span class="pre">Ch13</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch13</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch13" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch14">
-<span class="sig-name descname"><span class="pre">Ch14</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch14</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch14" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch15">
-<span class="sig-name descname"><span class="pre">Ch15</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch15</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch15" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch16">
-<span class="sig-name descname"><span class="pre">Ch16</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch16</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch16" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch2">
-<span class="sig-name descname"><span class="pre">Ch2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch2</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch2" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch3">
-<span class="sig-name descname"><span class="pre">Ch3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch3</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch3" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch4">
-<span class="sig-name descname"><span class="pre">Ch4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch4</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch4" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch5">
-<span class="sig-name descname"><span class="pre">Ch5</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch5</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch5" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch6">
-<span class="sig-name descname"><span class="pre">Ch6</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch6</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch6" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch7">
-<span class="sig-name descname"><span class="pre">Ch7</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch7</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch7" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch8">
-<span class="sig-name descname"><span class="pre">Ch8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch8</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch8" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="bluerobotics_navigator.PwmChannel.Ch9">
-<span class="sig-name descname"><span class="pre">Ch9</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PwmChannel.Ch9</span></em><a class="headerlink" href="#bluerobotics_navigator.PwmChannel.Ch9" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="bluerobotics_navigator.UserLed">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">UserLed</span></span><a class="headerlink" href="#bluerobotics_navigator.UserLed" title="Link to this definition"></a></dt>
 <dd><p>Onboard user-controllable LEDs.</p>
@@ -355,10 +222,10 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserLed</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">led1_on</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">get_led</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">)</span>
@@ -367,30 +234,11 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="bluerobotics_navigator.get_pwm_enable">
-<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">get_pwm_enable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.get_pwm_enable" title="Link to this definition"></a></dt>
-<dd><p>Get the PWM chip (PCA9685)’s OE_pin state.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>True</cite> -&gt; ON, <cite>False</cite> -&gt; OFF.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<p>Please check <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a></p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">get_pwm_enable</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="bluerobotics_navigator.init">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.init" title="Link to this definition"></a></dt>
-<dd><p>Initializes the Navigator module with default settings.</p>
+<dd><p>Initializes the Navigator module with default settings (not necessary).</p>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
@@ -411,7 +259,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">acceleration</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_accel</span><span class="p">()</span>
@@ -438,10 +286,10 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">AdcChannel</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdcChannel</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">adc1_measurement</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_adc</span><span class="p">(</span><span class="n">AdcChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">)</span>
@@ -452,23 +300,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 <dl class="py function">
 <dt class="sig sig-object py" id="bluerobotics_navigator.read_adc_all">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">read_adc_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.read_adc_all" title="Link to this definition"></a></dt>
-<dd><p>Reads the ADC channel values (from the ADS1115 chip).</p>
-<p>Same as <a class="reference internal" href="#bluerobotics_navigator.read_adc" title="bluerobotics_navigator.read_adc"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_adc()</span></code></a>, but it returns an array with all channel readings.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Measurements in [V].</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#bluerobotics_navigator.ADCData" title="bluerobotics_navigator.ADCData"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADCData</span></code></a></p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">adc_measurements</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_adc_all</span><span class="p">()</span><span class="o">.</span><span class="n">channel</span>
-</pre></div>
-</div>
+<dd><p>No documentation</p>
 </dd></dl>
 
 <dl class="py function">
@@ -484,7 +316,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">angular_velocity</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_gyro</span><span class="p">()</span>
@@ -514,7 +346,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">leak_detector</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_leak</span><span class="p">()</span>
@@ -535,7 +367,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mag_field</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_mag</span><span class="p">()</span>
@@ -556,7 +388,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">air_pressure</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_pressure</span><span class="p">()</span>
@@ -577,7 +409,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">air_temperature</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">read_temperature</span><span class="p">()</span>
@@ -588,7 +420,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 <dl class="py function">
 <dt class="sig sig-object py" id="bluerobotics_navigator.self_test">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">self_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.self_test" title="Link to this definition"></a></dt>
-<dd><p>Runs some tests on available sensors, then returns the result.</p>
+<dd><p>Runs some tests on available sensors, then returns the result (not necessary).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><cite>True</cite> if the sensors are responding as expected.</p>
@@ -598,7 +430,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sensors_ok</span> <span class="o">=</span> <span class="n">navigator</span><span class="o">.</span><span class="n">self_test</span><span class="p">()</span>
@@ -619,10 +451,10 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserLed</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
@@ -640,7 +472,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led_all</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -658,10 +490,10 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">UserLed</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserLed</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_led_toggle</span><span class="p">(</span><span class="n">UserLed</span><span class="o">.</span><span class="n">Led1</span><span class="p">)</span>
@@ -681,7 +513,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_neopixel</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
@@ -701,7 +533,7 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_neopixel</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">128</span><span class="p">]])</span>
@@ -721,16 +553,16 @@ value to match desired PWM channel’s duty_cyle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>channel</strong> (<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>) – The channel to be selected for PWM.</p></li>
+<li><p><strong>channel</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code>) – The channel to be selected for PWM.</p></li>
 <li><p><strong>duty_cycle</strong> (<em>f32</em>) – Duty cycle count value (0.0 : 1.0).</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">PwmChannel</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="kn">import</span> <span class="n">PwmChannel</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
@@ -765,16 +597,16 @@ Similarly, 1900 µs pulses would be achieved with a count of 389.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>channel</strong> (<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>) – The channel to be selected for PWM.</p></li>
+<li><p><strong>channel</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code>) – The channel to be selected for PWM.</p></li>
 <li><p><strong>value</strong> (<em>u16</em>) – Duty cycle count value (0..4095).</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bluerobotics_navigator</span> <span class="kn">import</span> <span class="n">PwmChannel</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="kn">import</span> <span class="n">PwmChannel</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
@@ -798,7 +630,7 @@ Similarly, 1900 µs pulses would be achieved with a count of 389.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>channels</strong> ([<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>]) – A list of PWM channels to configure.</p></li>
+<li><p><strong>channels</strong> ([<code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code>]) – A list of PWM channels to configure.</p></li>
 <li><p><strong>duty_cycle</strong> (<em>f32</em>) – Duty cycle count value (0.0 : 1.0).</p></li>
 </ul>
 </dd>
@@ -818,7 +650,7 @@ multiple channels with multiple values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>channels</strong> ([<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>]) – A list of PWM channels to configure.</p></li>
+<li><p><strong>channels</strong> ([<code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code>]) – A list of PWM channels to configure.</p></li>
 <li><p><strong>duty_cycle_values</strong> (<em>f32</em>) – Duty cycle count value (0.0 : 1.0).</p></li>
 </ul>
 </dd>
@@ -837,7 +669,7 @@ multiple channels with multiple values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>channels</strong> ([<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>]) – A list of PWM channels to configure.</p></li>
+<li><p><strong>channels</strong> ([<code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code>]) – A list of PWM channels to configure.</p></li>
 <li><p><strong>value</strong> (<em>u16</em>) – The desired duty cycle value (0..4095).</p></li>
 </ul>
 </dd>
@@ -857,7 +689,7 @@ multiple channels with multiple values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>channels</strong> ([<a class="reference internal" href="#bluerobotics_navigator.PwmChannel" title="bluerobotics_navigator.PwmChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code></a>]) – A list of PWM channels to configure.</p></li>
+<li><p><strong>channels</strong> ([<code class="xref py py-class docutils literal notranslate"><span class="pre">PwmChannel</span></code>]) – A list of PWM channels to configure.</p></li>
 <li><p><strong>values</strong> (<em>[</em><em>u16</em><em>]</em>) – A corresponding list of duty cycle values.</p></li>
 </ul>
 </dd>
@@ -889,7 +721,7 @@ multiple channels with multiple values.</p>
 <dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_freq_hz">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_freq_hz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_freq_hz" title="Link to this definition"></a></dt>
 <dd><p>Sets the PWM frequency of the PCA9685 chip. All channels use the same frequency.</p>
-<p>This is a convenience wrapper around <a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_prescale" title="bluerobotics_navigator.set_pwm_freq_prescale"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_freq_prescale()</span></code></a>, which chooses the closest
+<p>This is a convenience wrapper around <code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_freq_prescale()</span></code>, which chooses the closest
 possible pre-scaler to achieve the desired frequency.</p>
 <p class="rubric">Notes</p>
 <p>Servo motors generally work best with PWM frequencies between 50-200 Hz.</p>
@@ -901,51 +733,13 @@ framerate (e.g. a 30fps camera stream should have LEDs at 30/60/90/120/… Hz).<
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_hz</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="bluerobotics_navigator.set_pwm_freq_prescale">
-<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_pwm_freq_prescale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_pwm_freq_prescale" title="Link to this definition"></a></dt>
-<dd><p>LOW_LEVEL: Sets the PWM frequency of the PCA9685 chip. All channels use the same frequency.</p>
-<p>This directly sets the PRE_SCALE value on the PCA9685 - it is generally easier to use
-<a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_hz" title="bluerobotics_navigator.set_pwm_freq_hz"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_freq_hz()</span></code></a> instead.</p>
-<p>The desired prescaler value can be calculated for an update rate using the formula:</p>
-<p><cite>prescale_value = round(clock_freq / (4096 * desired_freq)) - 1</cite>,</p>
-<p>where <cite>clock_freq</cite> is 24_576_000 to match the Navigator’s 24.5760 MHz clock.</p>
-<p class="rubric">Notes</p>
-<p>Changing the pre-scaler affects the channel outputs, so they need to be re-configured afterwards
-(e.g. using <a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_value" title="bluerobotics_navigator.set_pwm_channel_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_pwm_channel_value()</span></code></a>).</p>
-<p>The minimum prescaler value is 3, which corresponds to 1526 Hz.</p>
-<p>The maximum prescaler value is 255, which corresponds to 24 Hz.</p>
-<p>Servo motors generally work best with PWM frequencies between 50-200 Hz,
-which corresponds to prescalar values of 119-29.</p>
-<p>Internally, this function stops the oscillator and restarts it (if it was already running)
-after setting the prescalar value.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<em>uint8</em>) – The desired prescaler value (3..255).</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">bluerobotics_navigator</span> <span class="k">as</span> <span class="nn">navigator</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_freq_prescale</span><span class="p">(</span><span class="mi">119</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="n">PwmChannel</span><span class="o">.</span><span class="n">Ch1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_channel_value</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
