@@ -3,14 +3,50 @@ use cpy_binder::{cpy_enum, cpy_fn, cpy_fn_c, cpy_fn_py, cpy_module, cpy_struct};
 use lazy_static::lazy_static;
 use std::sync::Mutex;
 
+#[cpy_enum]
+#[comment = "Raspberry Pi version."]
+enum Raspberry {
+    Pi4,
+    Pi5,
+}
+
+impl From<Raspberry> for navigator_rs::PiVersion {
+    fn from(item: Raspberry) -> Self {
+        match item {
+            Raspberry::Pi4 => navigator_rs::PiVersion::Pi4,
+            Raspberry::Pi5 => navigator_rs::PiVersion::Pi5,
+        }
+    }
+}
+#[cpy_enum]
+#[comment = "Navigator version."]
+enum NavigatorVersion {
+    Version1,
+    Version2,
+}
+
+impl From<NavigatorVersion> for navigator_rs::NavigatorVersion {
+    fn from(item: NavigatorVersion) -> Self {
+        match item {
+            NavigatorVersion::Version1 => navigator_rs::NavigatorVersion::V1,
+            NavigatorVersion::Version2 => navigator_rs::NavigatorVersion::V2,
+        }
+    }
+}
+
+#[derive(Clone)]
 struct NavigatorBuilderManager {
     rgb_led_strip_size: usize,
+    raspberry_pi_version: Raspberry,
+    navigator_version: NavigatorVersion,
 }
 
 lazy_static! {
     static ref NAVIGATORBUILDER: Mutex<NavigatorBuilderManager> =
         Mutex::new(NavigatorBuilderManager {
             rgb_led_strip_size: 1,
+            raspberry_pi_version: Raspberry::Pi4,
+            navigator_version: NavigatorVersion::Version1,
         });
 }
 
@@ -31,6 +67,18 @@ fn set_rgb_led_strip_size(size: usize) {
     with_navigator_builder!().rgb_led_strip_size = size;
 }
 
+#[cpy_fn]
+#[comment = "Sets the navigator version."]
+fn set_navigator_version(version: NavigatorVersion) {
+    with_navigator_builder!().navigator_version = version;
+}
+
+#[cpy_fn]
+#[comment = "Sets the raspberry pi version."]
+fn set_raspberry_pi_version(version: Raspberry) {
+    with_navigator_builder!().raspberry_pi_version = version;
+}
+
 struct NavigatorManager {
     navigator: navigator_rs::Navigator,
 }
@@ -42,11 +90,13 @@ lazy_static! {
 impl NavigatorManager {
     fn get_instance() -> &'static Mutex<Option<Self>> {
         if NAVIGATOR.lock().unwrap().is_none() {
-            *NAVIGATOR.lock().unwrap() = Some(NavigatorManager {
-                navigator: navigator_rs::Navigator::create()
-                    .with_rgb_led_strip_size(with_navigator_builder!().rgb_led_strip_size)
-                    .build_navigator_v1_pi4(),
-            });
+            let configuration = with_navigator_builder!().clone();
+            let navigator = navigator_rs::Navigator::create()
+                .with_rgb_led_strip_size(configuration.rgb_led_strip_size)
+                .with_navigator(configuration.navigator_version.into())
+                .with_pi(configuration.raspberry_pi_version.into())
+                .build();
+            *NAVIGATOR.lock().unwrap() = Some(NavigatorManager { navigator });
         }
         &NAVIGATOR
     }
