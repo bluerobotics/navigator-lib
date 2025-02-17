@@ -211,6 +211,9 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         name: python-armv7-auto
+    - uses: actions/download-artifact@v4
+      with:
+        name: python-aarch64-auto
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
