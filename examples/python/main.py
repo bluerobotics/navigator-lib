@@ -14,6 +14,11 @@ def navigator_check():
         return
 
     print("Initializing navigator module.")
+    # Possible to set the configuration before initializing the navigator
+    #navigator.set_rgb_led_strip_size(1)
+    #navigator.set_navigator_version(navigator.NavigatorVersion.Version2)
+    #navigator.set_raspberry_pi_version(navigator.Raspberry.Pi5)
+
     navigator.init()
 
     print("Setting led on!")
