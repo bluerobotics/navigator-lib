@@ -615,9 +615,12 @@ fn set_pwm_channels_duty_cycle_values_py(channels: Vec<usize>, duty_cycle_values
 }
 cpy_module!(
     name = bluerobotics_navigator,
-    types = [AdcChannel, UserLed, AxisData],
+    types = [AdcChannel, UserLed, AxisData, Raspberry, NavigatorVersion],
     functions = [
         init,
+        set_rgb_led_strip_size,
+        set_navigator_version,
+        set_raspberry_pi_version,
         self_test,
         set_led,
         get_led,
