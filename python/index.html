@@ -58,6 +58,16 @@
 <li><a class="reference internal" href="#bluerobotics_navigator.AxisData.z"><code class="docutils literal notranslate"><span class="pre">AxisData.z</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#bluerobotics_navigator.NavigatorVersion"><code class="docutils literal notranslate"><span class="pre">NavigatorVersion</span></code></a><ul>
+<li><a class="reference internal" href="#bluerobotics_navigator.NavigatorVersion.Version1"><code class="docutils literal notranslate"><span class="pre">NavigatorVersion.Version1</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.NavigatorVersion.Version2"><code class="docutils literal notranslate"><span class="pre">NavigatorVersion.Version2</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bluerobotics_navigator.Raspberry"><code class="docutils literal notranslate"><span class="pre">Raspberry</span></code></a><ul>
+<li><a class="reference internal" href="#bluerobotics_navigator.Raspberry.Pi4"><code class="docutils literal notranslate"><span class="pre">Raspberry.Pi4</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.Raspberry.Pi5"><code class="docutils literal notranslate"><span class="pre">Raspberry.Pi5</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#bluerobotics_navigator.UserLed"><code class="docutils literal notranslate"><span class="pre">UserLed</span></code></a><ul>
 <li><a class="reference internal" href="#bluerobotics_navigator.UserLed.Led1"><code class="docutils literal notranslate"><span class="pre">UserLed.Led1</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.UserLed.Led2"><code class="docutils literal notranslate"><span class="pre">UserLed.Led2</span></code></a></li>
@@ -78,6 +88,7 @@
 <li><a class="reference internal" href="#bluerobotics_navigator.set_led"><code class="docutils literal notranslate"><span class="pre">set_led()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_led_all"><code class="docutils literal notranslate"><span class="pre">set_led_all()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_led_toggle"><code class="docutils literal notranslate"><span class="pre">set_led_toggle()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_navigator_version"><code class="docutils literal notranslate"><span class="pre">set_navigator_version()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_neopixel"><code class="docutils literal notranslate"><span class="pre">set_neopixel()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_neopixel_rgbw"><code class="docutils literal notranslate"><span class="pre">set_neopixel_rgbw()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channel_duty_cycle"><code class="docutils literal notranslate"><span class="pre">set_pwm_channel_duty_cycle()</span></code></a></li>
@@ -88,6 +99,8 @@
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_channels_values"><code class="docutils literal notranslate"><span class="pre">set_pwm_channels_values()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_enable"><code class="docutils literal notranslate"><span class="pre">set_pwm_enable()</span></code></a></li>
 <li><a class="reference internal" href="#bluerobotics_navigator.set_pwm_freq_hz"><code class="docutils literal notranslate"><span class="pre">set_pwm_freq_hz()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_raspberry_pi_version"><code class="docutils literal notranslate"><span class="pre">set_raspberry_pi_version()</span></code></a></li>
+<li><a class="reference internal" href="#bluerobotics_navigator.set_rgb_led_strip_size"><code class="docutils literal notranslate"><span class="pre">set_rgb_led_strip_size()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -181,6 +194,38 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bluerobotics_navigator.AxisData.z">
 <span class="sig-name descname"><span class="pre">z</span></span><a class="headerlink" href="#bluerobotics_navigator.AxisData.z" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bluerobotics_navigator.NavigatorVersion">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">NavigatorVersion</span></span><a class="headerlink" href="#bluerobotics_navigator.NavigatorVersion" title="Link to this definition"></a></dt>
+<dd><p>Navigator version.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.NavigatorVersion.Version1">
+<span class="sig-name descname"><span class="pre">Version1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">NavigatorVersion.Version1</span></em><a class="headerlink" href="#bluerobotics_navigator.NavigatorVersion.Version1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.NavigatorVersion.Version2">
+<span class="sig-name descname"><span class="pre">Version2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">NavigatorVersion.Version2</span></em><a class="headerlink" href="#bluerobotics_navigator.NavigatorVersion.Version2" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bluerobotics_navigator.Raspberry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">Raspberry</span></span><a class="headerlink" href="#bluerobotics_navigator.Raspberry" title="Link to this definition"></a></dt>
+<dd><p>Raspberry Pi version.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.Raspberry.Pi4">
+<span class="sig-name descname"><span class="pre">Pi4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Raspberry.Pi4</span></em><a class="headerlink" href="#bluerobotics_navigator.Raspberry.Pi4" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bluerobotics_navigator.Raspberry.Pi5">
+<span class="sig-name descname"><span class="pre">Pi5</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Raspberry.Pi5</span></em><a class="headerlink" href="#bluerobotics_navigator.Raspberry.Pi5" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -502,6 +547,12 @@ However, despite using the embedded-hal concept, new ports can be added as long 
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_navigator_version">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_navigator_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_navigator_version" title="Link to this definition"></a></dt>
+<dd><p>Sets the navigator version.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="bluerobotics_navigator.set_neopixel">
 <span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_neopixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgb_array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_neopixel" title="Link to this definition"></a></dt>
 <dd><p>Set the color brightnesses of a connected NeoPixel LED array.</p>
@@ -743,6 +794,28 @@ framerate (e.g. a 30fps camera stream should have LEDs at 30/60/90/120/… Hz).<
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_pwm_enable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_raspberry_pi_version">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_raspberry_pi_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_raspberry_pi_version" title="Link to this definition"></a></dt>
+<dd><p>Sets the raspberry pi version.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bluerobotics_navigator.set_rgb_led_strip_size">
+<span class="sig-prename descclassname"><span class="pre">bluerobotics_navigator.</span></span><span class="sig-name descname"><span class="pre">set_rgb_led_strip_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bluerobotics_navigator.set_rgb_led_strip_size" title="Link to this definition"></a></dt>
+<dd><p>Sets the size of the navigator led strip (1 is the default), should be called before <cite>init</cite>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">bluerobotics_navigator</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">navigator</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">set_rgb_led_strip_size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">navigator</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
