@@ -180,25 +180,37 @@ jobs:
   raspberry-test-python:
     needs: build-python
     if: ${{ github.repository_owner == 'bluerobotics' }}
-    runs-on: raspbian-armv7-kernel-5.10.33
+    strategy:
+      matrix:
+        include:
+          - runner: raspbian-armv7-kernel-5.10.33
+            arch: armv7
+          - runner: raspbian-aarch64-kernel-6.6.51
+            arch: aarch64
+    runs-on: ${{ matrix.runner }}
     steps:
     - uses: actions/checkout@v3
       with:
         ref: ${{ needs.version-manager.outputs.head_hash }}
-    - name: Download wheels
+    - name: Download ${{ matrix.arch }} wheels
       uses: actions/download-artifact@v4
       with:
-        name: python-armv7-auto
+        name: python-${{ matrix.arch }}-auto
         path: dist
-    - name: Install built wheel
+    - name: Setup Python environment
       run: |
         sudo apt-get update
-        sudo apt-get install -y --no-install-recommends python3 python3-pip
-        pip3 install -U pip
-        pip3 install bluerobotics_navigator --no-index --find-links dist/ --force-reinstall
+        sudo apt-get install -y --no-install-recommends python3-venv python3-full
+    - name: Create and activate virtual environment
+      run: |
+        python3 -m venv .venv
+        source .venv/bin/activate
+        python -m pip install -U pip
+        pip install bluerobotics_navigator --no-index --find-links dist/ --force-reinstall
     - name: Check Python main example
       run: |
         export CI=false
+        source .venv/bin/activate
         python examples/python/main.py
 
   python-release-pypi:
