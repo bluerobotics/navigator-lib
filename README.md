@@ -5,8 +5,8 @@
 
 This library serves as the entry point for applications that want to use [Navigator](https://bluerobotics.com/store/comm-control-power/control/navigator/) with Python or C++.
 
-> 1 . How-to setup the Raspberry Pi computer, please read [Instructions](#ocean-instructions-for-blueoshttpsdiscussblueroboticscomtblueos-official-release12024-recommended).
-  2 . For **Rust** 🦀, please check the [navigator-rs library](https://github.com/bluerobotics/navigator-rs).
+1. For setup on a Raspberry Pi computer, please read [the instructions](#ocean-instructions-for-blueos-recommended).
+2. For **Rust** 🦀, please check the [navigator-rs library](https://github.com/bluerobotics/navigator-rs).
 
 
 ## Features
