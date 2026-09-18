@@ -19,9 +19,9 @@ def navigator_check():
     if platform.machine() == "aarch64":
         # It's possible to set the configuration before initializing the navigator, check this example
         from bluerobotics_navigator import NavigatorVersion, Raspberry
-        print("Setting up for Navigator V2 on Raspberry Pi 5")
+        print("Setting up for Navigator V3 on Raspberry Pi 5")
         navigator.set_rgb_led_strip_size(1)
-        navigator.set_navigator_version(NavigatorVersion.Version2)
+        navigator.set_navigator_version(NavigatorVersion.Version3)
         navigator.set_raspberry_pi_version(Raspberry.Pi5)
 
     navigator.init()
