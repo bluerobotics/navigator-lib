@@ -23,6 +23,7 @@ impl From<Raspberry> for navigator_rs::PiVersion {
 enum NavigatorVersion {
     Version1,
     Version2,
+    Version3,
 }
 
 impl From<NavigatorVersion> for navigator_rs::NavigatorVersion {
@@ -30,6 +31,7 @@ impl From<NavigatorVersion> for navigator_rs::NavigatorVersion {
         match item {
             NavigatorVersion::Version1 => navigator_rs::NavigatorVersion::V1,
             NavigatorVersion::Version2 => navigator_rs::NavigatorVersion::V2,
+            NavigatorVersion::Version3 => navigator_rs::NavigatorVersion::V3,
         }
     }
 }
