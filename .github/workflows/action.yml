@@ -237,6 +237,7 @@ jobs:
         file: ./*.zip
         tag: ${{ github.ref }}
         file_glob: true
+        overwrite: true
 
   deploy-doc:
     needs: version-manager
