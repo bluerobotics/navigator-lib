@@ -23,10 +23,14 @@ int main() {
   }
 
   printf("Initiating navigator module.\n");
-  // Possible to set the configuration before initializing the navigator
-  // set_rgb_led_strip_size(1);
-  // set_navigator_version(NavigatorVersion::Version2);
-  // set_raspberry_pi_version(Raspberry::Pi5);
+  if (strcmp(uts.machine, "aarch64") == 0) {
+    // It's possible to set the configuration before initializing the navigator,
+    // check this example
+    printf("Setting up for Navigator V2 on Raspberry Pi 5\n");
+    set_rgb_led_strip_size(1);
+    set_navigator_version(NavigatorVersion::Version2);
+    set_raspberry_pi_version(Raspberry::Pi5);
+  }
   init();
 
   printf("Setting led on!\n");

@@ -213,6 +213,42 @@ jobs:
         source .venv/bin/activate
         python examples/python/main.py
 
+  raspberry-test-cpp:
+    needs: build-cpp
+    if: ${{ github.repository_owner == 'bluerobotics' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: raspbian-armv7-kernel-5.10.33
+            arch: armv7
+            target: armv7-unknown-linux-gnueabihf
+          - runner: raspbian-aarch64-kernel-6.6.51
+            arch: aarch64
+            target: aarch64-unknown-linux-gnu
+    runs-on: ${{ matrix.runner }}
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ needs.version-manager.outputs.head_hash }}
+    - name: Download ${{ matrix.target }} cpp artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: cpp-${{ matrix.target }}
+        path: dist
+    - name: Build and run example (standalone)
+      run: |
+        export CI=false
+        cd examples/cpp
+        rm -rf build standalone-src
+        mkdir -p standalone-src
+        cp CMakeLists_Standalone.txt standalone-src/CMakeLists.txt
+        cp simple.cpp standalone-src/
+        ABS_DIST_DIR=$(cd ../../dist && pwd)
+        cmake -S standalone-src -B build -DCMAKE_BUILD_TYPE=Release -DNAVIGATOR_LIB_DIR=$ABS_DIST_DIR
+        cmake --build build --config Release --parallel
+        ./build/simple
+
   python-release-pypi:
     needs: [raspberry-test-python]
     runs-on: ubuntu-latest
@@ -232,7 +268,7 @@ jobs:
         packages-dir: .
 
   release-assets:
-    needs: ["build-cpp","raspberry-test-python"]
+    needs: ["build-cpp","raspberry-test-python","raspberry-test-cpp"]
     runs-on: ubuntu-latest
     if: "startsWith(github.ref, 'refs/tags/')"
     steps:

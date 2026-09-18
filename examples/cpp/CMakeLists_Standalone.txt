@@ -3,6 +3,8 @@ project(example)
 
 include(ExternalProject)
 
+option(NAVIGATOR_LIB_DIR "Path to Navigator assets (skips download)" "")
+
 if(NOT DEFINED NAVIGATOR_VERSION)
     set(ZIP_URL "https://github.com/bluerobotics/navigator-lib/releases/latest/download/cpp.zip")
     message(STATUS "Using Navigator lib version: latest")
@@ -11,21 +13,28 @@ else()
     message(STATUS "Using Navigator lib version: ${NAVIGATOR_VERSION}")
 endif()
 
-set(ZIP_UNPACK_DIR "${CMAKE_BINARY_DIR}/navigator_zip_contents")
+if(NAVIGATOR_LIB_DIR)
+    set(ZIP_UNPACK_DIR "${NAVIGATOR_LIB_DIR}")
+    message(STATUS "Using local Navigator assets at: ${ZIP_UNPACK_DIR}")
+else()
+    set(ZIP_UNPACK_DIR "${CMAKE_BINARY_DIR}/navigator_zip_contents")
+endif()
 message(STATUS "Identified system processor: ${CMAKE_SYSTEM_PROCESSOR}")
 
-# Download released navigator lib files
-ExternalProject_Add(
-    navigator_zip
-    URL ${ZIP_URL}
-    DOWNLOAD_DIR "${CMAKE_BINARY_DIR}/navigator_zip_download"
-    SOURCE_DIR ${ZIP_UNPACK_DIR}
-    # Since this is not a cmake project but just files, we need to cleanup the commands
-    CONFIGURE_COMMAND ""
-    BUILD_COMMAND ""
-    INSTALL_COMMAND ""
-    TEST_COMMAND ""
-)
+if(NOT NAVIGATOR_LIB_DIR)
+    # Download released navigator lib files
+    ExternalProject_Add(
+        navigator_zip
+        URL ${ZIP_URL}
+        DOWNLOAD_DIR "${CMAKE_BINARY_DIR}/navigator_zip_download"
+        SOURCE_DIR ${ZIP_UNPACK_DIR}
+        # Since this is not a cmake project but just files, we need to cleanup the commands
+        CONFIGURE_COMMAND ""
+        BUILD_COMMAND ""
+        INSTALL_COMMAND ""
+        TEST_COMMAND ""
+    )
+endif()
 
 # Adjust library path based on the system processor
 if(${CMAKE_SYSTEM_PROCESSOR} MATCHES "armv7")
@@ -39,7 +48,9 @@ endif()
 set(LIBRARY_PATH "${ZIP_UNPACK_DIR}/${LIB_PATH_SUBDIR}/libbluerobotics_navigator.so")
 
 add_executable(simple simple.cpp)
-add_dependencies(simple navigator_zip)
+if(NOT NAVIGATOR_LIB_DIR)
+    add_dependencies(simple navigator_zip)
+endif()
 
 target_link_libraries(simple ${LIBRARY_PATH})
 
