@@ -149,13 +149,15 @@ jobs:
       name: Install built wheel manylinux
       with:
         arch: ${{ matrix.target }}
-        distro: bullseye
+        distro: bookworm
         githubToken: ${{ github.token }}
         install: |
           apt-get update
-          apt-get install -y --no-install-recommends python3 python3-pip
-          pip3 install -U pip
+          apt-get install -y --no-install-recommends python3 python3-pip python3-venv
         run: |
+          python3 -m venv ./venv
+          . ./venv/bin/activate
+          pip3 install -U pip
           pip3 install bluerobotics_navigator --no-index --find-links dist/ --force-reinstall
     - uses: uraimo/run-on-arch-action@v3
       if: matrix.libc == 'musllinux_1_1'
