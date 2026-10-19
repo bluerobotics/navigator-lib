@@ -39,16 +39,16 @@ impl From<NavigatorVersion> for navigator_rs::NavigatorVersion {
 #[derive(Clone)]
 struct NavigatorBuilderManager {
     rgb_led_strip_size: usize,
-    raspberry_pi_version: Raspberry,
-    navigator_version: NavigatorVersion,
+    raspberry_pi_version: Option<Raspberry>,
+    navigator_version: Option<NavigatorVersion>,
 }
 
 lazy_static! {
     static ref NAVIGATORBUILDER: Mutex<NavigatorBuilderManager> =
         Mutex::new(NavigatorBuilderManager {
             rgb_led_strip_size: 1,
-            raspberry_pi_version: Raspberry::Pi4,
-            navigator_version: NavigatorVersion::Version1,
+            raspberry_pi_version: None,
+            navigator_version: None,
         });
 }
 
@@ -70,15 +70,15 @@ fn set_rgb_led_strip_size(size: usize) {
 }
 
 #[cpy_fn]
-#[comment = "Sets the navigator version."]
+#[comment = "Sets the navigator version, overriding auto-detection, should be called before `init`."]
 fn set_navigator_version(version: NavigatorVersion) {
-    with_navigator_builder!().navigator_version = version;
+    with_navigator_builder!().navigator_version = Some(version);
 }
 
 #[cpy_fn]
-#[comment = "Sets the raspberry pi version."]
+#[comment = "Sets the raspberry pi version, overriding auto-detection, should be called before `init`."]
 fn set_raspberry_pi_version(version: Raspberry) {
-    with_navigator_builder!().raspberry_pi_version = version;
+    with_navigator_builder!().raspberry_pi_version = Some(version);
 }
 
 struct NavigatorManager {
@@ -93,11 +93,15 @@ impl NavigatorManager {
     fn get_instance() -> &'static Mutex<Option<Self>> {
         if NAVIGATOR.lock().unwrap().is_none() {
             let configuration = with_navigator_builder!().clone();
-            let navigator = navigator_rs::Navigator::create()
-                .with_rgb_led_strip_size(configuration.rgb_led_strip_size)
-                .with_navigator(configuration.navigator_version.into())
-                .with_pi(configuration.raspberry_pi_version.into())
-                .build();
+            let mut builder = navigator_rs::Navigator::create()
+                .with_rgb_led_strip_size(configuration.rgb_led_strip_size);
+            if let Some(version) = configuration.navigator_version {
+                builder = builder.with_navigator(version.into());
+            }
+            if let Some(version) = configuration.raspberry_pi_version {
+                builder = builder.with_pi(version.into());
+            }
+            let navigator = builder.build();
             *NAVIGATOR.lock().unwrap() = Some(NavigatorManager { navigator });
         }
         &NAVIGATOR
