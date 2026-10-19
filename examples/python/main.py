@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import platform
 import bluerobotics_navigator as navigator
 from bluerobotics_navigator import AdcChannel, UserLed
 
@@ -15,15 +14,6 @@ def navigator_check():
         return
 
     print("Initializing navigator module.")
-
-    if platform.machine() == "aarch64":
-        # It's possible to set the configuration before initializing the navigator, check this example
-        from bluerobotics_navigator import NavigatorVersion, Raspberry
-        print("Setting up for Navigator V3 on Raspberry Pi 5")
-        navigator.set_rgb_led_strip_size(1)
-        navigator.set_navigator_version(NavigatorVersion.Version3)
-        navigator.set_raspberry_pi_version(Raspberry.Pi5)
-
     navigator.init()
 
     print("Setting led on!")
